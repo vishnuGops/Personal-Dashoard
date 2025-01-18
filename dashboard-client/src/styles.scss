@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+// Global styles (apply to the whole app)
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  // You can define global variables too
+  $primary-color: #3498db;
+  $font-size: 16px;
+  
