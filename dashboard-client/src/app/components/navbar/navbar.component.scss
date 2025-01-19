@@ -1,23 +1,47 @@
 .custom-toolbar {
-  background-color: black;
-  color: white;
-}
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-.navbar-logo {
-  display: flex;
-  align-items: center;
-}
+  .navbar-logo {
+    display: flex;
+    align-items: center;
 
-.logo {
-  height: 40px;
-}
+    a {
+      display: inline-flex; // Ensures the logo stays properly aligned as a clickable link
+    }
 
-.spacer {
-  flex: 1 1 auto;
-}
+    .logo {
+      height: 50px;
+      filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
+      transition: transform 0.3s ease;
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 16px;
+      &:hover {
+        transform: scale(1.05); // Slight zoom-in effect on hover
+      }
+    }
+  }
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    a {
+      color: #e0e0e0;
+      text-decoration: none;
+      margin-left: 24px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
+
+      &:hover {
+        color: #90caf9;
+        border-bottom: 2px solid #90caf9;
+      }
+    }
+  }
 }
