@@ -1,0 +1,43 @@
+.custom-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: #121212;
+    color: #e0e0e0;
+    font-size: 14px;
+  
+    .footer-logo {
+      display: flex;
+      align-items: center;
+  
+      .logo {
+        height: 50px;
+      }
+    }
+  
+    .footer-text {
+      text-align: center;
+  
+      p {
+        margin: 0;
+        color: #e0e0e0;
+      }
+    }
+  
+    .footer-icons {
+      display: flex;
+      gap: 16px;
+  
+      a {
+        color: #e0e0e0;
+        font-size: 20px;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: #90caf9;
+        }
+      }
+    }
+  }
+  
