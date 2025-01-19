@@ -5,9 +5,9 @@ import { FooterComponent } from './components/footer/footer.component';
 @Component({
   selector: 'app-root',
   imports: [NavbarComponent, FooterComponent],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.scss'
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
-export class LandingComponent {
+export class AppComponent {
   title = 'dashboard-client';
 }
