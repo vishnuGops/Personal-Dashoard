@@ -2,6 +2,7 @@
   background-color: #1b2836;
   color: #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 
   .navbar-logo {
     display: flex;
@@ -12,7 +13,9 @@
     }
 
     .logo {
-      height: 50px;
+      height: 60px;
+      padding: 0.5rem;
+      margin-left: 1rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s ease;
 

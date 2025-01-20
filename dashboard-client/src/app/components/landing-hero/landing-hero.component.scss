@@ -34,9 +34,10 @@
   color: white;
   font-family: 'Roboto', sans-serif;
   padding: 4rem;
-  background: rgba(0, 0, 0, 0.6);
+  background: transparent;
   border-radius: 10px;
   display: flex;
+  top: -150px;
 
   h1 {
     font-size: 6rem;
