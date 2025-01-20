@@ -1,7 +1,8 @@
 .custom-toolbar {
-  background-color: #1e1e1e;
+  background-color: #1b2836;
   color: #e0e0e0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 
   .navbar-logo {
     display: flex;
@@ -12,7 +13,9 @@
     }
 
     .logo {
-      height: 50px;
+      height: 60px;
+      padding: 0.5rem;
+      margin-left: 1rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s ease;
 
@@ -34,7 +37,7 @@
       color: #e0e0e0;
       text-decoration: none;
       margin-left: 24px;
-      font-size: 16px;
+      font-size: 20px;
       font-weight: 500;
       transition: color 0.3s ease, border-bottom 0.3s ease;
 
