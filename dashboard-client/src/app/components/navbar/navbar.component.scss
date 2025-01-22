@@ -1,8 +1,15 @@
 .custom-toolbar {
-  background-color: #1b2836;
-  color: #e0e0e0;
+  background: radial-gradient(
+    circle at 100% 100%,
+    rgba(39, 122, 176, 1) 0%,
+    rgba(32, 0, 36, 1) 100%
+  );
+  color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  height: fit-content;
+  height: auto;
+  padding: 1rem; // Adds some spacing for smaller screens
+  display: flex;
+  flex-wrap: wrap; // Ensures content wraps on smaller screens
 
   .navbar-logo {
     display: flex;
@@ -13,7 +20,7 @@
     }
 
     .logo {
-      height: 60px;
+      height: 50px; // Adjust for smaller screens
       padding: 0.5rem;
       margin-left: 1rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
@@ -26,25 +33,58 @@
   }
 
   .spacer {
-    flex: 1 1 auto;
+    flex: 1 1 auto; // Ensures proper spacing in responsive layouts
   }
 
   nav {
     display: flex;
     align-items: center;
-
+    margin-right: 20px;
+    flex-wrap: wrap; // Ensures nav links wrap on smaller screens
+  
     a {
-      color: #e0e0e0;
+      color: rgba(255, 255, 255, 0.8); /* Subtle contrast for readability */
       text-decoration: none;
-      margin-left: 24px;
-      font-size: 20px;
+      margin-left: 10px;
+      font-size: 1.5rem; // Use relative units for scalability
       font-weight: 500;
       transition: color 0.3s ease, border-bottom 0.3s ease;
 
       &:hover {
-        color: #90caf9;
-        border-bottom: 2px solid #90caf9;
+        color: rgb(0, 0, 0); /* Matches the light blue from the gradient */
+        border-bottom: 2px solid rgba(39, 122, 176, 1); /* Adds thematic hover effect */
       }
+    }
+  }
+
+  // Media queries for responsiveness
+  @media (max-width: 768px) {
+    .navbar-logo .logo {
+      height: 40px; // Reduce logo size on smaller screens
+      margin-left: 0.5rem;
+    }
+
+    nav a {
+      font-size: 1.2rem; // Adjust text size for smaller screens
+      margin-left: 8px;
+    }
+
+    nav {
+      margin-right: 10px; // Reduce right margin
+    }
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column; // Stack elements vertically on very small screens
+    align-items: center;
+
+    .navbar-logo {
+      justify-content: center;
+    }
+
+    nav {
+      justify-content: center;
+      margin: 0; // Center-align nav links
     }
   }
 }
