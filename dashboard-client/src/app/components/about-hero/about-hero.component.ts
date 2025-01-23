@@ -8,8 +8,6 @@ import { MatCardModule } from '@angular/material/card';
   standalone: true,
   imports: [RouterModule, MatButtonModule, MatCardModule],
   templateUrl: './about-hero.component.html',
-  styleUrl: './about-hero.component.scss'
+  styleUrl: './about-hero.component.scss',
 })
-export class AboutHeroComponent {
-
-}
+export class AboutHeroComponent {}

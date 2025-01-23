@@ -7,10 +7,13 @@ import { AboutHeroComponent } from '../../components/about-hero/about-hero.compo
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [MatToolbarModule, MatCardModule, MatButtonModule, AboutHeroComponent],
+  imports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    AboutHeroComponent,
+  ],
   templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+  styleUrl: './about.component.scss',
 })
-export class AboutComponent {
-
-}
+export class AboutComponent {}

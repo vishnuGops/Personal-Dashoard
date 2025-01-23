@@ -3,8 +3,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
-  width: 100vw;   /* Full width */
+  height: 80vh; /* Full viewport height */
+  width: 100vw; /* Full width */
   position: relative;
   overflow: hidden; /* Ensures no content spills out */
 }
@@ -20,8 +20,8 @@
 
   video {
     object-fit: cover; /* Ensures the video covers the entire container */
-    width: 100%;       /* Full width */
-    height: 100%;      /* Full height */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
     background: #232a34;
   }
 }
@@ -32,26 +32,25 @@
   text-align: center;
   justify-content: center;
   color: white;
-  font-family: 'Roboto', sans-serif;
   padding: 2rem;
   background: transparent; /* Semi-transparent overlay for better text readability */
   border-radius: 10px;
   display: flex;
   flex-direction: column; /* Stack the text and button */
   align-items: center;
-  top: -150px;
   width: 100%;
+  height: 100%;
   max-width: 90%; /* Ensure the content doesn't stretch too wide */
 
   h1 {
-    font-size: 5rem;
+    font-size: 6rem;
     font-weight: 400;
     margin-bottom: 0.25rem; /* Reduced bottom margin */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
-  
+
   p {
-    font-size: 2rem; /* Reduced the font size */
+    font-size: 3rem; /* Reduced the font size */
     font-weight: 300;
     margin-top: 0; /* Remove top margin */
     margin-bottom: 1rem; /* Reduced bottom margin */
@@ -76,7 +75,7 @@
 
     &:hover {
       background: #fff; /* Button turns white on hover */
-      color: #010606;   /* Text color turns dark */
+      color: #010606; /* Text color turns dark */
     }
 
     &.dark {
@@ -86,11 +85,11 @@
 
     &.big {
       padding: 14px 48px; /* Larger button size */
-      font-size: 20px;    /* Larger font size */
+      font-size: 20px; /* Larger font size */
     }
 
     &.fontBig {
-      font-size: 20px;    /* Larger font size */
+      font-size: 20px; /* Larger font size */
     }
   }
 }
@@ -98,13 +97,12 @@
 // Media Queries for Responsiveness
 @media (max-width: 768px) {
   .hero-content {
-    top: -100px; /* Adjust vertical position on smaller screens */
     h1 {
       font-size: 4rem; /* Adjust heading size */
     }
 
     p {
-      font-size: 1.5rem; /* Adjust paragraph font size */
+      font-size: 2rem; /* Adjust paragraph font size */
     }
 
     .hero-btn {
@@ -116,9 +114,7 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    top: -80px; /* Adjust position even further for very small screens */
     padding: 1rem;
-
     h1 {
       font-size: 3rem;
     }
