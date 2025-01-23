@@ -7,7 +7,7 @@
   color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   height: auto;
-  padding: 1rem; // Adds some spacing for smaller screens
+  padding: 0.5rem; // Adds some spacing for smaller screens
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
 
@@ -21,7 +21,7 @@
 
     .logo {
       height: 50px; // Adjust for smaller screens
-      padding: 0.5rem;
+      padding: 0.2rem;
       margin-left: 1rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s ease;
