@@ -10,6 +10,7 @@
   padding: 0.5rem; // Adds some spacing for smaller screens
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
+  font-family: 'Jersey 10', serif; // Ensure the font is applied to the navbar
 
   .navbar-logo {
     display: flex;
@@ -43,11 +44,12 @@
     flex-wrap: wrap; // Ensures nav links wrap on smaller screens
   
     a {
-      color: rgba(255, 255, 255, 0.8); /* Subtle contrast for readability */
+      color: rgb(255, 255, 255); /* Subtle contrast for readability */
       text-decoration: none;
-      margin-left: 10px;
-      font-size: 1.5rem; // Use relative units for scalability
+      margin-left: 16px;
+      font-size: 1.7rem; // Use relative units for scalability
       font-weight: 500;
+      font-family: 'Jersey 10', serif; // Ensure the font is applied to the nav links
       transition: color 0.3s ease, border-bottom 0.3s ease;
 
       &:hover {
@@ -65,8 +67,8 @@
     }
 
     nav a {
-      font-size: 1.2rem; // Adjust text size for smaller screens
-      margin-left: 8px;
+      font-size: 1.4rem; // Adjust text size for smaller screens
+      margin-left: 6px;
     }
 
     nav {
