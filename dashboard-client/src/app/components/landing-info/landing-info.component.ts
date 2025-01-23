@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-landing-info',
   imports: [],
   templateUrl: './landing-info.component.html',
-  styleUrl: './landing-info.component.scss'
+  styleUrl: './landing-info.component.scss',
 })
-export class LandingInfoComponent {
-
-}
+export class LandingInfoComponent {}

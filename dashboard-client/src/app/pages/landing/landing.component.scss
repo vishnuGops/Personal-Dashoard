@@ -2,7 +2,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(to bottom, #000000, #2c2c2c); /* Gradient from black to light gray */
+  background: linear-gradient(
+    to bottom,
+    #000000,
+    #2c2c2c
+  ); /* Gradient from black to light gray */
 }
-
-

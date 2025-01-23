@@ -7,10 +7,13 @@ import { ContactHeroComponent } from '../../components/contact-hero/contact-hero
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [MatToolbarModule, MatCardModule, MatButtonModule, ContactHeroComponent],
+  imports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    ContactHeroComponent,
+  ],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  styleUrl: './contact.component.scss',
 })
-export class ContactComponent {
-
-}
+export class ContactComponent {}

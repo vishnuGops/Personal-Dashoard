@@ -8,8 +8,14 @@ import { LandingInfoComponent } from '../../components/landing-info/landing-info
 @Component({
   selector: 'app-landing',
   standalone: true,
-  imports: [MatToolbarModule, MatCardModule, MatButtonModule, LandingHeroComponent, LandingInfoComponent],
+  imports: [
+    MatToolbarModule,
+    MatCardModule,
+    MatButtonModule,
+    LandingHeroComponent,
+    LandingInfoComponent,
+  ],
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent {}
