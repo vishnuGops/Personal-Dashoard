@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 80vh; /* Full viewport height */
   width: 100vw;   /* Full width */
   position: relative;
   overflow: hidden; /* Ensures no content spills out */
@@ -38,8 +38,8 @@
   display: flex;
   flex-direction: column; /* Stack the text and button */
   align-items: center;
-  top: -150px;
   width: 100%;
+  height: 100%;
   max-width: 90%; /* Ensure the content doesn't stretch too wide */
 
   h1 {

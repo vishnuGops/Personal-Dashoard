@@ -1,0 +1,107 @@
+.info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f4f4f4; /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90vw;
+    margin: 2rem auto;
+    text-align: left;
+  
+    @media (max-width: 768px) {
+      flex-direction: column; /* Stack text and image columns vertically */
+      text-align: center; /* Center-align text on smaller screens */
+      padding: 1rem;
+      width: 95vw;
+    }
+  }
+  
+  .text-column {
+    flex: 1.5; /* Slightly wider text column */
+    padding: 1rem;
+  
+    h2 {
+      font-size: 2rem;
+      color: #01bf71; /* Green accent color */
+      margin-bottom: 0.5rem;
+  
+      @media (max-width: 768px) {
+        font-size: 1.8rem; /* Slightly smaller title on smaller screens */
+      }
+    }
+  
+    h3 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 1rem;
+  
+      @media (max-width: 768px) {
+        font-size: 1.6rem; /* Adjust subtitle size */
+      }
+    }
+  
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 1rem;
+  
+      @media (max-width: 768px) {
+        font-size: 1.1rem; /* Smaller font size for better fit */
+      }
+    }
+  
+    h4 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #01bf71;
+  
+      @media (max-width: 768px) {
+        font-size: 1rem; /* Adjust section header size */
+      }
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: #333;
+        line-height: 1.6;
+  
+        &::before {
+          content: "• ";
+          color: #01bf71; /* Green bullet point */
+        }
+  
+        @media (max-width: 768px) {
+          font-size: 1.1rem; /* Adjust list font size */
+        }
+      }
+    }
+  }
+  
+  .image-column {
+    flex: 1;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+  
+      @media (max-width: 768px) {
+        max-width: 80%; /* Reduce image width on smaller screens */
+      }
+    }
+  }
+  
