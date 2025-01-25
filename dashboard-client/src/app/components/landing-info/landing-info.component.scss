@@ -24,45 +24,45 @@
   padding: 1rem;
 
   h2 {
-    font-size: 2rem;
+    font-size: 4rem;
     color: #01bf71; /* Green accent color */
     margin-bottom: 0.5rem;
 
     @media (max-width: 768px) {
-      font-size: 1.8rem; /* Slightly smaller title on smaller screens */
+      font-size:2.5rem; /* Slightly smaller title on smaller screens */
     }
   }
 
   h3 {
-    font-size: 1.8rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #333;
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
-      font-size: 1.6rem; /* Adjust subtitle size */
+      font-size: 2rem; /* Adjust subtitle size */
     }
   }
 
   p {
-    font-size: 1.2rem;
-    line-height: 1.8;
+    font-size: 2rem;
+    line-height: 1.2;
     color: #555;
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
-      font-size: 1.1rem; /* Smaller font size for better fit */
+      font-size: 1.5rem; /* Smaller font size for better fit */
     }
   }
 
   h4 {
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
     color: #01bf71;
 
     @media (max-width: 768px) {
-      font-size: 1.2rem; /* Adjust section header size */
+      font-size: 1.6rem; /* Adjust section header size */
     }
   }
 
@@ -72,9 +72,9 @@
 
     li {
       margin-bottom: 0.5rem;
-      font-size: 1.2rem;
+      font-size: 2rem;
       color: #333;
-      line-height: 1.6;
+      line-height: 1.2;
 
       &::before {
         content: "• ";
@@ -82,7 +82,7 @@
       }
 
       @media (max-width: 768px) {
-        font-size: 1.1rem; /* Adjust list font size */
+        font-size: 1.5rem; /* Adjust list font size */
       }
     }
   }
