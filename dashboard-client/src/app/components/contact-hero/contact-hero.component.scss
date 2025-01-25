@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Full viewport height */
+  height: 70vh; /* Full viewport height */
   width: 100vw; /* Full width */
   position: relative;
   overflow: hidden; /* Ensures no content spills out */
@@ -42,14 +42,14 @@
   max-width: 90%; /* Ensure the content doesn't stretch too wide */
 
   h1 {
-    font-size: 5rem;
+    font-size: 7.5rem;
     font-weight: 400;
     margin-bottom: 0.25rem; /* Reduced bottom margin */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
 
   p {
-    font-size: 2rem; /* Reduced the font size */
+    font-size: 4rem; /* Reduced the font size */
     font-weight: 200;
     margin-top: 0; /* Remove top margin */
     margin-bottom: 1rem; /* Reduced bottom margin */
@@ -88,7 +88,7 @@
     }
 
     &.fontBig {
-      font-size: 20px; /* Larger font size */
+      font-size: 2.2rem; /* Larger font size */
     }
   }
 }
