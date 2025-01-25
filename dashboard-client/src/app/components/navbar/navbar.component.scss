@@ -11,9 +11,11 @@
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
   font-family: "Jersey 10", serif; // Ensure the font is applied to the navbar
+  
 
   .navbar-logo {
     display: flex;
+    // margin-left: 6rem;
     align-items: center;
 
     a {
@@ -21,9 +23,10 @@
     }
 
     .logo {
-      height: 50px; // Adjust for smaller screens
-      padding: 0.2rem;
-      margin-left: 1rem;
+      height: 3.3rem; // Adjust for smaller screens
+      width: 3.3rem;
+      padding: 0.1rem;
+      margin-left: 6rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s ease;
 
@@ -40,7 +43,7 @@
   nav {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 6rem;
     flex-wrap: wrap; // Ensures nav links wrap on smaller screens
 
     a {
@@ -64,7 +67,8 @@
   // Media queries for responsiveness
   @media (max-width: 768px) {
     .navbar-logo .logo {
-      height: 40px; // Reduce logo size on smaller screens
+      height: 2rem;
+      width: 2rem; // Reduce logo size on smaller screens
       margin-left: 0.5rem;
     }
 
