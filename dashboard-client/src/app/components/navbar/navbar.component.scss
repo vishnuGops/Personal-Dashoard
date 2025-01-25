@@ -1,4 +1,8 @@
 .custom-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: radial-gradient(
     circle at 100% 100%,
     rgba(39, 122, 176, 1) 0%,
@@ -11,11 +15,10 @@
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
   font-family: "Jersey 10", serif; // Ensure the font is applied to the navbar
-  
+  z-index: 1000; // Ensure the navbar is above other content
 
   .navbar-logo {
     display: flex;
-    // margin-left: 6rem;
     align-items: center;
 
     a {

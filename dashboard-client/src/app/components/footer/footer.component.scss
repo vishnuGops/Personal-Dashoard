@@ -5,14 +5,20 @@
   padding: 16px 32px;
   background-color: #121212;
   color: #e0e0e0;
-  font-size: 14px;
+  font-size: 2rem;
+  height: 10rem;
 
   .footer-logo {
     display: flex;
     align-items: center;
+    margin-left: 4rem;
+
+    a {
+      display: inline-flex; // Ensures the logo stays properly aligned as a clickable link
+    }
 
     .logo {
-      height: 50px;
+      height: 100px;
     }
   }
 
@@ -27,11 +33,12 @@
 
   .footer-icons {
     display: flex;
-    gap: 16px;
+    gap: 1.2rem;
+    margin-right: 3rem;
 
     a {
       color: #e0e0e0;
-      font-size: 20px;
+      font-size: 2rem;
       transition: color 0.3s ease;
 
       &:hover {
