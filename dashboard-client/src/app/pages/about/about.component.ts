@@ -13,7 +13,7 @@ import { AboutInfoComponent } from '../../components/about-info/about-info.compo
     MatCardModule,
     MatButtonModule,
     AboutHeroComponent,
-    AboutInfoComponent
+    AboutInfoComponent,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
