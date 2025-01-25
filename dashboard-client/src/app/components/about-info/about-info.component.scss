@@ -1,0 +1,128 @@
+.info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: transparentize($color: black, $amount: 0.9); /* Light gray background */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    width: 95vw;
+    margin: 2rem 2rem;
+    text-align: left;
+
+    h1 {
+        font-size: 4.5rem;
+        color: #01bf71; /* Green accent color */
+        margin-bottom: 1rem;
+    
+        @media (max-width: 768px) {
+            font-size: 2rem; /* Slightly smaller title on smaller screens */
+        }
+    }
+  
+    @media (max-width: 768px) {
+      flex-direction: column; /* Stack text and image columns vertically */
+      text-align: center; /* Center-align text on smaller screens */
+      padding: 1rem;
+      width: 95vw;
+    }
+  }
+  
+  .experience-row {
+    background: rgb(79, 79, 79);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* Ensure all children have the same height */
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin: 2rem 2rem;
+    text-align: left;
+  }
+  
+  .experience-content {
+    flex: 1; /* Make all experience cards take equal space */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    margin: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      transform: scale(1.01); /* Slight zoom-in effect on hover */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+  
+    .navbar-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+  
+      .logo {
+        height: 8rem;
+        width: auto;
+        transition: transform 0.3s ease;
+  
+        &:hover {
+          transform: scale(1.02); /* Slight zoom-in effect on hover */
+        }
+      }
+    }
+  
+    h1 {
+        font-size: 3rem;
+        color: #222;
+        margin-bottom: 0.25rem; // Reduced margin below h1
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.2; // Closer line height for better spacing
+      }
+      
+      h2,
+      h3,
+      h4 {
+        font-size: 1.5rem;
+        color: #555;
+        margin: 0; // Remove margins entirely to bring headings closer
+        font-weight: bold;
+        text-align: center;
+        line-height: 1.2; // Adjust line height to control spacing
+      }
+      
+    ul {
+      margin-top: 1.5rem;
+      padding: 0;
+      list-style-type: circle;
+      padding-left: 1.5rem;
+  
+      li {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: black;
+        line-height: 1;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      padding: 1rem;
+  
+      h1 {
+        font-size: 2rem;
+      }
+  
+      ul li {
+        font-size: 1.2rem;
+      }
+    }
+  }
+  
