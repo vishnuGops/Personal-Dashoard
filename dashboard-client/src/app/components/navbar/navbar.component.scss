@@ -1,4 +1,8 @@
 .custom-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background: radial-gradient(
     circle at 100% 100%,
     rgba(39, 122, 176, 1) 0%,
@@ -11,6 +15,7 @@
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
   font-family: "Jersey 10", serif; // Ensure the font is applied to the navbar
+  z-index: 1000; // Ensure the navbar is above other content
 
   .navbar-logo {
     display: flex;
@@ -21,9 +26,10 @@
     }
 
     .logo {
-      height: 50px; // Adjust for smaller screens
-      padding: 0.2rem;
-      margin-left: 1rem;
+      height: 3.3rem; // Adjust for smaller screens
+      width: 3.3rem;
+      padding: 0.1rem;
+      margin-left: 6rem;
       filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
       transition: transform 0.3s ease;
 
@@ -40,14 +46,14 @@
   nav {
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 6rem;
     flex-wrap: wrap; // Ensures nav links wrap on smaller screens
 
     a {
       color: rgb(255, 255, 255); /* Subtle contrast for readability */
       text-decoration: none;
       margin-left: 16px;
-      font-size: 1.7rem; // Use relative units for scalability
+      font-size: 2.2rem; // Use relative units for scalability
       font-weight: 500;
       font-family: "Jersey 10", serif; // Ensure the font is applied to the nav links
       transition:
@@ -64,12 +70,13 @@
   // Media queries for responsiveness
   @media (max-width: 768px) {
     .navbar-logo .logo {
-      height: 40px; // Reduce logo size on smaller screens
+      height: 2rem;
+      width: 2rem; // Reduce logo size on smaller screens
       margin-left: 0.5rem;
     }
 
     nav a {
-      font-size: 1.4rem; // Adjust text size for smaller screens
+      font-size: 1.6rem; // Adjust text size for smaller screens
       margin-left: 6px;
     }
 

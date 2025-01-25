@@ -1,6 +1,10 @@
 .about-container {
   display: flex;
-  justify-content: center;
-  height: 100vh;
-  background-color: #303030; /* Dark background color */
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(
+    to bottom,
+    #000000,
+    #2c2c2c
+  ); /* Gradient from black to light gray */
 }
