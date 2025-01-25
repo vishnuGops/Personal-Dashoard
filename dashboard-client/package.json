@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "predeploy": "ng build --prod",
+    "deploy": "gh-pages -b master -d build"
+
   },
   "private": true,
   "dependencies": {
