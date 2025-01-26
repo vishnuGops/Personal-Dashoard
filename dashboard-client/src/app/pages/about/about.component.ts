@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { AboutHeroComponent } from '../../components/about-hero/about-hero.component';
 import { AboutExperienceComponent } from '../../components/about-exprience/about-experience.component';
+import { AboutEducationComponent } from '../../components/about-education/about-education.component';
 
 @Component({
   selector: 'app-about',
@@ -14,6 +15,7 @@ import { AboutExperienceComponent } from '../../components/about-exprience/about
     MatButtonModule,
     AboutHeroComponent,
     AboutExperienceComponent,
+    AboutEducationComponent,
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss',
