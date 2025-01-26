@@ -3,6 +3,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ContactHeroComponent } from '../../components/contact-hero/contact-hero.component';
+import { ContactInfoComponent } from '../../components/contact-info/contact-info.component';
 
 @Component({
   selector: 'app-contact',
@@ -12,6 +13,7 @@ import { ContactHeroComponent } from '../../components/contact-hero/contact-hero
     MatCardModule,
     MatButtonModule,
     ContactHeroComponent,
+    ContactInfoComponent,
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
