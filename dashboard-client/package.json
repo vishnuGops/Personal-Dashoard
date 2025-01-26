@@ -1,14 +1,15 @@
 {
   "name": "dashboard-client",
   "version": "1.1.0",
+  "homepage": "https://vishnugops.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --output-path=dist/dashboard-client",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "predeploy": "ng build --prod",
-    "deploy": "gh-pages -b prod -d build"
+    "predeploy": "ng build --configuration production --base-href=/",
+    "deploy": "npx angular-cli-ghpages --dir=dist/dashboard-client/browser --branch=production"
   },
   "private": true,
   "dependencies": {
