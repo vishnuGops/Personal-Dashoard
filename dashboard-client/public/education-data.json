@@ -1,0 +1,36 @@
+{
+  "education": [
+    {
+      "institution": "The University of Texas at Arlington",
+      "logo": "/images/UTA_Logo.png",
+      "url": "https://www.uta.edu/",
+      "period": "Aug 2019 - May 2021",
+      "location": "Arlington, Texas",
+      "courses": [
+        "Autonomous Robotics / HCI",
+        "Computer Vision / AI",
+        "Advanced Database Systems",
+        "Web Data Management",
+        "Data Analysis",
+        "Design of Algorithms",
+        "Advanced Cloud Computing"
+      ]
+    },
+    {
+      "institution": "Bangalore Institute of Technology",
+      "logo": "/images/BIT_logo.png",
+      "url": "https://www.bit-bangalore.edu.in/",
+      "period": "Jun 2015 - Jun 2019",
+      "location": "Bangalore, India",
+      "courses": [
+        "Data Structures",
+        "Operating Systems",
+        "Machine Learning",
+        "Computer Networks",
+        "Computer Graphics",
+        "Compilers",
+        "Computer Architecture"
+      ]
+    }
+  ]
+}

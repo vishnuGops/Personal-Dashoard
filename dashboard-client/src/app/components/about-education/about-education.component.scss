@@ -1,0 +1,190 @@
+.info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    #696969,
+    #000000
+  ); /* Gradient from black to light gray */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  width: 100vw;
+  //   margin: 2rem 2rem;
+  text-align: left;
+  margin-top: 0.2rem;
+
+  h1 {
+    font-size: 4.5rem;
+    color: #01bf71; /* Green accent color */
+    margin-bottom: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 2rem; /* Slightly smaller title on smaller screens */
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack text and image columns vertically */
+    text-align: center; /* Center-align text on smaller screens */
+    padding: 1rem;
+    width: 100vw;
+  }
+}
+
+.experience-row {
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch; /* Ensure all children have the same height */
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 2rem;
+  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  margin: 2rem 2rem;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Stack text and image columns vertically */
+    text-align: center; /* Center-align text on smaller screens */
+    padding: 1rem;
+    width: 95vw;
+  }
+}
+
+.experience-content {
+  flex: 1; /* Make all experience cards take equal space */
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 2rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01); /* Slight zoom-in effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .navbar-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    .logo {
+      height: 12rem;
+      width: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02); /* Slight zoom-in effect on hover */
+      }
+    }
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #222;
+    margin-bottom: 0.25rem; // Reduced margin below h1
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2; // Closer line height for better spacing
+  }
+
+  h2,
+  h3 {
+    font-size: 1.5rem;
+    color: #555;
+    margin: 0; // Remove margins entirely to bring headings closer
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.2; // Adjust line height to control spacing
+  }
+
+  h4 {
+    font-size: 2.5rem;
+    color: #555;
+    margin-top: 0; // Remove margins entirely to bring headings closer
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  ul {
+    margin-top: 0;
+    padding: 0;
+    list-style-type: circle;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: black;
+      line-height: 0.6;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    ul li {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.resume-download {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.button-element {
+  border-radius: 50px;
+  background: #01bf71; /* Primary button color */
+  padding: 12px 30px;
+  color: #fff;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none; /* No underline for Link component */
+
+  &:hover {
+    background: #fff; /* Button turns white on hover */
+    color: #010606; /* Text color turns dark */
+  }
+
+  &.dark {
+    background: #010606; /* Dark theme button */
+    color: #fff;
+  }
+
+  &.big {
+    padding: 14px 48px; /* Larger button size */
+    font-size: 20px; /* Larger font size */
+  }
+
+  &.fontBig {
+    font-size: 2.2rem; /* Larger font size */
+  }
+}
