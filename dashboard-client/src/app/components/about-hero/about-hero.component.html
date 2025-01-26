@@ -1,7 +1,12 @@
 <div class="hero-container mat-elevation-z4">
   <!-- Background Video -->
   <div class="hero-bg">
-    <video autoplay muted loop class="background-video">
+    <video
+      autoplay
+      loop
+      onloadedmetadata="this.muted=true"
+      class="background-video"
+    >
       <source src="/videos/aboutHero_Video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
