@@ -1,85 +1,84 @@
 {
-    "experience": [
-      {
-        "company": "Cepheid",
-        "logo": "/images/cepheid-logo.svg",
-        "url": "https://www.cepheid.com/",
-        "position": "Senior Software Engineer",
-        "location": "Sunnyvale, CA",
-        "period": "Feb 2024 – Present",
-        "responsibilities": [
-          "Actively part of a pivotal team focused on developing and innovating next-generation products, advancing cutting-edge technologies and solutions while enhancing UI frontend performance and unification by upgrading to Angular 17 and adhering to best practices.",
-          "Spearheading the development of innovative software systems to significantly reduce detection times in molecular diagnostics, optimizing efficiency for a wide range of tests and improving user interface responsiveness.",
-          "Gained deep expertise in computational pipelines and contributed extensively to new Cepheid software applications, driving improvements in calculation speed, accuracy, system performance, and overall frontend integration consistency."
-        ]
-      },
-      {
-        "company": "Cepheid",
-        "logo": "/images/cepheid-logo.svg",
-        "url": "https://www.cepheid.com/",
-        "position": "Software Engineer ||",
-        "location": "Sunnyvale, CA",
-        "period": "Aug 2022 – Jan 2024",
-        "responsibilities": [
-          "Contributing to the Product Lifecycle Management team (PLM) for the new G1S module for GeneXpert product software by delivering more efficient and less tightly coupled Firmware updates using GeneXpert product software.",
-          "Successfully implemented timely software updates for GeneXpert Dx, Xpertise, XpertCheck, and Utility Tools, surpassing the best-case deadline.",
-          "Served as the Technical Lead for the release of multiple versions of XpertCheck, a critical component generating approximately $60 million in revenue every quarter, ensuring timely delivery, quality assurance, and meeting key business objectives.",
-          "Contributed to efficient system design by collaborating with cross-functional teams to identify key requirements and design solutions that met business needs while optimizing system performance."
-        ]
-      },
-      {
-        "company": "Cepheid",
-        "logo": "/images/cepheid-logo.svg",
-        "url": "https://www.cepheid.com/",
-        "position": "Software Engineer |",
-        "location": "Sunnyvale, CA",
-        "period": "July 2021 – Jul 2022",
-        "responsibilities": [
-          "Worked on a team responsible for full-stack design, development, and debugging of GeneXpert Infinity product software using Core Java and SQL. Working towards enhancing and maintaining existing software with new features and increased performance.",
-          "Responsible for full-stack design, development, and debugging of GeneXpert Infinity product software using Core Java and SQL. Working towards enhancing and maintaining existing software with new features and increased performance.",
-          "Worked on Database migration using SQL on SSMS combined with JUnit test cases to ensure consistency in data after migration.",
-          "Successfully completed Phase 1 of GeneXpert Infinity product software development following Agile Software Development Methodologies."
-        ]
-      },
-      {
-        "company": "Serotonin Labs",
-        "logo": "/images/serotoninLabs_logo.png",
-        "url": "https://www.serotoninlabs.com/",
-        "position": "Software Engineering Intern",
-        "location": "San Francisco, CA",
-        "period": "June 2020 – Aug 2020",
-        "responsibilities": [
-          "Worked on Full stack development and Data Visualization of user dashboards related to Supplement consumption and activity measurement.",
-          "Worked on ML Model to analyze resting heart rate of 100+ real time users every night in order to form a heart rate pattern.",
-          "Model matches the pattern with pre-determined patterns in order to analyze the sleep cycle of the user and display this analysed result on the Web app interface for user to see."
-        ]
-      },
-      {
-        "company": "Tata Advanced Systems Lmt",
-        "logo": "/images/TASL_logo.png",
-        "url": "https://www.tataadvancedsystems.com/",
-        "position": "Software Engineering Intern",
-        "location": "Bangalore, IN",
-        "period": "Jan 2019 – Mar 2019",
-        "responsibilities": [
-          "Worked along with a team to complete the Autopilot System called AP Swarm",
-          "Worked on developing code for the Communications and Calibrations of the Autopilot System using C++. Developed code to successfully send and retrieve required flight data from Drone using Embedded sensors and High-end SoC like Inertial Sense and Apalis Tk1.",
-          "Collaborated with different teams using Agile Software practices to determine requirements and solutions in order to effectively build Auto Pilot AP Swarm."
-        ]
-      },
-      {
-        "company": "Avian Aerospace",
-        "logo": "/images/avianLogo.png",
-        "url": "https://avianaerospace.com/",
-        "position": "Software Engineering Intern",
-        "location": "Bangalore, IN",
-        "period": "Dec 2017 – Feb 2018",
-        "responsibilities": [
-          "Research and building of a Quad-copter using 3D-Printer. Worked on projects using Open CV and Python. Developed a basic Mobile Application to control Robot car via Bluetooth.",
-          "Developed multiple Computer Vision functionality and features for ground bot and drone using OpenCV and ROS.",
-          "Various CV functions developed: Shape Detection, Pattern and Road Sign Detection, Face Detection, Line Follow,Drone controlled using remote controller, “Master and Slave Robotics using Ground bot and Drone” (Main Project)."
-        ]
-      }
-    ]
-  }
-  
+  "experience": [
+    {
+      "company": "Cepheid",
+      "logo": "/images/cepheid_logo.svg",
+      "url": "https://www.cepheid.com/",
+      "position": "Senior Software Engineer",
+      "location": "Sunnyvale, CA",
+      "period": "Feb 2024 – Present",
+      "responsibilities": [
+        "Actively part of a pivotal team focused on developing and innovating next-generation products, advancing cutting-edge technologies and solutions while enhancing UI frontend performance and unification by upgrading to Angular 17 and adhering to best practices.",
+        "Spearheading the development of innovative software systems to significantly reduce detection times in molecular diagnostics, optimizing efficiency for a wide range of tests and improving user interface responsiveness.",
+        "Gained deep expertise in computational pipelines and contributed extensively to new Cepheid software applications, driving improvements in calculation speed, accuracy, system performance, and overall frontend integration consistency."
+      ]
+    },
+    {
+      "company": "Cepheid",
+      "logo": "/images/cepheid_logo.svg",
+      "url": "https://www.cepheid.com/",
+      "position": "Software Engineer ||",
+      "location": "Sunnyvale, CA",
+      "period": "Aug 2022 – Jan 2024",
+      "responsibilities": [
+        "Contributing to the Product Lifecycle Management team (PLM) for the new G1S module for GeneXpert product software by delivering more efficient and less tightly coupled Firmware updates using GeneXpert product software.",
+        "Successfully implemented timely software updates for GeneXpert Dx, Xpertise, XpertCheck, and Utility Tools, surpassing the best-case deadline.",
+        "Served as the Technical Lead for the release of multiple versions of XpertCheck, a critical component generating approximately $60 million in revenue every quarter, ensuring timely delivery, quality assurance, and meeting key business objectives.",
+        "Contributed to efficient system design by collaborating with cross-functional teams to identify key requirements and design solutions that met business needs while optimizing system performance."
+      ]
+    },
+    {
+      "company": "Cepheid",
+      "logo": "/images/cepheid_logo.svg",
+      "url": "https://www.cepheid.com/",
+      "position": "Software Engineer |",
+      "location": "Sunnyvale, CA",
+      "period": "July 2021 – Jul 2022",
+      "responsibilities": [
+        "Worked on a team responsible for full-stack design, development, and debugging of GeneXpert Infinity product software using Core Java and SQL. Working towards enhancing and maintaining existing software with new features and increased performance.",
+        "Responsible for full-stack design, development, and debugging of GeneXpert Infinity product software using Core Java and SQL. Working towards enhancing and maintaining existing software with new features and increased performance.",
+        "Worked on Database migration using SQL on SSMS combined with JUnit test cases to ensure consistency in data after migration.",
+        "Successfully completed Phase 1 of GeneXpert Infinity product software development following Agile Software Development Methodologies."
+      ]
+    },
+    {
+      "company": "Serotonin Labs",
+      "logo": "/images/serotoninLabs_logo.png",
+      "url": "https://www.serotoninlabs.com/",
+      "position": "Software Engineering Intern",
+      "location": "San Francisco, CA",
+      "period": "June 2020 – Aug 2020",
+      "responsibilities": [
+        "Worked on Full stack development and Data Visualization of user dashboards related to Supplement consumption and activity measurement.",
+        "Worked on ML Model to analyze resting heart rate of 100+ real time users every night in order to form a heart rate pattern.",
+        "Model matches the pattern with pre-determined patterns in order to analyze the sleep cycle of the user and display this analysed result on the Web app interface for user to see."
+      ]
+    },
+    {
+      "company": "Tata Advanced Systems Lmt",
+      "logo": "/images/TASL_logo.png",
+      "url": "https://www.tataadvancedsystems.com/",
+      "position": "Software Engineering Intern",
+      "location": "Bangalore, IN",
+      "period": "Jan 2019 – Mar 2019",
+      "responsibilities": [
+        "Worked along with a team to complete the Autopilot System called AP Swarm",
+        "Worked on developing code for the Communications and Calibrations of the Autopilot System using C++. Developed code to successfully send and retrieve required flight data from Drone using Embedded sensors and High-end SoC like Inertial Sense and Apalis Tk1.",
+        "Collaborated with different teams using Agile Software practices to determine requirements and solutions in order to effectively build Auto Pilot AP Swarm."
+      ]
+    },
+    {
+      "company": "Avian Aerospace",
+      "logo": "/images/avian_logo.png",
+      "url": "https://avianaerospace.com/",
+      "position": "Software Engineering Intern",
+      "location": "Bangalore, IN",
+      "period": "Dec 2017 – Feb 2018",
+      "responsibilities": [
+        "Research and building of a Quad-copter using 3D-Printer. Worked on projects using Open CV and Python. Developed a basic Mobile Application to control Robot car via Bluetooth.",
+        "Developed multiple Computer Vision functionality and features for ground bot and drone using OpenCV and ROS.",
+        "Various CV functions developed: Shape Detection, Pattern and Road Sign Detection, Face Detection, Line Follow,Drone controlled using remote controller, “Master and Slave Robotics using Ground bot and Drone” (Main Project)."
+      ]
+    }
+  ]
+}
