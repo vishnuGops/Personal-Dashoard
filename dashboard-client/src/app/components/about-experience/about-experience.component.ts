@@ -26,7 +26,7 @@ export class AboutExperienceComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ experience: Experience[] }>('/experience-data.json').subscribe(data => {
+    this.http.get<{ experience: Experience[] }>('/json/experience-data.json').subscribe(data => {
       // Group experiences into rows of 2
       const experiences = data.experience;
       this.experienceData = this.groupIntoRows(experiences, 2);

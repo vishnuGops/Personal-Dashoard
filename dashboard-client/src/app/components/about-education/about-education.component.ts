@@ -25,7 +25,7 @@ export class AboutEducationComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<{ education: Education[] }>('/education-data.json').subscribe(data => {
+    this.http.get<{ education: Education[] }>('/json/education-data.json').subscribe(data => {
       this.educationData = data.education;
     });
   }

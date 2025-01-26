@@ -34,7 +34,7 @@
   }
 }
 
-.experience-row {
+.contact-row {
   background: transparent;
   display: flex;
   flex-direction: row;
@@ -55,7 +55,7 @@
   }
 }
 
-.experience-content {
+.contact-content {
   flex: 1; /* Make all experience cards take equal space */
   padding: 2rem;
   display: flex;
@@ -143,48 +143,5 @@
     ul li {
       font-size: 1.4rem;
     }
-  }
-}
-
-.resume-download {
-  display: flex;
-  justify-content: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.button-element {
-  border-radius: 50px;
-  background: #01bf71; /* Primary button color */
-  padding: 12px 30px;
-  color: #fff;
-  font-size: 16px;
-  font-family: inherit;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
-  text-decoration: none; /* No underline for Link component */
-
-  &:hover {
-    background: #fff; /* Button turns white on hover */
-    color: #010606; /* Text color turns dark */
-  }
-
-  &.dark {
-    background: #010606; /* Dark theme button */
-    color: #fff;
-  }
-
-  &.big {
-    padding: 14px 48px; /* Larger button size */
-    font-size: 20px; /* Larger font size */
-  }
-
-  &.fontBig {
-    font-size: 2.2rem; /* Larger font size */
   }
 }
