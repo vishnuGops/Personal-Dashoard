@@ -1,7 +1,12 @@
 <div class="hero-container mat-elevation-z4">
   <!-- Background Video -->
   <div class="hero-bg">
-    <video autoplay muted loop class="background-video">
+    <video
+      autoplay
+      loop
+      onloadedmetadata="this.muted=true"
+      class="background-video"
+    >
       <source src="/videos/aboutHero_Video.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
@@ -13,6 +18,6 @@
     <p>I am Vishnu</p>
     <p>Senior Software Engineer</p>
     <!-- Updated Button -->
-    <a href="/contact" class="hero-btn big fontBig"> Get in touch with me </a>
+    <a href="/contact" class="hero-btn"> Get in touch with me </a>
   </mat-card>
 </div>
