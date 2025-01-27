@@ -6,7 +6,7 @@
   padding: 2rem;
   background: linear-gradient(
     to bottom,
-    #696969,
+    #2a2a2a,
     #000000
   ); /* Gradient from black to light gray */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,6 @@
   //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 95%;
   margin: 2rem 2rem;
-  text-align: left;
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack text and image columns vertically */
@@ -63,7 +62,7 @@ a {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: black;
+  background-color: rgb(28, 28, 28);
   justify-content: flex-start;
   align-items: center;
   border-radius: 2rem;
