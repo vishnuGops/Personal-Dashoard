@@ -71,7 +71,7 @@ a {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: scale(1.01); /* Slight zoom-in effect on hover */
+    transform: scale(1.02); /* Slight zoom-in effect on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
