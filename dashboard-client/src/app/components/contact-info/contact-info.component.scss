@@ -12,17 +12,16 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
   width: 100vw;
-  //   margin: 2rem 2rem;
   text-align: left;
   margin-top: 0.2rem;
 
   h1 {
-    font-size: 4.5rem;
-    color: #01bf71; /* Green accent color */
+    font-size: 5rem;
+    color: #009557; /* Green accent color */
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
-      font-size: 2rem; /* Slightly smaller title on smaller screens */
+      font-size: 3rem; /* Slightly smaller title on smaller screens */
     }
   }
 
@@ -49,18 +48,22 @@
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack text and image columns vertically */
-    text-align: center; /* Center-align text on smaller screens */
+    align-items: center; /* Center-align text on smaller screens */
     padding: 1rem;
     width: 95vw;
   }
 }
 
+a {
+  text-decoration: none;
+}
+
 .contact-content {
-  flex: 1; /* Make all experience cards take equal space */
+  width: 12rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: black;
   justify-content: flex-start;
   align-items: center;
   border-radius: 2rem;
@@ -73,75 +76,29 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
-  .navbar-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
-
-    .logo {
-      height: 12rem;
-      width: auto;
-      transition: transform 0.3s ease;
-
-      &:hover {
-        transform: scale(1.02); /* Slight zoom-in effect on hover */
-      }
-    }
+  .logo {
+    font-size: 10rem;
+    color: #009557;
   }
 
-  h1 {
-    font-size: 3rem;
-    color: #222;
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 200;
+    color: #009557;
     margin-bottom: 0.25rem; // Reduced margin below h1
     font-weight: bold;
     text-align: center;
-    line-height: 1.2; // Closer line height for better spacing
-  }
-
-  h2,
-  h3 {
-    font-size: 1.5rem;
-    color: #555;
-    margin: 0; // Remove margins entirely to bring headings closer
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.2; // Adjust line height to control spacing
-  }
-
-  h4 {
-    font-size: 2.5rem;
-    color: #555;
-    margin-top: 0; // Remove margins entirely to bring headings closer
-    font-weight: bold;
-    text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 0.2rem;
-  }
-
-  ul {
-    margin-top: 0;
-    padding: 0;
-    list-style-type: circle;
-    padding-left: 1.5rem;
-
-    li {
-      margin-bottom: 1rem;
-      font-size: 2rem;
-      color: black;
-      line-height: 0.6;
-    }
   }
 
   @media (max-width: 768px) {
-    padding: 1rem;
-
-    h1 {
-      font-size: 2rem;
+    h2 {
+      font-size: 1.5rem; // Adjust font size for smaller screens
     }
+  }
 
-    ul li {
-      font-size: 1.4rem;
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.2rem; // Further adjust font size for very small screens
     }
   }
 }
