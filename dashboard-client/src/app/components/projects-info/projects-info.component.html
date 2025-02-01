@@ -1,0 +1,29 @@
+<div class="info-container">
+  <div class="projects-row" *ngFor="let projectRow of projectsData">
+    <div class="experience-content" *ngFor="let project of projectRow">
+      <div class="navbar-logo">
+        <a
+          [href]="project.githubLink"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            [src]="project.image"
+            [alt]="project.name + ' Logo'"
+            class="logo"
+          />
+        </a>
+      </div>
+      <h1>{{ project.name }}</h1>
+      <h2>{{ project.description }}</h2>
+      <a
+        [href]="project.githubLink"
+        target="_blank"
+        rel="noopener"
+        aria-label="Twitter"
+      >
+        <i class="fab fa-github git-icon"></i>
+      </a>
+    </div>
+  </div>
+</div>
