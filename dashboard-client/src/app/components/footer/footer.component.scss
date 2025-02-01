@@ -23,7 +23,6 @@
 
   .footer-text {
     text-align: center;
-
     p {
       margin: 0;
       font-size: 2rem;
@@ -37,12 +36,12 @@
     margin-right: 2rem;
 
     a {
-      color: #e0e0e0;
+      color: #007e49;
       font-size: 2rem;
       transition: color 0.3s ease;
 
       &:hover {
-        color: #90caf9;
+        color: #00bc6d;
       }
     }
   }
