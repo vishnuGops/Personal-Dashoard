@@ -1,0 +1,127 @@
+.hero-container {
+  background: #0c0c0c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Full viewport height */
+  width: 100vw; /* Full width */
+  position: relative;
+  overflow: hidden; /* Ensures no content spills out */
+  box-shadow: none;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Ensures it spans the entire width */
+  height: 100%; /* Ensures it spans the entire height */
+
+  video {
+    object-fit: cover; /* Ensures the video covers the entire container */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background: #232a34;
+  }
+}
+
+.hero-content {
+  position: relative;
+  top: -180px;
+  color: white;
+  padding: 1rem;
+  background: transparent;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 90%; /* Ensure the content doesn't stretch too wide */
+
+  h1 {
+    font-size: 7.5rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem; /* Reduced bottom margin */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #01bf71;
+  }
+
+  p {
+    font-size: 3.5rem; /* Reduced the font size */
+    font-weight: 200;
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0rem; /* Reduced bottom margin */
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-btn {
+    border-radius: 50px;
+    background: #01bf71; /* Primary button color */
+    padding: 12px 30px;
+    color: #fff;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none; /* No underline for Link component */
+
+    &:hover {
+      background: #fff; /* Button turns white on hover */
+      color: #010606; /* Text color turns dark */
+    }
+
+    &.dark {
+      background: #010606; /* Dark theme button */
+      color: #fff;
+    }
+  }
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+  .hero-content {
+    align-items: center;
+    top: -200px;
+    h1 {
+      font-size: 4rem; /* Adjust heading size */
+    }
+
+    p {
+      font-size: 1.5rem; /* Adjust paragraph font size */
+    }
+
+    .hero-btn {
+      padding: 1rem 1rem;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    top: -200px;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .hero-btn {
+      width: 13rem; /* Make the button full width on small screens */
+      padding: 0.4rem;
+    }
+  }
+}

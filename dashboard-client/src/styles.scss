@@ -1,29 +1,32 @@
 /* Import the font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 
-// Global styles (apply to the whole app)
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 4px !important; /* As thin as possible while still visible */
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3); /* Translucent white */
-  border-radius: 10px;
-  border: 3px solid transparent;
+  background-color: rgba(
+    100,
+    100,
+    100,
+    0.4
+  ) !important; /* Dark gray with slight transparency */
+  border-radius: 10px !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(
-    255,
-    255,
-    255,
-    0.5
-  ); /* Slightly more opaque on hover */
+    16,
+    15,
+    15,
+    0.6
+  ) !important; /* Slightly lighter on hover */
 }
 
 body {
