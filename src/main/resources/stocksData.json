@@ -1,0 +1,5 @@
+[
+  { "symbol": "AAPL", "avgPrice": 170.5 },
+  { "symbol": "TSLA", "avgPrice": 230.75 },
+  { "symbol": "GOOG", "avgPrice": 175.0 }
+]
