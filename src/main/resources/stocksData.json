@@ -1,5 +1,24 @@
 [
-  { "symbol": "AAPL", "avgPrice": 170.5 },
-  { "symbol": "TSLA", "avgPrice": 230.75 },
-  { "symbol": "GOOG", "avgPrice": 175.0 }
+  {
+    "stockName": "Apple Inc.",
+    "stockSymbol": "AAPL",
+    "avgPrice": 150.25,
+    "shares": 10,
+    "marketPrice": 240.5,
+    "totalCost": 0.0,
+    "totalValue": 0.0,
+    "totalPL": 0.0,
+    "totalPLPercentage": 0.0
+  },
+  {
+    "stockName": "Alphabet Inc.",
+    "stockSymbol": "GOOGL",
+    "avgPrice": 180.0,
+    "shares": 15,
+    "marketPrice": 220.75,
+    "totalCost": 0.0,
+    "totalValue": 0.0,
+    "totalPL": 0.0,
+    "totalPLPercentage": 0.0
+  }
 ]

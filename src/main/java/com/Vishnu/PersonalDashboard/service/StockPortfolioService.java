@@ -3,9 +3,13 @@ package com.Vishnu.PersonalDashboard.service;
 import com.Vishnu.PersonalDashboard.PersonalDashboardApplication;
 import com.Vishnu.PersonalDashboard.model.StockPortfolio;
 import com.Vishnu.PersonalDashboard.repository.StockPortfolioRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import jakarta.annotation.PostConstruct;
+import com.fasterxml.jackson.core.type.TypeReference;
 import org.springframework.stereotype.Service;
 import java.util.logging.Logger;
-
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
@@ -18,6 +22,26 @@ public class StockPortfolioService {
 
     public StockPortfolioService(StockPortfolioRepository stockPortfolioRepository) {
         this.stockPortfolioRepository = stockPortfolioRepository;
+    }
+
+    @PostConstruct
+    public void loadStockData() {
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            InputStream inputStream = getClass().getResourceAsStream("/stocksData.json");
+            List<StockPortfolio> stocks = mapper.readValue(inputStream, new TypeReference<List<StockPortfolio>>() {
+            });
+
+            for (StockPortfolio stock : stocks) {
+                if (stockPortfolioRepository.findByStockSymbol(stock.getStockSymbol()).isEmpty()) {
+                    stockPortfolioRepository.save(stock);
+                    // updateStockData(stock);
+                }
+            }
+            logger.info("Stock data initialized.");
+        } catch (Exception e) {
+            logger.info("Error loading stock data: " + e.getMessage());
+        }
     }
 
     public List<StockPortfolio> getAllStocks() {
