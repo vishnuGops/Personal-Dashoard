@@ -2,6 +2,7 @@ package com.Vishnu.PersonalDashboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.util.logging.Logger;
 
 @SpringBootApplication
@@ -10,7 +11,6 @@ public class PersonalDashboardApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PersonalDashboardApplication.class, args);
-		logger.info("PersonalDashboardApplication Started at http://localhost:8080");
+		logger.info("-------------- PersonalDashboardApplication Started at http://localhost:8080 --------------");
 	}
-
 }

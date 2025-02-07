@@ -4,6 +4,7 @@ import com.Vishnu.PersonalDashboard.PersonalDashboardApplication;
 import com.Vishnu.PersonalDashboard.model.StockPortfolio;
 import com.Vishnu.PersonalDashboard.repository.StockPortfolioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 
 import jakarta.annotation.PostConstruct;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -32,17 +33,19 @@ public class StockPortfolioService {
     public void loadStockData() {
         try {
             ObjectMapper mapper = new ObjectMapper();
+            logger.info("Initializing stock data...");
             InputStream inputStream = getClass().getResourceAsStream("/stocksData.json");
             List<StockPortfolio> stocks = mapper.readValue(inputStream, new TypeReference<List<StockPortfolio>>() {
             });
 
             for (StockPortfolio stock : stocks) {
                 if (stockPortfolioRepository.findByStockSymbol(stock.getStockSymbol()).isEmpty()) {
+                    logger.info("Adding stock data for " + stock.getStockSymbol());
                     updateStockData(stock);
                     stockPortfolioRepository.save(stock);
                 }
             }
-            logger.info("Stock data initialized.");
+            logger.info("Stock data initialized and updated.");
         } catch (
 
         Exception e) {
@@ -60,7 +63,8 @@ public class StockPortfolioService {
 
     public void updateStockData(StockPortfolio stock) {
         logger.info("Updating stock data: " + stock);
-        getRealTimeMarketPriceOfStock(stock.getStockSymbol());
+        stock.setMarketPrice(getRealTimeMarketPriceOfStock(stock.getStockSymbol()));
+        logger.info("Current stock price of " + stock.getStockSymbol() + " is " + stock.getMarketPrice());
         stock.setTotalCost(stock.getAvgPrice().multiply(BigDecimal.valueOf(stock.getShares())));
         stock.setTotalValue(stock.getMarketPrice().multiply(BigDecimal.valueOf(stock.getShares())));
         stock.setTotalPL(stock.getTotalValue().subtract(stock.getTotalCost()));
@@ -71,8 +75,9 @@ public class StockPortfolioService {
     public BigDecimal getRealTimeMarketPriceOfStock(String symbol) {
         // API call to get real-time market price of stock
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://yahoo-finance166.p.rapidapi.com/api/stock/get-price?region=US&symbol=AAPL"))
-                .header("x-rapidapi-key", "171d156ae3mshaefecfa0e740aa3p14cde5jsnbb91dd7ea879-0-")
+                .uri(URI.create(
+                        "https://yahoo-finance166.p.rapidapi.com/api/stock/get-price?region=US&symbol=" + symbol))
+                .header("x-rapidapi-key", "171d156ae3mshaefecfa0e740aa3p14cde5jsnbb91dd7ea879")
                 .header("x-rapidapi-host", "yahoo-finance166.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -80,16 +85,25 @@ public class StockPortfolioService {
             HttpResponse<String> response = HttpClient.newHttpClient().send(request,
                     HttpResponse.BodyHandlers.ofString());
 
-            System.out.println(response.body());
+            String responseBody = response.body();
+
+            // Parse JSON response using Jackson
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode rootNode = objectMapper.readTree(responseBody);
+
+            // Navigate to "regularMarketPrice.raw"
+            JsonNode priceNode = rootNode.path("quoteSummary").path("result").get(0).path("price")
+                    .path("regularMarketPrice").path("raw");
+
+            // Convert to BigDecimal and return
+            if (!priceNode.isMissingNode()) {
+                return BigDecimal.valueOf(priceNode.asDouble());
+            }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
 
         return BigDecimal.valueOf(100);
-    }
-
-    {
-
     }
 
     public void deleteStock(Long id) {
