@@ -1,16 +1,122 @@
 [
   {
-    "stockName": "Apple Inc.",
-    "stockSymbol": "AAPL",
-    "avgPrice": 150.25,
-    "shares": 10,
-    "marketPrice": 240.5
+    "stockName": "Nvidia Corporation",
+    "stockSymbol": "NVDA",
+    "avgPrice": 135.89,
+    "shares": 7
   },
   {
-    "stockName": "Alphabet Inc.",
+    "stockName": "Lucid Group Inc",
+    "stockSymbol": "LCID",
+    "avgPrice": 2.52,
+    "shares": 200
+  },
+  {
+    "stockName": "Alphabet Inc",
     "stockSymbol": "GOOGL",
-    "avgPrice": 180.0,
-    "shares": 15,
-    "marketPrice": 220.75
+    "avgPrice": 169.58,
+    "shares": 21.03044
+  },
+  {
+    "stockName": "Advanced Micro Devices Inc",
+    "stockSymbol": "AMD",
+    "avgPrice": 146.75,
+    "shares": 30
+  },
+  {
+    "stockName": "Procter & Gamble",
+    "stockSymbol": "PG",
+    "avgPrice": 170.67,
+    "shares": 10
+  },
+  {
+    "stockName": "SPDR® S&P 500® ETF Trust",
+    "stockSymbol": "SPY",
+    "avgPrice": 547.22,
+    "shares": 8.03823
+  },
+  {
+    "stockName": "Intel Corp",
+    "stockSymbol": "INTC",
+    "avgPrice": 26.48,
+    "shares": 50.18902
+  },
+  {
+    "stockName": "Johnson & Johnson",
+    "stockSymbol": "JNJ",
+    "avgPrice": 146.55,
+    "shares": 12
+  },
+  {
+    "stockName": "Apple Inc.",
+    "stockSymbol": "AAPL",
+    "avgPrice": 216.85,
+    "shares": 14.02657
+  },
+  {
+    "stockName": "Alibaba Group Hldg Ltd",
+    "stockSymbol": "BABA",
+    "avgPrice": 92.09,
+    "shares": 15
+  },
+  {
+    "stockName": "Amazon Com",
+    "stockSymbol": "AMZN",
+    "avgPrice": 182.3,
+    "shares": 13
+  },
+  {
+    "stockName": "Microsoft Corp",
+    "stockSymbol": "MSFT",
+    "avgPrice": 416.82,
+    "shares": 5.01802
+  },
+  {
+    "stockName": "Snowflake Inc",
+    "stockSymbol": "SNOW",
+    "avgPrice": 127.01,
+    "shares": 10
+  },
+  {
+    "stockName": "Rivian Automotive, Inc. / De",
+    "stockSymbol": "RIVN",
+    "avgPrice": 12.73,
+    "shares": 50
+  },
+  {
+    "stockName": "Qualcomm Inc",
+    "stockSymbol": "QCOM",
+    "avgPrice": 179.51,
+    "shares": 10.03513
+  },
+  {
+    "stockName": "Byd Co Ltd",
+    "stockSymbol": "BYDDY",
+    "avgPrice": 58.2,
+    "shares": 20
+  },
+  {
+    "stockName": "Nike Inc Cl B",
+    "stockSymbol": "NKE",
+    "avgPrice": 83.44,
+    "shares": 25.04455
+  },
+  {
+    "stockName": "Realty Income",
+    "stockSymbol": "O",
+    "avgPrice": 53.91,
+    "shares": 39.89294
+  },
+  {
+    "stockName": "Invesco QQQ Trust",
+    "stockSymbol": "QQQ",
+    "avgPrice": 460.64,
+    "shares": 7.01816
+  },
+  {
+    "stockName": "Tesla Inc",
+    "stockSymbol": "TSLA",
+    "avgPrice": 202.93,
+    "shares": 18
   }
 ]

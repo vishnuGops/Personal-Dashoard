@@ -62,7 +62,7 @@ public class StockPortfolioService {
     }
 
     public void updateStockData(StockPortfolio stock) {
-        logger.info("Updating stock data: " + stock);
+        logger.info("Updating stock data: " + stock.getStockName());
         stock.setMarketPrice(getRealTimeMarketPriceOfStock(stock.getStockSymbol()));
         logger.info("Current stock price of " + stock.getStockSymbol() + " is " + stock.getMarketPrice());
         stock.setTotalCost(stock.getAvgPrice().multiply(BigDecimal.valueOf(stock.getShares())));
@@ -77,7 +77,8 @@ public class StockPortfolioService {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(
                         "https://yahoo-finance166.p.rapidapi.com/api/stock/get-price?region=US&symbol=" + symbol))
-                .header("x-rapidapi-key", "171d156ae3mshaefecfa0e740aa3p14cde5jsnbb91dd7ea879")
+                .header("x-rapidapi-key",
+                        "171d156ae3mshaefecfa0e740aa3p14cde5jsnbb91dd7ea879-0-e0b1-4c3f-8a2d-5a7f6c9b0e4d")
                 .header("x-rapidapi-host", "yahoo-finance166.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
