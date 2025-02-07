@@ -4,21 +4,13 @@
     "stockSymbol": "AAPL",
     "avgPrice": 150.25,
     "shares": 10,
-    "marketPrice": 240.5,
-    "totalCost": 0.0,
-    "totalValue": 0.0,
-    "totalPL": 0.0,
-    "totalPLPercentage": 0.0
+    "marketPrice": 240.5
   },
   {
     "stockName": "Alphabet Inc.",
     "stockSymbol": "GOOGL",
     "avgPrice": 180.0,
     "shares": 15,
-    "marketPrice": 220.75,
-    "totalCost": 0.0,
-    "totalValue": 0.0,
-    "totalPL": 0.0,
-    "totalPLPercentage": 0.0
+    "marketPrice": 220.75
   }
 ]

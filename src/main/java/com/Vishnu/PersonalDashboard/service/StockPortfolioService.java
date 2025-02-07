@@ -34,12 +34,14 @@ public class StockPortfolioService {
 
             for (StockPortfolio stock : stocks) {
                 if (stockPortfolioRepository.findByStockSymbol(stock.getStockSymbol()).isEmpty()) {
+                    updateStockData(stock);
                     stockPortfolioRepository.save(stock);
-                    // updateStockData(stock);
                 }
             }
             logger.info("Stock data initialized.");
-        } catch (Exception e) {
+        } catch (
+
+        Exception e) {
             logger.info("Error loading stock data: " + e.getMessage());
         }
     }
@@ -52,14 +54,13 @@ public class StockPortfolioService {
         return stockPortfolioRepository.findByStockSymbol(symbol);
     }
 
-    public StockPortfolio saveStock(StockPortfolio stock) {
-        logger.info("Saving stock data into the DB: " + stock);
+    public void updateStockData(StockPortfolio stock) {
+        logger.info("Updating stock data: " + stock);
         stock.setTotalCost(stock.getAvgPrice().multiply(BigDecimal.valueOf(stock.getShares())));
         stock.setTotalValue(stock.getMarketPrice().multiply(BigDecimal.valueOf(stock.getShares())));
         stock.setTotalPL(stock.getTotalValue().subtract(stock.getTotalCost()));
         stock.setTotalPLPercentage(stock.getTotalPL().divide(stock.getTotalCost(), 4, RoundingMode.HALF_UP)
                 .multiply(BigDecimal.valueOf(100)));
-        return stockPortfolioRepository.save(stock);
     }
 
     public void deleteStock(Long id) {

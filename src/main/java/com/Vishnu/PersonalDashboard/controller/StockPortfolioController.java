@@ -29,10 +29,10 @@ public class StockPortfolioController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public StockPortfolio addStock(@RequestBody StockPortfolio stockPortfolio) {
-        return stockPortfolioService.saveStock(stockPortfolio);
-    }
+    // @PostMapping
+    // public StockPortfolio addStock(@RequestBody StockPortfolio stockPortfolio) {
+    // return stockPortfolioService.saveStock(stockPortfolio);
+    // }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStock(@PathVariable Long id) {
