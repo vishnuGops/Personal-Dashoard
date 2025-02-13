@@ -5,8 +5,8 @@
   width: 100%;
   background: radial-gradient(
     circle at 100% 100%,
-    rgba(39, 122, 176, 1) 0%,
-    rgba(32, 0, 36, 1) 100%
+    rgb(50, 182, 166) 0%,
+    rgb(9, 0, 10) 90%
   );
   color: #ffffff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -46,7 +46,7 @@
   nav {
     display: flex;
     align-items: center;
-    margin-right: 6rem;
+    margin-right: 3rem;
     flex-wrap: wrap; // Ensures nav links wrap on smaller screens
 
     a {
@@ -56,13 +56,11 @@
       font-size: 2.2rem; // Use relative units for scalability
       font-weight: 500;
       font-family: "Jersey 10", serif; // Ensure the font is applied to the nav links
-      transition:
-        color 0.3s ease,
-        border-bottom 0.3s ease;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
 
       &:hover {
         color: rgb(0, 0, 0); /* Matches the light blue from the gradient */
-        border-bottom: 2px solid rgba(39, 122, 176, 1); /* Adds thematic hover effect */
+        border-bottom: 2px solid rgb(255, 255, 255); /* Adds thematic hover effect */
       }
     }
   }
