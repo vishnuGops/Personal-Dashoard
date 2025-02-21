@@ -50,7 +50,7 @@
     flex-wrap: wrap; // Ensures nav links wrap on smaller screens
 
     a {
-      color: rgb(0, 0, 0); /* Subtle contrast for readability */
+      color: rgb(255, 255, 255); /* Subtle contrast for readability */
       text-decoration: none;
       margin-left: 16px;
       font-size: 2.2rem; // Use relative units for scalability
@@ -60,11 +60,11 @@
 
       &:hover {
         color: rgb(
-          255,
-          255,
-          255
+          200,
+          200,
+          200
         ); /* Matches the light blue from the gradient */
-        border-bottom: 2px solid rgb(255, 255, 255); /* Adds thematic hover effect */
+        border-bottom: 2px solid rgb(201, 201, 201); /* Adds thematic hover effect */
       }
     }
   }
