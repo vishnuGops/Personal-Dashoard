@@ -57,6 +57,7 @@
       font-weight: 500;
       font-family: "Jersey 10", serif; // Ensure the font is applied to the nav links
       transition: color 0.3s ease, border-bottom 0.3s ease;
+      text-shadow: black 2px 2px; // Adds a subtle shadow for depth
 
       &:hover {
         color: rgb(
