@@ -17,6 +17,7 @@
     margin-bottom: 1rem;
 
     @media (max-width: 768px) {
+      margin-top: 5rem;
       font-size: 3rem; /* Slightly smaller title on smaller screens */
     }
   }
@@ -33,17 +34,15 @@
   flex-direction: row;
   align-items: stretch; /* Ensure all children have the same height */
   justify-content: center;
-  // padding: 2rem;
   border-radius: 2rem;
-  //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 95%;
-  // margin: 2rem 2rem;
 
+  @media (max-width: 1080px) {
+    align-items: center; /* Center-align text on smaller screens */
+  }
   @media (max-width: 768px) {
     flex-direction: column; /* Stack text and image columns vertically */
     align-items: center; /* Center-align text on smaller screens */
-    padding: 1rem;
-    width: 95vw;
   }
 }
 
@@ -83,15 +82,24 @@ a {
     text-align: center;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1080px) {
+    width: 6rem;
     h2 {
       font-size: 1.5rem; // Adjust font size for smaller screens
     }
+    .logo {
+      font-size: 4rem;
+    }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
+    width: 4rem;
+    margin: 0.5rem;
     h2 {
-      font-size: 1.2rem; // Further adjust font size for very small screens
+      font-size: 0rem; // Further adjust font size for very small screens
+    }
+    .logo {
+      font-size: 4rem;
     }
   }
 }
