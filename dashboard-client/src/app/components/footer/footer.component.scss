@@ -11,13 +11,12 @@
     display: flex;
     align-items: center;
     margin-left: 3rem;
-
     a {
       display: inline-flex; // Ensures the logo stays properly aligned as a clickable link
     }
 
     .logo {
-      height: 100px;
+      height: 80px;
     }
   }
 
@@ -50,7 +49,7 @@
       margin-left: 0.1rem;
 
       .logo {
-        height: 60px;
+        height: 50px;
       }
     }
 
@@ -89,7 +88,7 @@
 
     .footer-logo {
       .logo {
-        height: 50px;
+        height: 40px;
       }
     }
   }
