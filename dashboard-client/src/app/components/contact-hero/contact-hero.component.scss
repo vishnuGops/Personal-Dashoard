@@ -1,12 +1,9 @@
 .hero-container {
   background: #0c0c0c;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 70vh; /* Full viewport height */
-  width: 100vw; /* Full width */
-  position: relative;
-  overflow: hidden; /* Ensures no content spills out */
 }
 
 .hero-bg {
@@ -27,7 +24,6 @@
 }
 
 .hero-content {
-  position: relative;
   z-index: 2;
   text-align: center;
   justify-content: center;
@@ -36,15 +32,12 @@
   background: transparent; /* Semi-transparent overlay for better text readability */
   border-radius: 10px;
   display: flex;
-  flex-direction: column; /* Stack the text and button */
   align-items: center;
-  width: 100%;
-  max-width: 90%; /* Ensure the content doesn't stretch too wide */
 
   h1 {
     font-size: 7.5rem;
     font-weight: 400;
-    margin-bottom: 0.25rem; /* Reduced bottom margin */
+    margin-bottom: 2rem; /* Reduced bottom margin */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
 
@@ -96,7 +89,6 @@
 // Media Queries for Responsiveness
 @media (max-width: 768px) {
   .hero-content {
-    top: -100px; /* Adjust vertical position on smaller screens */
     h1 {
       font-size: 4rem; /* Adjust heading size */
     }

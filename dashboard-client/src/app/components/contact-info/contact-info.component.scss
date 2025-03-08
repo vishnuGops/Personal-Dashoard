@@ -3,18 +3,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  border-top: 3px solid #009557; /* Green accent color */
+  padding-bottom: 4rem;
   background: linear-gradient(
     to bottom,
     #001825,
     #000000
   ); /* Gradient from black to light gray */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-  width: 100vw;
-  text-align: left;
-
+  // width: 100%;
+  height: 100vh;
   h1 {
     font-size: 5rem;
     color: #009557; /* Green accent color */
@@ -28,8 +24,6 @@
   @media (max-width: 768px) {
     flex-direction: column; /* Stack text and image columns vertically */
     text-align: center; /* Center-align text on smaller screens */
-    padding: 1rem;
-    width: 100vw;
   }
 }
 
@@ -39,11 +33,11 @@
   flex-direction: row;
   align-items: stretch; /* Ensure all children have the same height */
   justify-content: center;
-  padding: 2rem;
+  // padding: 2rem;
   border-radius: 2rem;
   //   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 95%;
-  margin: 2rem 2rem;
+  // margin: 2rem 2rem;
 
   @media (max-width: 768px) {
     flex-direction: column; /* Stack text and image columns vertically */
@@ -58,7 +52,7 @@ a {
 }
 
 .contact-content {
-  width: 12rem;
+  width: 10rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -76,7 +70,7 @@ a {
   }
 
   .logo {
-    font-size: 10rem;
+    font-size: 6rem;
     color: #009557;
   }
 
