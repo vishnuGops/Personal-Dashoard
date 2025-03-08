@@ -29,13 +29,19 @@
   ) !important; /* Slightly lighter on hover */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: "Jersey 10", serif;
   background-color: #f4f4f4;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
   scrollbar-width: thin;
+  min-height: 100vh;
+  position: relative;
 }
 
 // You can define global variables too
@@ -54,4 +60,11 @@ body {
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
+}
+
+/* Add styles for the main content area */
+main {
+  position: relative;
+  min-height: calc(100vh - 64px); /* Adjust based on your navbar height */
+  width: 100%;
 }
