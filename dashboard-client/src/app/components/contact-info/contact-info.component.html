@@ -1,72 +1,27 @@
 <div class="info-container">
   <h1>Find Me Here</h1>
-  <div class="contact-row">
+  <div class="contact-row" *ngFor="let pair of contactPairs">
     <a
-      href="https://linkedin.com/in/vishnugops"
+      [href]="pair.first.url"
       target="_blank"
       rel="noopener"
-      aria-label="Linkedin"
+      [attr.aria-label]="pair.first.label"
     >
       <div class="contact-content">
-        <i class="fab fa-linkedin logo"></i>
-        <h2>Vishnugops</h2>
+        <i [class]="pair.first.icon + ' logo'"></i>
+        <h2>{{ pair.first.text }}</h2>
       </div>
     </a>
     <a
-      href="https://github.com/vishnuGops"
+      *ngIf="pair.second"
+      [href]="pair.second.url"
       target="_blank"
       rel="noopener"
-      aria-label="Github"
+      [attr.aria-label]="pair.second.label"
     >
       <div class="contact-content">
-        <i class="fab fa-github logo"></i>
-        <h2>VishnuGops</h2>
-      </div>
-    </a>
-    <a
-      href="mailto:vishnugrajan14@gmail.com?subject=Hello Vishnu!&body=I wanted to get in touch with you."
-      rel="noopener"
-      aria-label="Email"
-    >
-      <div class="contact-content">
-        <i class="fas fa-envelope logo"></i>
-        <h2>vishnugrajan14</h2>
-      </div>
-    </a>
-  </div>
-  <div class="contact-row">
-    <a
-      href="https://instagram.com/vishnugops"
-      target="_blank"
-      rel="noopener"
-      aria-label="Instagram"
-    >
-      <div class="contact-content">
-        <i class="fab fa-instagram logo"></i>
-
-        <h2>VishnuGops</h2>
-      </div>
-    </a>
-    <a
-      href="https://www.youtube.com/channel/UCqRp3VPHZ_sW4Rxkd2Rx51A"
-      target="_blank"
-      rel="noopener"
-      aria-label="YouTube"
-    >
-      <div class="contact-content">
-        <i class="fab fa-youtube logo"></i>
-        <h2>Vishnu Gopal</h2>
-      </div>
-    </a>
-    <a
-      href="https://x.com/vishnu_gops"
-      target="_blank"
-      rel="noopener"
-      aria-label="Twitter"
-    >
-      <div class="contact-content">
-        <i class="fab fa-twitter logo"></i>
-        <h2>Vishnu_gops</h2>
+        <i [class]="pair.second.icon + ' logo'"></i>
+        <h2>{{ pair.second.text }}</h2>
       </div>
     </a>
   </div>
