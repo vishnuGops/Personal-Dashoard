@@ -5,7 +5,7 @@
   width: 100%;
   background: linear-gradient(
     to bottom,
-    rgb(50, 182, 166) 0%,
+    rgb(33, 119, 109) 0%,
     rgb(9, 0, 10) 110%
   );
   color: #ffffff;
@@ -15,7 +15,7 @@
   display: flex;
   flex-wrap: wrap; // Ensures content wraps on smaller screens
   font-family: "Jersey 10", serif; // Ensure the font is applied to the navbar
-  z-index: 1000; // Ensure the navbar is above other content
+  z-index: 10; // Ensure the navbar is above other content
 
   .navbar-logo {
     display: flex;
@@ -30,11 +30,14 @@
       width: 3.3rem;
       padding: 0.1rem;
       margin-left: 6rem;
-      filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8));
       transition: transform 0.3s ease;
 
       &:hover {
         transform: scale(1.05); // Slight zoom-in effect on hover
+        filter: drop-shadow(
+          0 6px 12px rgba(0, 0, 0, 1.2)
+        ); // Enhanced shadow on hover
       }
     }
   }

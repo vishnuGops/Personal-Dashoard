@@ -7,6 +7,7 @@
   width: 100vw; /* Full width */
   position: relative;
   overflow: hidden; /* Ensures no content spills out */
+  z-index: 1;
 }
 
 .hero-bg {
@@ -50,7 +51,7 @@
   }
 
   p {
-    font-size: 4rem; /* Reduced the font size */
+    font-size: 6rem; /* Reduced the font size */
     font-weight: 300;
     margin-top: 0; /* Remove top margin */
     margin-bottom: 1rem; /* Reduced bottom margin */
