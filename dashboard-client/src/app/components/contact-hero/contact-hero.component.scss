@@ -88,7 +88,14 @@
 
 // Media Queries for Responsiveness
 @media (max-width: 768px) {
+  .hero-bg {
+    height: 50vh;
+    video {
+      height: 50vh;
+    }
+  }
   .hero-content {
+    top: -300px;
     h1 {
       font-size: 4rem; /* Adjust heading size */
     }
@@ -106,7 +113,7 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    top: -80px; /* Adjust position even further for very small screens */
+    top: -280px; /* Adjust position even further for very small screens */
     padding: 1rem;
 
     h1 {

@@ -6,17 +6,26 @@
   background-color: #000000;
   color: #e0e0e0;
   height: 10rem;
+  width: 100%;
+  box-sizing: border-box;
 
   .footer-logo {
     display: flex;
     align-items: center;
     margin-left: 3rem;
+
     a {
-      display: inline-flex; // Ensures the logo stays properly aligned as a clickable link
+      display: inline-flex;
     }
 
     .logo {
       height: 80px;
+      width: auto;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -37,16 +46,22 @@
     a {
       color: #007e49;
       font-size: 2rem;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
 
       &:hover {
         color: #00bc6d;
+        transform: scale(1.1);
       }
     }
   }
+
   @media (max-width: 768px) {
+    padding: 16px;
+    height: auto;
+    min-height: 8rem;
+
     .footer-logo {
-      margin-left: 0.1rem;
+      margin-left: 0;
 
       .logo {
         height: 50px;
@@ -54,41 +69,49 @@
     }
 
     .footer-icons {
-      margin-right: 0.1rem;
-      gap: 0.8rem;
+      margin-right: 0;
+      gap: 1rem;
 
       a {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
     }
+
     .footer-text {
       p {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
       }
     }
   }
 
   @media (max-width: 480px) {
+    flex-direction: column;
+    padding: 16px;
+    gap: 1rem;
+    text-align: center;
+
+    .footer-logo {
+      justify-content: center;
+      margin: 0;
+
+      .logo {
+        height: 40px;
+      }
+    }
+
     .footer-icons {
-      flex-direction: column;
-      align-items: center;
-      margin-right: 0;
-      gap: 0.6rem;
+      justify-content: center;
+      margin: 0;
+      gap: 1.5rem;
 
       a {
-        font-size: 1rem;
+        font-size: 1.6rem;
       }
     }
 
     .footer-text {
       p {
-        font-size: 0.9rem;
-      }
-    }
-
-    .footer-logo {
-      .logo {
-        height: 40px;
+        font-size: 1.2rem;
       }
     }
   }
