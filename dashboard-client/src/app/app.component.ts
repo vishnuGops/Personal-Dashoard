@@ -2,11 +2,12 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterModule],
+  imports: [NavbarComponent, FooterComponent, RouterModule, PortfolioComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

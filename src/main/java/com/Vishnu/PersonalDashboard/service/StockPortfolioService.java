@@ -19,15 +19,14 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class StockPortfolioService {
-    private final StockPortfolioRepository stockPortfolioRepository;
     private static final Logger logger = Logger.getLogger(PersonalDashboardApplication.class.getName());
 
-    public StockPortfolioService(StockPortfolioRepository stockPortfolioRepository) {
-        this.stockPortfolioRepository = stockPortfolioRepository;
-    }
+    @Autowired
+    private StockPortfolioRepository stockPortfolioRepository;
 
     @PostConstruct
     public void loadStockData() {
@@ -46,9 +45,7 @@ public class StockPortfolioService {
                 }
             }
             logger.info("Stock data initialized and updated.");
-        } catch (
-
-        Exception e) {
+        } catch (Exception e) {
             logger.info("Error loading stock data: " + e.getMessage());
         }
     }
@@ -109,5 +106,9 @@ public class StockPortfolioService {
 
     public void deleteStock(Long id) {
         stockPortfolioRepository.deleteById(id);
+    }
+
+    public StockPortfolio saveStock(StockPortfolio stock) {
+        return stockPortfolioRepository.save(stock);
     }
 }

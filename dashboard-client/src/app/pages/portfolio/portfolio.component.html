@@ -1,0 +1,43 @@
+<div class="portfolio-container">
+  <h1>Stock Portfolio</h1>
+
+  <div *ngIf="loading" class="loading">Loading portfolio data...</div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div *ngIf="!loading && !error" class="portfolio-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Shares</th>
+          <th>Avg Price</th>
+          <th>Current Price</th>
+          <th>Total Value</th>
+          <th>Profit/Loss</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stock of portfolioData">
+          <td>{{ stock.stockSymbol }}</td>
+          <td>{{ stock.stockName }}</td>
+          <td>{{ stock.shares }}</td>
+          <td>${{ stock.avgPrice | number : "1.2-2" }}</td>
+          <td>${{ stock.marketPrice | number : "1.2-2" }}</td>
+          <td>${{ stock.totalValue | number : "1.2-2" }}</td>
+          <td
+            [ngClass]="{
+              profit: stock.totalPL > 0,
+              loss: stock.totalPL < 0
+            }"
+          >
+            ${{ stock.totalPL | number : "1.2-2" }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

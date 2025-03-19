@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Table(name = "stockPortfolio")
 public class StockPortfolio {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
