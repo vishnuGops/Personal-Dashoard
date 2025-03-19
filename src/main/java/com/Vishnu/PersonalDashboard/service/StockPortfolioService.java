@@ -24,8 +24,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class StockPortfolioService {
     private static final Logger logger = Logger.getLogger(PersonalDashboardApplication.class.getName());
-    private final HttpClient httpClient = HttpClient.newHttpClient();
-    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     private StockPortfolioRepository stockPortfolioRepository;
@@ -39,9 +37,22 @@ public class StockPortfolioService {
             List<StockPortfolio> stocks = mapper.readValue(inputStream, new TypeReference<List<StockPortfolio>>() {
             });
 
+            // First, update existing stocks with current prices
+            List<StockPortfolio> existingStocks = stockPortfolioRepository.findAll();
+            for (StockPortfolio existingStock : existingStocks) {
+                BigDecimal currentMarketPrice = getRealTimeMarketPriceOfStock(existingStock.getStockSymbol());
+                if (!currentMarketPrice.equals(existingStock.getMarketPrice())) {
+                    logger.info("Price changed for existing stock " + existingStock.getStockSymbol() +
+                            " from " + existingStock.getMarketPrice() +
+                            " to " + currentMarketPrice);
+                    updateStockData(existingStock);
+                }
+            }
+
+            // Then, add new stocks if they don't exist
             for (StockPortfolio stock : stocks) {
                 if (stockPortfolioRepository.findByStockSymbol(stock.getStockSymbol()).isEmpty()) {
-                    logger.info("Adding stock data for " + stock.getStockSymbol());
+                    logger.info("Adding new stock data for " + stock.getStockSymbol());
                     updateStockData(stock);
                 }
             }
@@ -53,9 +64,9 @@ public class StockPortfolioService {
 
     public List<StockPortfolio> getAllStocks() {
         List<StockPortfolio> stocks = stockPortfolioRepository.findAll();
-        for (StockPortfolio stock : stocks) {
-            updateStockData(stock);
-        }
+        // for (StockPortfolio stock : stocks) {
+        // updateStockData(stock);
+        // }
         return stocks;
     }
 
@@ -73,10 +84,10 @@ public class StockPortfolioService {
             stock.setTotalPL(stock.getTotalValue().subtract(stock.getTotalCost()));
             stock.setTotalPLPercentage(stock.getTotalPL().divide(stock.getTotalCost(), 4, RoundingMode.HALF_UP)
                     .multiply(BigDecimal.valueOf(100)));
+            stockPortfolioRepository.save(stock);
         } catch (Exception e) {
             logger.severe("Error updating stock data for " + stock.getStockSymbol() + ": " + e.getMessage());
         }
-        stockPortfolioRepository.save(stock);
     }
 
     public BigDecimal getRealTimeMarketPriceOfStock(String symbol) {
