@@ -1,13 +1,13 @@
-<div class="portfolio-container">
-  <h1>Stock Portfolio</h1>
+<div class="potfolio-container">
+  <h1>Stock Potfolio</h1>
 
-  <div *ngIf="loading" class="loading">Loading portfolio data...</div>
+  <div *ngIf="loading" class="loading">Loading potfolio data...</div>
 
   <div *ngIf="error" class="error">
     {{ error }}
   </div>
 
-  <div *ngIf="!loading && !error" class="portfolio-table">
+  <div *ngIf="!loading && !error" class="potfolio-table">
     <table>
       <thead>
         <tr>

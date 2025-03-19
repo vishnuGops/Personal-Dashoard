@@ -13,13 +13,13 @@ interface StockPortfolio {
 }
 
 @Component({
-  selector: 'app-portfolio',
-  templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.scss'],
+  selector: 'app-potfolio',
+  templateUrl: './potfolio.component.html',
+  styleUrls: ['./potfolio.component.scss'],
   standalone: true,
   imports: [CommonModule, HttpClientModule],
 })
-export class PortfolioComponent implements OnInit {
+export class PotfolioComponent implements OnInit {
   portfolioData: any[] = [];
   loading: boolean = true;
   error: string | null = null;
