@@ -10,6 +10,7 @@ interface StockPortfolio {
   currentPrice: number;
   totalValue: number;
   profitLoss: number;
+  profitLossPercentage: number;
 }
 
 @Component({

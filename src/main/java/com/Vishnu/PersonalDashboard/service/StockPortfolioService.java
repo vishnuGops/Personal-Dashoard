@@ -24,6 +24,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 public class StockPortfolioService {
     private static final Logger logger = Logger.getLogger(PersonalDashboardApplication.class.getName());
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     @Autowired
     private StockPortfolioRepository stockPortfolioRepository;
@@ -41,7 +43,6 @@ public class StockPortfolioService {
                 if (stockPortfolioRepository.findByStockSymbol(stock.getStockSymbol()).isEmpty()) {
                     logger.info("Adding stock data for " + stock.getStockSymbol());
                     updateStockData(stock);
-                    stockPortfolioRepository.save(stock);
                 }
             }
             logger.info("Stock data initialized and updated.");
@@ -51,7 +52,11 @@ public class StockPortfolioService {
     }
 
     public List<StockPortfolio> getAllStocks() {
-        return stockPortfolioRepository.findAll();
+        List<StockPortfolio> stocks = stockPortfolioRepository.findAll();
+        for (StockPortfolio stock : stocks) {
+            updateStockData(stock);
+        }
+        return stocks;
     }
 
     public Optional<StockPortfolio> getStockBySymbol(String symbol) {
@@ -59,23 +64,27 @@ public class StockPortfolioService {
     }
 
     public void updateStockData(StockPortfolio stock) {
-        logger.info("Updating stock data: " + stock.getStockName());
-        stock.setMarketPrice(getRealTimeMarketPriceOfStock(stock.getStockSymbol()));
-        logger.info("Current stock price of " + stock.getStockSymbol() + " is " + stock.getMarketPrice());
-        stock.setTotalCost(stock.getAvgPrice().multiply(BigDecimal.valueOf(stock.getShares())));
-        stock.setTotalValue(stock.getMarketPrice().multiply(BigDecimal.valueOf(stock.getShares())));
-        stock.setTotalPL(stock.getTotalValue().subtract(stock.getTotalCost()));
-        stock.setTotalPLPercentage(stock.getTotalPL().divide(stock.getTotalCost(), 4, RoundingMode.HALF_UP)
-                .multiply(BigDecimal.valueOf(100)));
+        try {
+            logger.info("Updating stock data: " + stock.getStockName());
+            stock.setMarketPrice(getRealTimeMarketPriceOfStock(stock.getStockSymbol()));
+            logger.info("Current stock price of " + stock.getStockSymbol() + " is " + stock.getMarketPrice());
+            stock.setTotalCost(stock.getAvgPrice().multiply(BigDecimal.valueOf(stock.getShares())));
+            stock.setTotalValue(stock.getMarketPrice().multiply(BigDecimal.valueOf(stock.getShares())));
+            stock.setTotalPL(stock.getTotalValue().subtract(stock.getTotalCost()));
+            stock.setTotalPLPercentage(stock.getTotalPL().divide(stock.getTotalCost(), 4, RoundingMode.HALF_UP)
+                    .multiply(BigDecimal.valueOf(100)));
+        } catch (Exception e) {
+            logger.severe("Error updating stock data for " + stock.getStockSymbol() + ": " + e.getMessage());
+        }
+        stockPortfolioRepository.save(stock);
     }
 
     public BigDecimal getRealTimeMarketPriceOfStock(String symbol) {
-        // API call to get real-time market price of stock
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(
                         "https://yahoo-finance166.p.rapidapi.com/api/stock/get-price?region=US&symbol=" + symbol))
                 .header("x-rapidapi-key",
-                        "171d156ae3mshaefecfa0e740aa3p14cde5jsnbb91dd7ea879-0-e0b1-4c3f-8a2d-5a7f6c9b0e4d")
+                        "5ff030a4b0msh17f486a81f3d5a7p1581e4jsn2ff77d18c6a2")
                 .header("x-rapidapi-host", "yahoo-finance166.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
@@ -109,6 +118,7 @@ public class StockPortfolioService {
     }
 
     public StockPortfolio saveStock(StockPortfolio stock) {
+        updateStockData(stock);
         return stockPortfolioRepository.save(stock);
     }
 }
