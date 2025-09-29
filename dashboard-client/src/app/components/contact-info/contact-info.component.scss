@@ -63,11 +63,6 @@ a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
-    transform: scale(1.02); /* Slight zoom-in effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-
   .logo {
     font-size: 6rem;
     color: #009557;
@@ -80,6 +75,20 @@ a {
     margin-bottom: 0.25rem; // Reduced margin below h1
     font-weight: bold;
     text-align: center;
+  }
+
+  &:hover {
+    transform: scale(1.02); /* Slight zoom-in effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.878);
+
+    .logo {
+      color: #000;
+    }
+
+    h2 {
+      color: #000;
+    }
   }
 
   @media (max-width: 1080px) {
