@@ -10,15 +10,36 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@
 })
 export class LandingInfo2Component implements AfterViewInit {
   photos = [
-    { src: 'images/proj1.svg', alt: 'Project 1' },
-    { src: 'images/proj2.svg', alt: 'Project 2' },
-    { src: 'images/proj3.svg', alt: 'Project 3' },
-    { src: 'images/proj4.svg', alt: 'Project 4' },
-    { src: 'images/proj5.svg', alt: 'Project 5' },
-    { src: 'images/proj6.svg', alt: 'Project 6' },
-    { src: 'images/proj7.svg', alt: 'Project 7' },
-    { src: 'images/proj8.svg', alt: 'Project 8' },
-    { src: 'images/proj9.svg', alt: 'Project 9' }
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 1' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 2' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 3' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 4' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 5' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 6' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 7' },                                       
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 8' }, 
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 9' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 10' },   
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 11' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 12' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 13' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 14' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 15' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 16' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 17' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 18' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 19' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 20' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 21' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 22' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 23' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 24' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 25' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 26' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 27' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 28' },
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 29' },  
+    { src: 'images/Gallery/Vishnu-1.jpg', alt: 'Project 30' }
   ];
 
   @ViewChildren('photoItem') photoItems!: QueryList<ElementRef>;
