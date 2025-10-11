@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { LandingHeroComponent } from '../../components/landing-hero/landing-hero.component';
 import { LandingInfoComponent } from '../../components/landing-info/landing-info.component';
+import { LandingInfo2Component } from "../../components/landing-info-2/landing-info-2.component";
 
 @Component({
   selector: 'app-landing',
@@ -14,7 +15,8 @@ import { LandingInfoComponent } from '../../components/landing-info/landing-info
     MatButtonModule,
     LandingHeroComponent,
     LandingInfoComponent,
-  ],
+    LandingInfo2Component
+],
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
 })

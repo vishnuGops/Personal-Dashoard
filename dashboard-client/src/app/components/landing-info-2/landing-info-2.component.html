@@ -1,0 +1,9 @@
+<div class="info-container">
+  <h2>My Gallery</h2>
+  <p>A collection of moments and memories.</p>
+  <div class="photo-wall">
+    <div class="photo-item" *ngFor="let photo of photos" #photoItem>
+      <img [src]="photo.src" [alt]="photo.alt" />
+    </div>
+  </div>
+</div>
