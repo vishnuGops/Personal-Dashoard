@@ -1,0 +1,45 @@
+import styles from './LandingInfo.module.scss';
+
+export default function LandingInfo() {
+  return (
+    <div className={styles['info-container']}>
+      <div className={styles['text-column']}>
+        <h2>Who Am I?</h2>
+        <h3>Senior SDE at Cepheid, a Danaher Company</h3>
+        <p>
+          Hi! I'm Vishnu, a software developer at Cepheid with a strong foundation
+          in Computer Science. I am passionate about pushing the boundaries of
+          innovation and delivering creative, impactful solutions. Over the years,
+          my experiences across diverse projects have shaped my continuous learning
+          journey, where both successes and challenges have taught me invaluable
+          lessons.
+        </p>
+        <p>
+          In the fast-paced world of software engineering, I excel at blending
+          creative problem-solving with collaborative teamwork. My adaptability,
+          critical thinking, and clear communication skills enable me to contribute
+          effectively to any project. Let’s connect to explore new opportunities for
+          collaboration and innovation! 💡
+        </p>
+        <h4>⚙️ Technical Skills:</h4>
+        <ul>
+          <li>Languages: Java, Python, C/C++, SQL, JavaScript, HTML/CSS</li>
+          <li>Frameworks: React, Node.js, Flask, Angular, Laravel</li>
+          <li>
+            Developer Tools: Docker, PyTorch, Google Cloud Platform, VS Code, Visual
+            Studio, PyCharm, IntelliJ, Eclipse
+          </li>
+          <li>
+            Database: MySQL, MongoDB, Spark, Hive, GCP Big Query, GCP Cloud
+            Firestore, Firebase
+          </li>
+          <li>Operating Systems: Linux/Unix, macOS, Windows</li>
+          <li>Design: Microsoft Office, PowerBI, Adobe, Tableau, Adobe CC</li>
+        </ul>
+      </div>
+      <div className={styles['image-column']}>
+        <img src="/images/landing-info.svg" alt="Information Image" />
+      </div>
+    </div>
+  );
+}
