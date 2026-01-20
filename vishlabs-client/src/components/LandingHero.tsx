@@ -9,6 +9,7 @@ export default function LandingHero() {
           autoPlay
           muted
           loop
+          playsInline
           className={styles['background-video']}
           preload="auto"
         >
