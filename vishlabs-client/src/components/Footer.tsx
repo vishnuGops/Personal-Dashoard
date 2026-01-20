@@ -1,18 +1,18 @@
-import Link from 'next/link';
-import styles from './Footer.module.scss';
+import Link from "next/link";
+import styles from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <footer className={styles['custom-footer']}>
-      <div className={styles['footer-logo']}>
+    <footer className={styles["custom-footer"]}>
+      <div className={styles["footer-logo"]}>
         <Link href="/">
           <img src="/images/VG_logo.png" alt="Logo" className={styles.logo} />
         </Link>
       </div>
-      <div className={styles['footer-text']}>
-        <p>© 2025 VG. All rights reserved.</p>
+      <div className={styles["footer-text"]}>
+        <p>© 2026 VG. All rights reserved.</p>
       </div>
-      <div className={styles['footer-icons']}>
+      <div className={styles["footer-icons"]}>
         <a
           href="https://linkedin.com/in/vishnugops"
           target="_blank"

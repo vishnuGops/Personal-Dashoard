@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import '../styles/globals.scss';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import type { Metadata } from "next";
+import "../styles/globals.scss";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: 'Personal Dashboard',
-  description: 'Vishnu Gops Personal Dashboard',
+  title: "Meet Vishnu!",
+  description: "Welcome to my world! I am Vishnu Gopal.",
 };
 
 export default function RootLayout({
