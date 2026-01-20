@@ -1,0 +1,63 @@
+export interface Project {
+  name: string;
+  description: string;
+  githubLink: string;
+  image: string;
+}
+
+export const projectsData: Project[] = [
+  {
+    name: "Detecting MI from ECG using Computer Vision and ML",
+    image: "/images/proj1.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Detecting-MI-from-ECG-using-Echonet"
+  },
+  {
+    name: "EduSense Face Recognition Attendance System",
+    image: "/images/proj2.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/EduSense-Face-Recognition-Attendance-System"
+  },
+  {
+    name: "Robot control via Head Gesture based Interface",
+    image: "/images/proj3.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Robot-Control-Via-Head-Gesture-Based-Interface"
+  },
+  {
+    name: "Github Activity Influencer",
+    image: "/images/proj9.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Activity-Influencer"
+  },
+  {
+    name: "Stock Portfolio Management",
+    image: "/images/proj8.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Stock_Portfolio_Management"
+  },
+  {
+    name: "Stock Market Analysis with Algorithmic Trading",
+    image: "/images/proj7.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Stock-Market-Analysis"
+  },
+  {
+    name: "Tweety - Full Stack Social Media Web App using React js",
+    image: "/images/proj4.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Tweety-Twitter-Clone-using-React-JS"
+  },
+  {
+    name: "Gary the Self Driving bot using Semantic Segmentation and Deep learning",
+    image: "/images/proj5.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/GaryTheSelfDrivingBot"
+  },
+  {
+    name: "Advanced Database Projects using Spark, Pig, Hive, GraphX",
+    image: "/images/proj6.svg",
+    description: "Real-time stock insights.",
+    githubLink: "https://github.com/vishnuGops/Advanced-Database---Cloud-Computing-Projects"
+  }
+];

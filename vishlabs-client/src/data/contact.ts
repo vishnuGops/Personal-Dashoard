@@ -1,0 +1,45 @@
+export interface ContactLink {
+  url: string;
+  icon: string;
+  label: string;
+  text: string;
+}
+
+export const contactLinks: ContactLink[] = [
+  {
+    url: "https://linkedin.com/in/vishnugops",
+    icon: "fab fa-linkedin",
+    label: "Linkedin",
+    text: "Vishnugops"
+  },
+  {
+    url: "https://github.com/vishnuGops",
+    icon: "fab fa-github",
+    label: "Github",
+    text: "VishnuGops"
+  },
+  {
+    url: "mailto:vishnugrajan14@gmail.com?subject=Hello Vishnu!&body=I wanted to get in touch with you.",
+    icon: "fas fa-envelope",
+    label: "Email",
+    text: "vishnugrajan14"
+  },
+  {
+    url: "https://instagram.com/vishnugops",
+    icon: "fab fa-instagram",
+    label: "Instagram",
+    text: "VishnuGops"
+  },
+  {
+    url: "https://www.youtube.com/channel/UCqRp3VPHZ_sW4Rxkd2Rx51A",
+    icon: "fab fa-youtube",
+    label: "YouTube",
+    text: "Vishnu Gopal"
+  },
+  {
+    url: "https://x.com/vishnu_gops",
+    icon: "fab fa-twitter",
+    label: "Twitter",
+    text: "Vishnu_gops"
+  }
+];

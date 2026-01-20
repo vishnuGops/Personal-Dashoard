@@ -1,0 +1,134 @@
+.hero-container {
+  background: #0c0c0c;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .background-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: #232a34;
+  }
+}
+
+.hero-content {
+  z-index: 2;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  padding: 2rem;
+  background: transparent;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    font-size: 7.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
+
+  p {
+    font-size: 4rem;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-btn {
+    border-radius: 50px;
+    background: #01bf71;
+    padding: 12px 30px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+      background: #fff;
+      color: #010606;
+    }
+
+    &.dark {
+      background: #010606;
+      color: #fff;
+    }
+
+    &.big {
+      padding: 14px 48px;
+      font-size: 20px;
+    }
+
+    &.fontBig {
+      font-size: 2.2rem;
+    }
+  }
+}
+
+// Media Queries for Responsiveness
+@media (max-width: 768px) {
+  .hero-bg {
+    height: 50vh;
+    .background-video {
+      height: 50vh;
+    }
+  }
+  .hero-content {
+    top: -300px;
+    position: relative;
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    .hero-btn {
+      padding: 1rem 1rem;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    top: -280px;
+    padding: 1rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .hero-btn {
+      width: 50%;
+      padding: 0.4rem;
+    }
+  }
+}

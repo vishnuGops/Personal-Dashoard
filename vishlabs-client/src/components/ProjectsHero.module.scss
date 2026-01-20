@@ -1,0 +1,125 @@
+.hero-container {
+  background: #0c0c0c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .background-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: #232a34;
+  }
+}
+
+.hero-content {
+  position: relative;
+  top: -80px;
+  color: white;
+  padding: 1rem;
+  background: transparent;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 90%;
+
+  h1 {
+    font-size: 7.5rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    color: #01bf71;
+  }
+
+  p {
+    font-size: 3.5rem;
+    font-weight: 200;
+    margin-top: 0;
+    margin-bottom: 0rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  .hero-btn {
+    border-radius: 50px;
+    background: #01bf71;
+    padding: 12px 30px;
+    color: #fff;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+      background: #fff;
+      color: #010606;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    align-items: center;
+    top: -130px;
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    .hero-btn {
+      padding: 1rem 1rem;
+      font-size: 1.2rem;
+    }
+  }
+
+  .hero-container {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    top: -110px;
+    align-items: center;
+    padding: 1rem;
+    width: 100%;
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .hero-btn {
+      width: 13rem;
+      padding: 0.4rem;
+    }
+  }
+}
