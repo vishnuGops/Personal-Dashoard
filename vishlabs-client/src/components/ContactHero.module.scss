@@ -88,14 +88,11 @@
 
 // Media Queries for Responsiveness
 @media (max-width: 768px) {
-  .hero-bg {
+  .hero-container {
     height: 50vh;
-    .background-video {
-      height: 50vh;
-    }
   }
+
   .hero-content {
-    top: -300px;
     position: relative;
     h1 {
       font-size: 4rem;
@@ -114,7 +111,6 @@
 
 @media (max-width: 480px) {
   .hero-content {
-    top: -280px;
     padding: 1rem;
 
     h1 {
