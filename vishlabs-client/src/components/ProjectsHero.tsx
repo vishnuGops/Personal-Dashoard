@@ -1,14 +1,15 @@
-import styles from './ProjectsHero.module.scss';
+import styles from "./ProjectsHero.module.scss";
 
 export default function ProjectsHero() {
   return (
-    <div className={styles['hero-container']}>
-      <div className={styles['hero-bg']}>
+    <div className={styles["hero-container"]}>
+      <div className={styles["hero-bg"]}>
         <video
           autoPlay
           muted
           loop
-          className={styles['background-video']}
+          playsInline
+          className={styles["background-video"]}
           preload="auto"
         >
           <source src="/videos/AboutLandingVideo.mp4" type="video/mp4" />
@@ -16,11 +17,11 @@ export default function ProjectsHero() {
         </video>
       </div>
 
-      <div className={styles['hero-content']}>
+      <div className={styles["hero-content"]}>
         <h1>My Projects</h1>
         <a
           href="https://github.com/vishnuGops"
-          className={styles['hero-btn']}
+          className={styles["hero-btn"]}
           target="_blank"
           rel="noopener noreferrer"
         >
