@@ -1,11 +1,25 @@
 .photoWallContainer {
   align-items: center;
   justify-content: center;
+  padding: 2rem;
   background-color: #000;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 93vw;
-  margin: 6rem auto;
+  width: 90vw;
+  margin: 2rem auto;
+}
+
+.sectionTitle {
+  font-size: 4rem;
+  color: #01bf71;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .photoWall {

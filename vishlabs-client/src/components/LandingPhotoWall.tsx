@@ -174,6 +174,7 @@ const LandingPhotoWall: React.FC = () => {
   return (
     <>
       <div className={styles.photoWallContainer}>
+        <h2 className={styles.sectionTitle}>Moments through my life...</h2>
         <div className={styles.photoWall}>
           <AnimatePresence>
             {visiblePhotos.map((photo, index) => (
