@@ -55,6 +55,7 @@ body {
   font-family: "Jersey 10", serif;
   background-color: black;
   overflow-y: auto;
+  scroll-behavior: smooth;
   scrollbar-color: $scrollbar-color;
   scrollbar-width: $scrollbar-width;
   min-height: 100vh;
