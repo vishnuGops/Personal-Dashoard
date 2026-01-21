@@ -11,6 +11,8 @@
     "deploy": "npx gh-pages -d out -b production"
   },
   "dependencies": {
+    "framer-motion": "^12.27.5",
+    "lucide-react": "^0.562.0",
     "next": "^16.1.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
