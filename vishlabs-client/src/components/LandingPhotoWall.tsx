@@ -137,6 +137,7 @@ const LandingPhotoWall: React.FC = () => {
   }, [allPhotos, visiblePhotos.length, loading]);
 
   useEffect(() => {
+    const target = observerTarget.current;
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -146,13 +147,13 @@ const LandingPhotoWall: React.FC = () => {
       { threshold: 0.1 },
     );
 
-    if (observerTarget.current) {
-      observer.observe(observerTarget.current);
+    if (target) {
+      observer.observe(target);
     }
 
     return () => {
-      if (observerTarget.current) {
-        observer.unobserve(observerTarget.current);
+      if (target) {
+        observer.unobserve(target);
       }
     };
   }, [loadMorePhotos]);
