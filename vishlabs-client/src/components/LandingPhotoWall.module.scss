@@ -23,6 +23,18 @@
 }
 
 .photoWall {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.masonryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
   column-count: 1;
   column-gap: 1rem;
 
@@ -48,8 +60,7 @@
 }
 
 .photoItem {
-  break-inside: avoid;
-  margin-bottom: 1rem;
+  margin-bottom: 0; /* Handled by gap in masonryColumn */
   position: relative;
   overflow: hidden;
   border-radius: 0.5rem;

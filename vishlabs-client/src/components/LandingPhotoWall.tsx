@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback, memo } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, Loader2, X } from "lucide-react";
 import styles from "./LandingPhotoWall.module.scss";
+import { galleryImages } from "../data/gallery-images";
 
 interface Photo {
   id: string;
-  url: string;
+  src: StaticImageData;
   alt: string;
   width: number;
   height: number;
@@ -28,42 +29,12 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 
 // Optimized data generation: No duplicates, clean IDs
 const generatePhotos = (): Photo[] => {
-  const basePhotos = [
-    { url: "/gallery/001.JPG", width: 600, height: 400 },
-    { url: "/gallery/002.JPG", width: 500, height: 700 },
-    { url: "/gallery/003.JPG", width: 600, height: 600 },
-    { url: "/gallery/004.jpeg", width: 800, height: 500 },
-    { url: "/gallery/005.jpg", width: 500, height: 500 },
-    { url: "/gallery/006.jpg", width: 700, height: 500 },
-    { url: "/gallery/007.jpg", width: 600, height: 800 },
-    { url: "/gallery/008.jpg", width: 500, height: 300 },
-    { url: "/gallery/009.jpg", width: 600, height: 400 },
-    { url: "/gallery/010.jpg", width: 400, height: 400 },
-    { url: "/gallery/011.jpg", width: 300, height: 500 },
-    { url: "/gallery/012.jpeg", width: 400, height: 300 },
-    { url: "/gallery/013.jpg", width: 500, height: 500 },
-    { url: "/gallery/014.jpg", width: 400, height: 600 },
-    { url: "/gallery/015.jpg", width: 400, height: 200 },
-    { url: "/gallery/016.jpg", width: 300, height: 300 },
-    { url: "/gallery/017.jpg", width: 300, height: 300 },
-    { url: "/gallery/018.jpg", width: 600, height: 400 },
-    { url: "/gallery/019.jpg", width: 500, height: 700 },
-    { url: "/gallery/020.jpg", width: 600, height: 600 },
-    { url: "/gallery/021.jpg", width: 800, height: 500 },
-    { url: "/gallery/022.jpg", width: 500, height: 500 },
-    { url: "/gallery/023.jpg", width: 700, height: 500 },
-    { url: "/gallery/024.jpg", width: 600, height: 800 },
-    { url: "/gallery/025.jpg", width: 500, height: 300 },
-    { url: "/gallery/026.jpg", width: 600, height: 400 },
-    { url: "/gallery/027.jpg", width: 400, height: 400 },
-    { url: "/gallery/028.jpg", width: 300, height: 500 },
-    { url: "/gallery/029.jpg", width: 400, height: 300 },
-  ];
-
-  return basePhotos.map((p, idx) => ({
-    ...p,
+  return galleryImages.map((img, idx) => ({
     id: `photo-${idx}`,
+    src: img,
     alt: `Project Photo ${idx + 1}`,
+    width: img.width,
+    height: img.height,
   }));
 };
 
@@ -89,11 +60,12 @@ const PhotoItem = memo(
         onClick={() => onClick(photo)}
       >
         <Image
-          src={photo.url}
+          src={photo.src}
           alt={photo.alt}
           width={photo.width}
           height={photo.height}
           loading="lazy"
+          placeholder="blur"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         <div className={styles.overlay}>
@@ -111,6 +83,7 @@ const LandingPhotoWall: React.FC = () => {
   const [visiblePhotos, setVisiblePhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState<Photo | null>(null);
+  const [numColumns, setNumColumns] = useState(1);
   const observerTarget = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -119,6 +92,18 @@ const LandingPhotoWall: React.FC = () => {
     const shuffled = shuffleArray(photos);
     setAllPhotos(shuffled);
     setVisiblePhotos(shuffled.slice(0, BATCH_SIZE));
+
+    // Determine initial columns
+    const updateColumns = () => {
+      const width = window.innerWidth;
+      if (width < 640) setNumColumns(1);
+      else if (width < 1536) setNumColumns(4);
+      else setNumColumns(5);
+    };
+
+    updateColumns();
+    window.addEventListener("resize", updateColumns);
+    return () => window.removeEventListener("resize", updateColumns);
   }, []);
 
   const loadMorePhotos = useCallback(() => {
@@ -135,6 +120,15 @@ const LandingPhotoWall: React.FC = () => {
       setLoading(false);
     }, 500);
   }, [allPhotos, visiblePhotos.length, loading]);
+
+  // Distribute photos into columns
+  const columns = React.useMemo(() => {
+    const cols: Photo[][] = Array.from({ length: numColumns }, () => []);
+    visiblePhotos.forEach((photo, index) => {
+      cols[index % numColumns].push(photo);
+    });
+    return cols;
+  }, [visiblePhotos, numColumns]);
 
   useEffect(() => {
     const target = observerTarget.current;
@@ -177,13 +171,17 @@ const LandingPhotoWall: React.FC = () => {
         <h2 className={styles.sectionTitle}>Moments through my life...</h2>
         <div className={styles.photoWall}>
           <AnimatePresence>
-            {visiblePhotos.map((photo, index) => (
-              <PhotoItem
-                key={photo.id}
-                photo={photo}
-                index={index}
-                onClick={handlePhotoClick}
-              />
+            {columns.map((colPhotos, colIndex) => (
+              <div key={colIndex} className={styles.masonryColumn}>
+                {colPhotos.map((photo, index) => (
+                  <PhotoItem
+                    key={photo.id}
+                    photo={photo}
+                    index={index} // Note: This index is local to the column now, might need adjustment for delay calc if strictly desired
+                    onClick={handlePhotoClick}
+                  />
+                ))}
+              </div>
             ))}
           </AnimatePresence>
         </div>
@@ -221,12 +219,13 @@ const LandingPhotoWall: React.FC = () => {
                 <X size={24} />
               </button>
               <Image
-                src={selectedPhoto.url}
+                src={selectedPhoto.src}
                 alt={selectedPhoto.alt}
                 width={selectedPhoto.width}
                 height={selectedPhoto.height}
                 sizes="90vw"
                 priority
+                placeholder="blur"
               />
             </motion.div>
           </motion.div>
