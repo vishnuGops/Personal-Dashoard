@@ -11,4 +11,4 @@
 :HL["/images/proj4.svg","image"]
 :HL["/images/proj5.svg","image"]
 :HL["/images/proj6.svg","image"]
-0:{"buildId":"tecWQftAg9F8nZLqqn6El","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"projects","paramType":null,"paramKey":"projects","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"-Lfhga8L6dMKT2ptcOL6a","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"projects","paramType":null,"paramKey":"projects","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
