@@ -96,7 +96,8 @@ const LandingPhotoWall: React.FC = () => {
     // Determine initial columns
     const updateColumns = () => {
       const width = window.innerWidth;
-      if (width < 640) setNumColumns(1);
+      if (width < 340) setNumColumns(1);
+      else if (width < 640) setNumColumns(3);
       else if (width < 1536) setNumColumns(4);
       else setNumColumns(5);
     };
