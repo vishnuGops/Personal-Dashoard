@@ -1,6 +1,7 @@
 import LandingHero from "@/components/LandingHero";
 import LandingInfo from "@/components/LandingInfo";
 import LandingPhotoWall from "@/components/LandingPhotoWall";
+import CareerTimeline from "@/components/CareerTimeline";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <LandingHero />
       <LandingInfo />
       <LandingPhotoWall />
+      <CareerTimeline />
     </div>
   );
 }

@@ -1,0 +1,328 @@
+.timelineSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem 1rem;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timelineContainer {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+  
+  @media (min-width: 768px) {
+     height: var(--desktop-total-height);
+     padding-bottom: 0;
+  }
+}
+
+.mobileOnly {
+  display: block;
+  @media (min-width: 768px) {
+    display: none !important;
+  }
+}
+
+.desktopOnly {
+  display: none;
+  @media (min-width: 768px) {
+    display: block !important;
+  }
+}
+
+/* --- Mobile Line (Straight) --- */
+.mobileLineContainer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  display: block;
+
+  @media (min-width: 768px) {
+    display: none; // Hide on desktop
+  }
+}
+
+.mobileProgressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: cyan;
+  background: linear-gradient(to bottom, cyan, #fff);
+  border-radius: 4px;
+  transform-origin: top;
+  width: 100%;
+}
+
+/* --- Desktop Line (Curved SVG) --- */
+.desktopSvgContainer {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; // Let clicks pass through to nodes
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+/* --- Rows & Nodes --- */
+.eventRow {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 6rem; // More space for the curve
+  width: 100%;
+  padding-left: 60px;
+  z-index: 2;
+
+  @media (min-width: 768px) {
+    justify-content: center;
+    padding-left: 0;
+    margin-bottom: 0; // Removed margin
+    
+    // Absolute positioning for perfect grid alignment
+    position: absolute;
+    top: var(--row-top);
+    left: 0;
+    right: 0;
+    height: 200px; // ROW_HEIGHT
+    align-items: center; // Vertically center the card
+  }
+}
+
+.eventNode {
+  position: absolute;
+  left: 6px; // Mobile alignment
+  width: 40px;
+  height: 40px;
+  background: #000;
+  border: 2px solid cyan;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+    background: cyan;
+
+    .nodeIcon {
+      color: #000;
+    }
+  }
+
+  // Desktop positioning will be handled inline via style prop to match SVG curve
+  @media (min-width: 768px) {
+    // reset left/transform because we will use inline styles for exact curve matching
+    left: auto;
+    transform: translate(-50%, -50%);
+
+    &:hover {
+      transform: translate(-50%, -50%) scale(1.2);
+    }
+  }
+}
+
+.nodeIcon {
+  width: 20px;
+  height: 20px;
+  color: cyan;
+}
+
+/* --- Date Markers --- */
+.dateMarker {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  text-shadow: 0 0 4px #000;
+
+  // Mobile: Next to the line
+  left: 30px;
+  top: -20px;
+  align-items: flex-start;
+
+  @media (min-width: 768px) {
+    // Desktop: Positioned via inline styles near the curve
+    align-items: center;
+    left: auto;
+    top: auto;
+  }
+}
+
+.yearMarker {
+  font-family: "Jersey 10", monospace;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 1;
+}
+
+.monthMarker {
+  font-size: 0.9rem;
+  color: cyan;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Cards --- */
+.eventCard {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 100%;
+  cursor: pointer;
+  transition:
+    background 0.3s,
+    border-color 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  @media (min-width: 768px) {
+    width: 35%; // Smaller width to allow space for the central curve
+  }
+}
+
+.leftSide {
+  @media (min-width: 768px) {
+    margin-right: auto;
+    margin-left: 5%; // Add spacing from edge
+    text-align: right;
+  }
+}
+
+.rightSide {
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: 5%;
+    text-align: left;
+  }
+}
+
+/* --- Popover/Modal Styles --- */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: #fff; /* White background as requested */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 0; /* Remove padding to let image flush */
+  width: 100%;
+  max-width: 600px;
+  color: #000; /* Black text */
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modalImageContainer {
+  width: 100%;
+  height: 200px;
+  background: #f0f0f0;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.modalBody {
+  padding: 2rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+.yearText {
+  color: #666;
+  font-family: "Jersey 10", monospace;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.titleText {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+  color: cyan; /* Theme color */
+  text-shadow: 1px 1px 0 #000; /* Make it pop on white if needed, or just dark cyan */
+  color: #0891b2; /* A darker cyan for white background readability */
+}
+
+.companyText {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.descriptionText {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
