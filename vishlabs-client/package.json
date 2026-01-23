@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "predeploy": "npm run build",
-    "deploy": "npx gh-pages -d out -b production"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^12.27.5",

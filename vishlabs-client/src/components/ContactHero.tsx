@@ -10,7 +10,8 @@ export default function ContactHero() {
           loop
           playsInline
           className={styles['background-video']}
-          preload="metadata"
+          preload="auto"
+          poster="/images/contact-poster.jpg"
         >
           <source src="/videos/ContactLandingVideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.

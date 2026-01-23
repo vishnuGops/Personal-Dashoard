@@ -9,8 +9,9 @@ export default function ProjectsHero() {
           muted
           loop
           playsInline
-          className={styles["background-video"]}
+          className={styles['background-video']}
           preload="auto"
+          poster="/images/about-poster.jpg"
         >
           <source src="/videos/AboutLandingVideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.

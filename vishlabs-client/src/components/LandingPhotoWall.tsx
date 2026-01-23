@@ -15,7 +15,7 @@ interface Photo {
   height: number;
 }
 
-const BATCH_SIZE = 10;
+const BATCH_SIZE = 30;
 
 // Fisher-Yates shuffle algorithm
 const shuffleArray = <T,>(array: T[]): T[] => {
@@ -66,7 +66,7 @@ const PhotoItem = memo(
           height={photo.height}
           loading="lazy"
           placeholder="blur"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          sizes="(max-width: 340px) 100vw, (max-width: 640px) 33vw, (max-width: 1536px) 25vw, 20vw"
         />
         <div className={styles.overlay}>
           <Maximize2 color="white" size={24} />

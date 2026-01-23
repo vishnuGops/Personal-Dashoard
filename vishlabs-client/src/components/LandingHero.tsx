@@ -12,6 +12,7 @@ export default function LandingHero() {
           playsInline
           className={styles['background-video']}
           preload="auto"
+          poster="/images/video-poster.jpg"
         >
           <source src="/videos/LandingVideo.mp4" type="video/mp4" />
           Your browser does not support the video tag.
