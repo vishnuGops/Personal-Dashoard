@@ -55,8 +55,48 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     icon: MapPin,
     imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
   },
-  {
+    {
     id: 5,
+    year: "2023",
+    month: "Dec",
+    title: "Bay Area Living",
+    company: "Sunnyvale & San Jose",
+    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    icon: MapPin,
+    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+  },
+    {
+    id: 6,
+    year: "2023",
+    month: "Dec",
+    title: "Bay Area Living",
+    company: "Sunnyvale & San Jose",
+    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    icon: MapPin,
+    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+  },
+    {
+    id: 7,
+    year: "2023",
+    month: "Dec",
+    title: "Bay Area Living",
+    company: "Sunnyvale & San Jose",
+    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    icon: MapPin,
+    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+  },
+    {
+    id: 8,
+    year: "2023",
+    month: "Dec",
+    title: "Bay Area Living",
+    company: "Sunnyvale & San Jose",
+    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    icon: MapPin,
+    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+  },
+  {
+    id: 9,
     year: "2025",
     month: "Nov",
     title: "The Wedding",

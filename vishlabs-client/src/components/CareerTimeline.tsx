@@ -63,96 +63,99 @@ const CareerTimeline = () => {
         )}
       </AnimatePresence>
 
-      <div className={styles.timelineContainer} ref={containerRef}>
-        <div className={styles.lineLayer}>
-          <svg
-            viewBox={`0 0 1000 ${TIMELINE_EVENTS.length * ROW_HEIGHT}`}
-            preserveAspectRatio="none"
-          >
-            <path
-              d={pathString}
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="1"
-              fill="none"
-            />
-            <motion.path
-              d={pathString}
-              stroke="cyan"
-              strokeWidth="2"
-              fill="none"
-              style={{ pathLength }}
-            />
-          </svg>
-        </div>
+      <div>
+        <h2 className={styles.sectionTitle}>Timeline</h2>
+        <div className={styles.timelineContainer} ref={containerRef}>
+          <div className={styles.lineLayer}>
+            <svg
+              viewBox={`0 0 1000 ${TIMELINE_EVENTS.length * ROW_HEIGHT}`}
+              preserveAspectRatio="none"
+            >
+              <path
+                d={pathString}
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="3"
+                fill="none"
+              />
+              <motion.path
+                d={pathString}
+                stroke="#01bf71"
+                strokeWidth="2"
+                fill="none"
+                style={{ pathLength }}
+              />
+            </svg>
+          </div>
 
-        {TIMELINE_EVENTS.map((event, index) => {
-          const isEven = index % 2 === 0;
+          {TIMELINE_EVENTS.map((event, index) => {
+            const isEven = index % 2 === 0;
 
-          return (
-            <div key={event.id} className={styles.eventRowWrapper}>
-              <div
-                className={`${styles.eventGrid} ${isEven ? styles.evenRow : styles.oddRow}`}
-              >
-                {/* Column 1: Card on Even, Spacer on Odd */}
-                {isEven ? (
-                  <div className={styles.cardColumn}>
+            return (
+              <div key={event.id} className={styles.eventRowWrapper}>
+                <div
+                  className={`${styles.eventGrid} ${isEven ? styles.evenRow : styles.oddRow}`}
+                >
+                  {/* Column 1: Card on Even, Spacer on Odd */}
+                  {isEven ? (
+                    <div className={styles.cardColumn}>
+                      <motion.div
+                        className={styles.contentCard}
+                        whileHover={{ y: -5 }}
+                        onClick={() => setSelectedId(event.id)}
+                      >
+                        <span className={styles.cardYear}>{event.year}</span>
+                        <h3>{event.title}</h3>
+                        <p>{event.company}</p>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    <div className={styles.spacerColumn} />
+                  )}
+
+                  {/* Column 2: The Icon (Always centered) */}
+                  <div className={styles.nodeColumn}>
                     <motion.div
-                      className={styles.contentCard}
-                      whileHover={{ y: -5 }}
+                      layoutId={`node-${event.id}`}
+                      className={styles.nodeIcon}
                       onClick={() => setSelectedId(event.id)}
                     >
-                      <span className={styles.cardYear}>{event.year}</span>
-                      <h3>{event.title}</h3>
-                      <p>{event.company}</p>
+                      <event.icon size={22} color="#01bf71" />
                     </motion.div>
                   </div>
-                ) : (
-                  <div className={styles.spacerColumn} />
-                )}
 
-                {/* Column 2: The Icon (Always centered) */}
-                <div className={styles.nodeColumn}>
-                  <motion.div
-                    layoutId={`node-${event.id}`}
-                    className={styles.nodeIcon}
-                    onClick={() => setSelectedId(event.id)}
-                  >
-                    <event.icon size={22} color="cyan" />
-                  </motion.div>
+                  {/* Column 3: Card on Odd, Spacer on Even */}
+                  {!isEven ? (
+                    <div className={styles.cardColumn}>
+                      <motion.div
+                        className={styles.contentCard}
+                        whileHover={{ y: -5 }}
+                        onClick={() => setSelectedId(event.id)}
+                      >
+                        <span className={styles.cardYear}>{event.year}</span>
+                        <h3>{event.title}</h3>
+                        <p>{event.company}</p>
+                      </motion.div>
+                    </div>
+                  ) : (
+                    <div className={styles.spacerColumn} />
+                  )}
                 </div>
 
-                {/* Column 3: Card on Odd, Spacer on Even */}
-                {!isEven ? (
-                  <div className={styles.cardColumn}>
-                    <motion.div
-                      className={styles.contentCard}
-                      whileHover={{ y: -5 }}
-                      onClick={() => setSelectedId(event.id)}
-                    >
-                      <span className={styles.cardYear}>{event.year}</span>
-                      <h3>{event.title}</h3>
-                      <p>{event.company}</p>
-                    </motion.div>
+                {index < TIMELINE_EVENTS.length - 1 && (
+                  <div className={styles.timeScale}>
+                    <div className={styles.scaleLine} />
+                    <div className={styles.scaleLabel}>
+                      <span>{event.month}</span>
+                      <span className={styles.divider}>—</span>
+                      <span>{event.year}</span>
+                    </div>
+                    <div className={styles.scaleLine} />
                   </div>
-                ) : (
-                  <div className={styles.spacerColumn} />
                 )}
               </div>
-
-              {index < TIMELINE_EVENTS.length - 1 && (
-                <div className={styles.timeScale}>
-                  <div className={styles.scaleLine} />
-                  <div className={styles.scaleLabel}>
-                    <span>{event.month}</span>
-                    <span className={styles.divider}>—</span>
-                    <span>{event.year}</span>
-                  </div>
-                  <div className={styles.scaleLine} />
-                </div>
-              )}
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
