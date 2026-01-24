@@ -6,7 +6,7 @@ import { X } from "lucide-react";
 import { TIMELINE_EVENTS } from "@/data/timeline";
 import styles from "./CareerTimeline.module.scss";
 
-const ROW_HEIGHT = 280; // Increased to fit the text scale markers
+const ROW_HEIGHT = 280;
 
 const CareerTimeline = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -27,7 +27,6 @@ const CareerTimeline = () => {
 
   return (
     <section className={styles.timelineSection}>
-      {/* 1. THE MODAL - Now using fixed positioning to stay in screen center */}
       <AnimatePresence>
         {selectedId && selectedEvent && (
           <div className={styles.fixedOverlay}>
@@ -94,18 +93,24 @@ const CareerTimeline = () => {
               <div
                 className={`${styles.eventGrid} ${isEven ? styles.evenRow : styles.oddRow}`}
               >
-                <div className={styles.cardColumn}>
-                  <motion.div
-                    className={styles.contentCard}
-                    whileHover={{ y: -5 }}
-                    onClick={() => setSelectedId(event.id)}
-                  >
-                    <span className={styles.cardYear}>{event.year}</span>
-                    <h3>{event.title}</h3>
-                    <p>{event.company}</p>
-                  </motion.div>
-                </div>
+                {/* Column 1: Card on Even, Spacer on Odd */}
+                {isEven ? (
+                  <div className={styles.cardColumn}>
+                    <motion.div
+                      className={styles.contentCard}
+                      whileHover={{ y: -5 }}
+                      onClick={() => setSelectedId(event.id)}
+                    >
+                      <span className={styles.cardYear}>{event.year}</span>
+                      <h3>{event.title}</h3>
+                      <p>{event.company}</p>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div className={styles.spacerColumn} />
+                )}
 
+                {/* Column 2: The Icon (Always centered) */}
                 <div className={styles.nodeColumn}>
                   <motion.div
                     layoutId={`node-${event.id}`}
@@ -115,10 +120,25 @@ const CareerTimeline = () => {
                     <event.icon size={22} color="cyan" />
                   </motion.div>
                 </div>
-                <div className={styles.spacerColumn} />
+
+                {/* Column 3: Card on Odd, Spacer on Even */}
+                {!isEven ? (
+                  <div className={styles.cardColumn}>
+                    <motion.div
+                      className={styles.contentCard}
+                      whileHover={{ y: -5 }}
+                      onClick={() => setSelectedId(event.id)}
+                    >
+                      <span className={styles.cardYear}>{event.year}</span>
+                      <h3>{event.title}</h3>
+                      <p>{event.company}</p>
+                    </motion.div>
+                  </div>
+                ) : (
+                  <div className={styles.spacerColumn} />
+                )}
               </div>
 
-              {/* 2. ENHANCED SCALE MARKERS - With Month/Year Text */}
               {index < TIMELINE_EVENTS.length - 1 && (
                 <div className={styles.timeScale}>
                   <div className={styles.scaleLine} />

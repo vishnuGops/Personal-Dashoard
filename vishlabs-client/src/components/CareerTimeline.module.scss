@@ -42,9 +42,17 @@
 /* GRID & ALIGNMENT */
 .eventGrid {
   display: grid;
-  grid-template-columns: 1fr 100px 1fr;
+  grid-template-columns: 1fr 100px 1fr; // Fixed 3-column layout
   align-items: center;
   width: 100%;
+}
+
+.cardYear {
+  font-size: 1.5rem;
+  color: cyan;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .nodeIcon {
@@ -126,22 +134,26 @@
   }
 }
 
+.nodeColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .evenRow {
   .cardColumn {
     text-align: right;
   }
-  .nodeColumn {
-    grid-column: 2;
-  }
 }
+
 .oddRow {
   .cardColumn {
-    grid-column: 3;
     text-align: left;
   }
-  .nodeColumn {
-    grid-column: 2;
-  }
+}
+
+.spacerColumn {
+  width: 100%;
 }
 
 .modalHero img {
