@@ -43,7 +43,11 @@ const CareerTimeline = () => {
     stiffness: 100,
     damping: 30,
   });
-  const x = useTransform(scrollSpring, [0, 1], [0, -scrollRange]);
+  const x = useTransform(
+    scrollSpring,
+    [0, 1],
+    [0, isMobile ? 0 : -scrollRange],
+  );
 
   const selectedEvent = TIMELINE_EVENTS.find((e) => e.id === selectedId);
 
@@ -52,34 +56,36 @@ const CareerTimeline = () => {
       ref={containerRef}
       className={isMobile ? styles.mobileSection : styles.timelineSection}
     >
-      <div className={styles.stickyContainer}>
-        {!isMobile && <h2 className={styles.sectionTitle}>Timeline</h2>}
+      <div
+        className={isMobile ? styles.mobileStickyReset : styles.stickyContainer}
+      >
+        <h2 className={styles.sectionTitle}>Timeline</h2>
 
         <div className={styles.horizontalScrollTrackWrapper}>
           <motion.div
             ref={scrollContentRef}
-            style={{ x: isMobile ? 0 : x }}
+            style={{ x }}
             className={
               isMobile ? styles.verticalTrack : styles.horizontalScrollTrack
             }
           >
-            {/* PROGRESS LINE */}
+            {/* GLOWING LINE */}
             <div
               className={isMobile ? styles.verticalLineLayer : styles.lineLayer}
             >
-              <svg className={styles.lineSvg}>
+              <svg className={styles.lineSvg} preserveAspectRatio="none">
                 <line
-                  x1="0"
-                  y1="50%"
-                  x2="100%"
-                  y2="50%"
+                  x1={isMobile ? "50%" : "0"}
+                  y1={isMobile ? "0" : "50%"}
+                  x2={isMobile ? "50%" : "100%"}
+                  y2={isMobile ? "100%" : "50%"}
                   className={styles.baseLine}
                 />
                 <motion.line
-                  x1="0"
-                  y1="50%"
-                  x2="100%"
-                  y2="50%"
+                  x1={isMobile ? "50%" : "0"}
+                  y1={isMobile ? "0" : "50%"}
+                  x2={isMobile ? "50%" : "100%"}
+                  y2={isMobile ? "100%" : "50%"}
                   className={styles.progressLine}
                   style={{ pathLength: scrollSpring }}
                 />
@@ -90,15 +96,15 @@ const CareerTimeline = () => {
               const isEven = index % 2 === 0;
               return (
                 <div key={event.id} className={styles.eventColumn}>
-                  {/* TOP SLOT / CARD START */}
+                  {/* TOP / MOBILE SLOT */}
                   <div className={styles.topSlot}>
                     {(isEven || isMobile) && (
                       <div className={styles.cardWrapper}>
                         <motion.div
                           className={styles.contentCard}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: false, amount: 0.3 }}
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: false, amount: 0.1 }}
                           onClick={() => setSelectedId(event.id)}
                         >
                           <span className={styles.cardYear}>{event.year}</span>
@@ -110,15 +116,17 @@ const CareerTimeline = () => {
                     )}
                   </div>
 
-                  {/* LOGO NODE */}
-                  <motion.div
-                    className={styles.centerNode}
-                    onClick={() => setSelectedId(event.id)}
-                    whileHover={{ scale: 1.15 }}
-                  >
-                    <event.icon size={22} color="#01bf71" />
+                  {/* CENTER NODE */}
+                  <div className={styles.nodeContainer}>
+                    <motion.div
+                      className={styles.centerNode}
+                      onClick={() => setSelectedId(event.id)}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <event.icon size={22} color="#01bf71" />
+                    </motion.div>
                     <div className={styles.tickMark} />
-                  </motion.div>
+                  </div>
 
                   {/* BOTTOM SLOT */}
                   <div className={styles.bottomSlot}>
@@ -127,9 +135,9 @@ const CareerTimeline = () => {
                         <div className={styles.connectorLine} />
                         <motion.div
                           className={styles.contentCard}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: false, amount: 0.3 }}
+                          initial={{ opacity: 0, y: -10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: false, amount: 0.1 }}
                           onClick={() => setSelectedId(event.id)}
                         >
                           <span className={styles.cardYear}>{event.year}</span>
@@ -146,7 +154,6 @@ const CareerTimeline = () => {
         </div>
       </div>
 
-      {/* FIXED MODAL: OUTSIDE THE TRACK TO ENSURE CENTERING */}
       <AnimatePresence>
         {selectedId && selectedEvent && (
           <div className={styles.fixedOverlay}>
@@ -158,9 +165,9 @@ const CareerTimeline = () => {
               onClick={() => setSelectedId(null)}
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              initial={{ opacity: 0, scale: 0.9, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              exit={{ opacity: 0, scale: 0.9, y: 50 }}
               className={styles.expandedModal}
             >
               <button

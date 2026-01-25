@@ -1,9 +1,13 @@
 /* CareerTimeline.module.scss */
 
 .timelineSection {
-  height: 250vh;
+  height: 250vh; // Fast scroll for desktop
   position: relative;
-  background: transparent;
+
+  @media (max-width: 767px) {
+    height: auto !important; // Kill the runway on mobile
+    padding: 2rem 0;
+  }
 }
 
 .stickyContainer {
@@ -14,21 +18,33 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+}
+
+// Mobile reset to force normal vertical flow
+.mobileStickyReset {
+  position: relative;
+  height: auto;
+  display: block;
+  padding: 0 1.5rem;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 4rem;
+  left: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #01bf71;
+  z-index: 50;
+  margin: 0;
+  text-transform: uppercase;
 
   @media (max-width: 767px) {
     position: relative;
-    height: auto;
-    overflow: visible;
+    top: 0;
+    left: 0;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
   }
-}
-.sectionTitle {
-  position: absolute;
-  top: 5rem;
-  left: 3rem;
-  font-size: 4rem;
-  color: #01bf71;
-  z-index: 10;
-  text-transform: uppercase;
 }
 
 .horizontalScrollTrack {
@@ -39,7 +55,15 @@
   position: relative;
 }
 
-/* PROGRESS LINE */
+.verticalTrack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding-left: 10px; // Space for the line
+}
+
+/* PROGRESS LINES */
 .lineLayer {
   position: absolute;
   top: 50%;
@@ -48,6 +72,19 @@
   height: 4px;
   transform: translateY(-50%);
   z-index: 1;
+}
+
+.verticalLineLayer {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  z-index: 1;
+  .lineSvg {
+    height: 100%;
+    width: 4px;
+  }
 }
 
 .lineSvg {
@@ -67,7 +104,7 @@
   stroke-linecap: round;
 }
 
-/* DESKTOP COLUMNS */
+/* LAYOUT COLUMNS */
 .eventColumn {
   position: relative;
   width: 450px;
@@ -82,25 +119,22 @@
   @media (max-width: 767px) {
     width: 100%;
     height: auto;
-    flex-direction: row; // Standard Row for mobile
-    gap: 1.5rem;
+    flex-direction: row !important; // Icon left, Card right
+    align-items: center;
+    gap: 20px;
     padding: 1.5rem 0;
-    justify-content: flex-start;
   }
 }
 
-.cardWrapper {
+.nodeContainer {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 100%;
-  @media (max-width: 767px) {
-    align-items: flex-start;
-  }
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .centerNode {
-  position: relative;
   width: 60px;
   height: 60px;
   background: #000;
@@ -109,8 +143,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
   cursor: pointer;
-  flex-shrink: 0;
 }
 
 .tickMark {
@@ -123,9 +157,19 @@
   box-shadow: 0 0 10px #01bf71;
   @media (max-width: 767px) {
     bottom: auto;
-    left: -25px;
+    left: -24px;
     top: 50%;
     transform: translateY(-50%);
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 767px) {
+    align-items: flex-start;
   }
 }
 
@@ -140,8 +184,9 @@
   @media (max-width: 767px) {
     text-align: left;
     width: 100%;
-    min-width: 220px;
+    min-width: 0;
   }
+
   h3 {
     color: #000;
     margin: 0;
@@ -149,7 +194,7 @@
   }
   h4 {
     color: #555;
-    margin: 4px 0 0 0;
+    margin-top: 4px;
   }
 }
 
@@ -177,45 +222,15 @@
   justify-content: flex-start;
 }
 
-/* MOBILE SPECIFICS */
-.mobileSection {
-  height: auto;
-  padding: 4rem 1.5rem;
-}
-.verticalTrack {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  position: relative;
-}
-.verticalLineLayer {
-  position: absolute;
-  left: 28px;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  z-index: 0;
-  .lineSvg {
-    height: 100%;
-    width: 4px;
-    line {
-      x1: 2;
-      x2: 2;
-      y1: 0;
-      y2: 100%;
-    }
-  }
-}
-
-/* MODAL: GUARANTEED CENTER */
+/* MODAL FIX */
 .fixedOverlay {
   position: fixed;
   inset: 0;
-  z-index: 99999;
+  z-index: 100000; // Over Everything
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .backdrop {
@@ -228,23 +243,21 @@
 .expandedModal {
   position: relative;
   width: 100%;
-  max-width: 550px;
+  max-width: 500px;
   background: #fff;
   border-radius: 24px;
   overflow: hidden;
   color: #000;
-  z-index: 100;
   max-height: 85vh;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .modalHero img {
   width: 100%;
-  height: 250px;
+  height: 220px;
   object-fit: cover;
 }
 .modalBody {
-  padding: 2rem;
+  padding: 1.5rem;
   h2 {
     color: #01bf71;
     margin-bottom: 0.5rem;
@@ -256,16 +269,15 @@
 }
 .closeBtn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0.75rem;
+  right: 0.75rem;
   background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
