@@ -23,14 +23,12 @@ const CareerTimeline = () => {
     const onResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      if (scrollContentRef.current) {
-        // Range = Total content width - what's visible on screen
+      if (scrollContentRef.current && !mobile) {
         setScrollRange(
           scrollContentRef.current.scrollWidth - window.innerWidth,
         );
       }
     };
-
     onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -54,9 +52,7 @@ const CareerTimeline = () => {
       ref={containerRef}
       className={isMobile ? styles.mobileSection : styles.timelineSection}
     >
-      <div
-        className={isMobile ? styles.mobileContainer : styles.stickyContainer}
-      >
+      <div className={styles.stickyContainer}>
         {!isMobile && <h2 className={styles.sectionTitle}>Timeline</h2>}
 
         <div className={styles.horizontalScrollTrackWrapper}>
@@ -67,32 +63,42 @@ const CareerTimeline = () => {
               isMobile ? styles.verticalTrack : styles.horizontalScrollTrack
             }
           >
-            {/* Desktop Center Line */}
-            {!isMobile && (
-              <div className={styles.lineLayer}>
-                <svg className={styles.lineSvg}>
-                  <line
-                    x1="0"
-                    y1="50%"
-                    x2="100%"
-                    y2="50%"
-                    stroke="#01bf71"
-                    strokeWidth="4"
-                  />
-                </svg>
-              </div>
-            )}
+            {/* PROGRESS LINE */}
+            <div
+              className={isMobile ? styles.verticalLineLayer : styles.lineLayer}
+            >
+              <svg className={styles.lineSvg}>
+                <line
+                  x1="0"
+                  y1="50%"
+                  x2="100%"
+                  y2="50%"
+                  className={styles.baseLine}
+                />
+                <motion.line
+                  x1="0"
+                  y1="50%"
+                  x2="100%"
+                  y2="50%"
+                  className={styles.progressLine}
+                  style={{ pathLength: scrollSpring }}
+                />
+              </svg>
+            </div>
 
             {TIMELINE_EVENTS.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
                 <div key={event.id} className={styles.eventColumn}>
+                  {/* TOP SLOT / CARD START */}
                   <div className={styles.topSlot}>
                     {(isEven || isMobile) && (
-                      <div className={styles.cardContainer}>
+                      <div className={styles.cardWrapper}>
                         <motion.div
                           className={styles.contentCard}
-                          whileHover={{ scale: 1.03 }}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: false, amount: 0.3 }}
                           onClick={() => setSelectedId(event.id)}
                         >
                           <span className={styles.cardYear}>{event.year}</span>
@@ -104,21 +110,26 @@ const CareerTimeline = () => {
                     )}
                   </div>
 
+                  {/* LOGO NODE */}
                   <motion.div
                     className={styles.centerNode}
                     onClick={() => setSelectedId(event.id)}
-                    whileHover={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.15 }}
                   >
-                    <event.icon size={24} color="#01bf71" />
+                    <event.icon size={22} color="#01bf71" />
+                    <div className={styles.tickMark} />
                   </motion.div>
 
+                  {/* BOTTOM SLOT */}
                   <div className={styles.bottomSlot}>
                     {!isEven && !isMobile && (
-                      <div className={styles.cardContainer}>
+                      <div className={styles.cardWrapper}>
                         <div className={styles.connectorLine} />
                         <motion.div
                           className={styles.contentCard}
-                          whileHover={{ scale: 1.03 }}
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: false, amount: 0.3 }}
                           onClick={() => setSelectedId(event.id)}
                         >
                           <span className={styles.cardYear}>{event.year}</span>
@@ -135,6 +146,7 @@ const CareerTimeline = () => {
         </div>
       </div>
 
+      {/* FIXED MODAL: OUTSIDE THE TRACK TO ENSURE CENTERING */}
       <AnimatePresence>
         {selectedId && selectedEvent && (
           <div className={styles.fixedOverlay}>
@@ -146,7 +158,9 @@ const CareerTimeline = () => {
               onClick={() => setSelectedId(null)}
             />
             <motion.div
-              layoutId={`node-${selectedId}`}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
               className={styles.expandedModal}
             >
               <button
@@ -156,14 +170,13 @@ const CareerTimeline = () => {
                 <X size={24} />
               </button>
               <div className={styles.modalHero}>
-                <img src={selectedEvent.imageUrl} alt="" />
+                <img src={selectedEvent.imageUrl} alt={selectedEvent.title} />
               </div>
               <div className={styles.modalBody}>
                 <span className={styles.modalMeta}>
                   {selectedEvent.month} {selectedEvent.year}
                 </span>
                 <h2>{selectedEvent.title}</h2>
-                <h4>{selectedEvent.company}</h4>
                 <p>{selectedEvent.description}</p>
               </div>
             </motion.div>

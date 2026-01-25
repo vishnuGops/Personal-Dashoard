@@ -1,6 +1,9 @@
+/* CareerTimeline.module.scss */
+
 .timelineSection {
-  height: 500vh; // The length of the scroll "runway"
+  height: 250vh;
   position: relative;
+  background: transparent;
 }
 
 .stickyContainer {
@@ -11,8 +14,13 @@
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
-}
 
+  @media (max-width: 767px) {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+}
 .sectionTitle {
   position: absolute;
   top: 5rem;
@@ -23,41 +31,43 @@
   text-transform: uppercase;
 }
 
-.horizontalScrollTrackWrapper {
-  width: 100%;
-}
-
 .horizontalScrollTrack {
   display: flex;
-  padding-left: 20vw; // Start offset
-  padding-right: 20vw; // End offset
+  padding: 0 15vw;
   width: max-content;
   align-items: center;
   position: relative;
 }
 
-/* Mobile Overrides */
-.mobileSection {
-  height: auto;
-  padding: 4rem 1.5rem;
+/* PROGRESS LINE */
+.lineLayer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transform: translateY(-50%);
+  z-index: 1;
 }
 
-.verticalTrack {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  position: relative;
-  &::before {
-    content: "";
-    position: absolute;
-    left: 28px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #01bf71;
-  }
+.lineSvg {
+  width: 100%;
+  height: 10px;
+  overflow: visible;
+}
+.baseLine {
+  stroke: rgba(1, 191, 113, 0.2);
+  stroke-width: 2;
+  stroke-dasharray: 4, 12;
+}
+.progressLine {
+  stroke: #01bf71;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 8px #01bf71);
+  stroke-linecap: round;
 }
 
+/* DESKTOP COLUMNS */
 .eventColumn {
   position: relative;
   width: 450px;
@@ -67,47 +77,92 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  z-index: 2;
 
   @media (max-width: 767px) {
     width: 100%;
     height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
+    flex-direction: row; // Standard Row for mobile
     gap: 1.5rem;
+    padding: 1.5rem 0;
+    justify-content: flex-start;
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 767px) {
+    align-items: flex-start;
   }
 }
 
 .centerNode {
+  position: relative;
   width: 60px;
   height: 60px;
   background: #000;
-  border: 2px solid #01bf71;
+  border: 3px solid #01bf71;
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
   cursor: pointer;
+  flex-shrink: 0;
+}
+
+.tickMark {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #01bf71;
+  border-radius: 50%;
+  bottom: -28px;
+  box-shadow: 0 0 10px #01bf71;
+  @media (max-width: 767px) {
+    bottom: auto;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .contentCard {
   background: #fff;
   border: 3px solid #01bf71;
-  padding: 1.5rem;
+  padding: 1.2rem;
   border-radius: 16px;
-  width: 100%;
+  width: 280px;
   cursor: pointer;
+  text-align: center;
+  @media (max-width: 767px) {
+    text-align: left;
+    width: 100%;
+    min-width: 220px;
+  }
   h3 {
     color: #000;
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
   h4 {
-    color: #444;
-    margin: 0;
+    color: #555;
+    margin: 4px 0 0 0;
   }
 }
 
+.cardYear {
+  font-size: 1.1rem;
+  color: #01bf71;
+  font-weight: bold;
+}
+.connectorLine {
+  width: 3px;
+  height: 35px;
+  background: #01bf71;
+}
 .topSlot,
 .bottomSlot {
   flex: 1;
@@ -122,62 +177,82 @@
   justify-content: flex-start;
 }
 
-.connectorLine {
-  width: 2px;
-  height: 40px;
-  background: #01bf71;
+/* MOBILE SPECIFICS */
+.mobileSection {
+  height: auto;
+  padding: 4rem 1.5rem;
 }
-
-.lineLayer {
+.verticalTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+}
+.verticalLineLayer {
   position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 4px;
-  transform: translateY(-50%);
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  z-index: 0;
+  .lineSvg {
+    height: 100%;
+    width: 4px;
+    line {
+      x1: 2;
+      x2: 2;
+      y1: 0;
+      y2: 100%;
+    }
+  }
 }
 
-.lineSvg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Modal preserved from your original design but optimized for mobile max-height */
+/* MODAL: GUARANTEED CENTER */
 .fixedOverlay {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(8px);
 }
 
 .expandedModal {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 550px;
   background: #fff;
   border-radius: 24px;
-  overflow-y: auto;
-  max-height: 90vh;
+  overflow: hidden;
   color: #000;
+  z-index: 100;
+  max-height: 85vh;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .modalHero img {
   width: 100%;
-  height: 300px;
+  height: 250px;
   object-fit: cover;
 }
 .modalBody {
   padding: 2rem;
+  h2 {
+    color: #01bf71;
+    margin-bottom: 0.5rem;
+  }
+  p {
+    color: #333;
+    line-height: 1.6;
+  }
 }
 .closeBtn {
   position: absolute;
@@ -187,7 +262,10 @@
   color: #fff;
   border: none;
   border-radius: 50%;
-  padding: 8px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  z-index: 10;
 }

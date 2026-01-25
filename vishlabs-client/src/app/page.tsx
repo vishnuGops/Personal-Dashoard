@@ -33,6 +33,8 @@ export default function Home() {
         <LandingInfo />
         <LandingPhotoWall />
         <CareerTimeline />
+        <LandingInfo />
+        <LandingInfo />
       </div>
     </div>
   );
