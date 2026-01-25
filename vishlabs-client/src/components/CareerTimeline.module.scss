@@ -1,199 +1,193 @@
 .timelineSection {
-  background: transparent;
-  width: 100%;
-  padding-bottom: 5rem;
+  height: 500vh; // The length of the scroll "runway"
+  position: relative;
 }
 
-.timelineContainer {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .sectionTitle {
-  font-size: 6rem;
+  position: absolute;
+  top: 5rem;
+  left: 3rem;
+  font-size: 4rem;
   color: #01bf71;
-  margin-top: 10rem;
-  margin-bottom: 6rem;
-  text-align: center;
-  width: 100%;
+  z-index: 10;
+  text-transform: uppercase;
+}
 
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-    margin-top: 2rem;
-    margin-bottom: 6rem;
+.horizontalScrollTrackWrapper {
+  width: 100%;
+}
+
+.horizontalScrollTrack {
+  display: flex;
+  padding-left: 20vw; // Start offset
+  padding-right: 20vw; // End offset
+  width: max-content;
+  align-items: center;
+  position: relative;
+}
+
+/* Mobile Overrides */
+.mobileSection {
+  height: auto;
+  padding: 4rem 1.5rem;
+}
+
+.verticalTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #01bf71;
   }
 }
 
-/* FIXED MODAL FIX */
+.eventColumn {
+  position: relative;
+  width: 450px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+}
+
+.centerNode {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  border: 2px solid #01bf71;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.contentCard {
+  background: #fff;
+  border: 3px solid #01bf71;
+  padding: 1.5rem;
+  border-radius: 16px;
+  width: 100%;
+  cursor: pointer;
+  h3 {
+    color: #000;
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  h4 {
+    color: #444;
+    margin: 0;
+  }
+}
+
+.topSlot,
+.bottomSlot {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.topSlot {
+  justify-content: flex-end;
+}
+.bottomSlot {
+  justify-content: flex-start;
+}
+
+.connectorLine {
+  width: 2px;
+  height: 40px;
+  background: #01bf71;
+}
+
+.lineLayer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+}
+
+.lineSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Modal preserved from your original design but optimized for mobile max-height */
 .fixedOverlay {
-  position: fixed; // Locks to viewport
+  position: fixed;
   inset: 0;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: auto;
+  padding: 1rem;
 }
 
 .backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
 }
 
 .expandedModal {
   position: relative;
-  width: 90%;
-  max-width: 550px;
+  width: 100%;
+  max-width: 600px;
   background: #fff;
   border-radius: 24px;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 90vh;
   color: #000;
-  z-index: 10000;
-}
-
-/* GRID & ALIGNMENT */
-.eventGrid {
-  display: grid;
-  grid-template-columns: 1fr 100px 1fr; // Fixed 3-column layout
-  align-items: center;
-  width: 100%;
-}
-
-.cardYear {
-  font-size: 2rem;
-  color: #01bf71;
-  text-transform: uppercase;
-}
-
-.nodeIcon {
-  width: 54px;
-  height: 54px;
-  background: #000;
-  border: 1px solid #01bf71;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 20;
-}
-
-/* SCALE WITH TEXT */
-.timeScale {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px 0;
-  opacity: 0.8;
-}
-
-.scaleLine {
-  width: 3px;
-  height: 20px;
-  background: linear-gradient(to bottom, #01bf71, transparent);
-}
-
-.scaleLabel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  // font-family: monospace;
-  font-size: 1.7rem;
-  color: #fff;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin: 5px 0;
-  z-index: 10;
-
-  .divider {
-    font-size: 10px;
-    margin: 2px 0;
-  }
-}
-
-.lineLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.contentCard {
-  background: rgba(255, 255, 255, 0.98);
-  border: 4px solid #01bf71;
-  padding: 1.5rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  h3 {
-    color: #000;
-    margin: 5px 0;
-    font-size: 2.5rem;
-  }
-  p {
-    color: #888;
-    font-size: 1.85rem;
-    margin: 0;
-  }
-  &:hover {
-    border-color: #01bf71;
-    background: rgba(0, 49, 49, 0.865);
-    h3 {
-      color: #fff;
-      margin: 5px 0;
-      font-size: 2.5rem;
-    }
-  }
-}
-
-.nodeColumn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.evenRow {
-  .cardColumn {
-    text-align: right;
-  }
-}
-
-.oddRow {
-  .cardColumn {
-    text-align: left;
-  }
-}
-
-.spacerColumn {
-  width: 100%;
 }
 
 .modalHero img {
   width: 100%;
-  height: 260px;
+  height: 300px;
   object-fit: cover;
 }
 .modalBody {
   padding: 2rem;
-  h2 {
-    color: #0891b2;
-    margin-bottom: 0.5rem;
-  }
 }
 .closeBtn {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: #000;
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
+  border: none;
   border-radius: 50%;
-  padding: 6px;
+  padding: 8px;
+  cursor: pointer;
+  z-index: 10;
 }
