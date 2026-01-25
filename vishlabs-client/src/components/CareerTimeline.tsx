@@ -21,14 +21,17 @@ const CareerTimeline = () => {
 
   useLayoutEffect(() => {
     const onResize = () => {
-      const mobile = window.innerWidth < 768;
+      // Use <= 767 to sync perfectly with (max-width: 767px) in CSS
+      const mobile = window.innerWidth <= 767;
       setIsMobile(mobile);
+
       if (scrollContentRef.current && !mobile) {
         setScrollRange(
           scrollContentRef.current.scrollWidth - window.innerWidth,
         );
       }
     };
+
     onResize();
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -43,6 +46,7 @@ const CareerTimeline = () => {
     stiffness: 100,
     damping: 30,
   });
+
   const x = useTransform(
     scrollSpring,
     [0, 1],
@@ -59,7 +63,7 @@ const CareerTimeline = () => {
       <div
         className={isMobile ? styles.mobileStickyReset : styles.stickyContainer}
       >
-        <h2 className={styles.sectionTitle}>Timeline</h2>
+        <h2 className={styles.sectionTitle}>My Journey Through Life...</h2>
 
         <div className={styles.horizontalScrollTrackWrapper}>
           <motion.div

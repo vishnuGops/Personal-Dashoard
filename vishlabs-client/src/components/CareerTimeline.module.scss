@@ -1,13 +1,16 @@
 /* CareerTimeline.module.scss */
 
 .timelineSection {
-  height: 250vh; // Fast scroll for desktop
+  height: 250vh;
   position: relative;
+}
 
-  @media (max-width: 767px) {
-    height: auto !important; // Kill the runway on mobile
-    padding: 2rem 0;
-  }
+// Added missing mobile class to prevent layout collapse
+.mobileSection {
+  height: auto;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 4rem;
 }
 
 .stickyContainer {
@@ -20,7 +23,6 @@
   overflow: hidden;
 }
 
-// Mobile reset to force normal vertical flow
 .mobileStickyReset {
   position: relative;
   height: auto;
@@ -30,20 +32,21 @@
 
 .sectionTitle {
   position: absolute;
-  top: 4rem;
-  left: 3rem;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  align-self: center;
+  top: 7rem;
+  font-size: 5rem;
   color: #01bf71;
   z-index: 50;
   margin: 0;
   text-transform: uppercase;
 
-  @media (max-width: 767px) {
+  @media (max-width: 900px) {
     position: relative;
     top: 0;
     left: 0;
     margin-bottom: 2rem;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    text-align: center;
   }
 }
 
@@ -60,7 +63,7 @@
   flex-direction: column;
   width: 100%;
   position: relative;
-  padding-left: 10px; // Space for the line
+  padding-left: 20px;
 }
 
 /* PROGRESS LINES */
@@ -76,7 +79,7 @@
 
 .verticalLineLayer {
   position: absolute;
-  left: 28px;
+  left: 48px; // Aligned with the node center
   top: 0;
   bottom: 0;
   width: 4px;
@@ -92,11 +95,13 @@
   height: 10px;
   overflow: visible;
 }
+
 .baseLine {
   stroke: rgba(1, 191, 113, 0.2);
   stroke-width: 2;
   stroke-dasharray: 4, 12;
 }
+
 .progressLine {
   stroke: #01bf71;
   stroke-width: 4;
@@ -116,13 +121,19 @@
   flex-shrink: 0;
   z-index: 2;
 
+  // Intermediate scale to prevent "weirdness" before mobile snap
+  @media (max-width: 900px) {
+    width: 320px;
+  }
+
   @media (max-width: 767px) {
     width: 100%;
     height: auto;
-    flex-direction: row !important; // Icon left, Card right
+    flex-direction: row !important;
     align-items: center;
-    gap: 20px;
-    padding: 1.5rem 0;
+    gap: 30px;
+    padding: 2rem 0;
+    justify-content: flex-start;
   }
 }
 
@@ -155,6 +166,7 @@
   border-radius: 50%;
   bottom: -28px;
   box-shadow: 0 0 10px #01bf71;
+
   @media (max-width: 767px) {
     bottom: auto;
     left: -24px;
@@ -181,20 +193,28 @@
   width: 280px;
   cursor: pointer;
   text-align: center;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+
   @media (max-width: 767px) {
     text-align: left;
     width: 100%;
+    max-width: 400px;
     min-width: 0;
   }
 
   h3 {
     color: #000;
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   h4 {
     color: #555;
     margin-top: 4px;
+    font-size: 1rem;
   }
 }
 
@@ -203,11 +223,13 @@
   color: #01bf71;
   font-weight: bold;
 }
+
 .connectorLine {
   width: 3px;
   height: 35px;
   background: #01bf71;
 }
+
 .topSlot,
 .bottomSlot {
   flex: 1;
@@ -215,9 +237,11 @@
   display: flex;
   flex-direction: column;
 }
+
 .topSlot {
   justify-content: flex-end;
 }
+
 .bottomSlot {
   justify-content: flex-start;
 }
@@ -226,7 +250,7 @@
 .fixedOverlay {
   position: fixed;
   inset: 0;
-  z-index: 100000; // Over Everything
+  z-index: 100000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -256,6 +280,7 @@
   height: 220px;
   object-fit: cover;
 }
+
 .modalBody {
   padding: 1.5rem;
   h2 {
@@ -267,6 +292,15 @@
     line-height: 1.6;
   }
 }
+
+.modalMeta {
+  color: #666;
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
 .closeBtn {
   position: absolute;
   top: 0.75rem;
@@ -280,4 +314,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }

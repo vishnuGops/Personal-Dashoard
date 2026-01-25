@@ -3,6 +3,16 @@
 $scrollbar-color: rgb(33, 119, 109) transparent;
 $scrollbar-width: thin;
 
+// Theme styles
+$primary-color: #3498db;
+$font-size: 16px;
+
+/* Ensure proper viewport scaling */
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+
 html {
   scroll-behavior: smooth;
   // Allows the page to grow naturally
@@ -21,7 +31,7 @@ body {
 
 /* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 4px !important;
+  width: 8px !important;
 }
 ::-webkit-scrollbar-track {
   background: transparent !important;
