@@ -1,0 +1,298 @@
+/* CareerTimeline.module.scss */
+
+.timelineSection {
+  height: 250vh; // Fast scroll for desktop
+  position: relative;
+
+  @media (max-width: 767px) {
+    height: auto !important; // Kill the runway on mobile
+    padding: 2rem 0;
+  }
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+// Mobile reset to force normal vertical flow
+.mobileStickyReset {
+  position: relative;
+  height: auto;
+  display: block;
+  padding: 0 1.5rem;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 4rem;
+  left: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: #01bf71;
+  z-index: 50;
+  margin: 0;
+  text-transform: uppercase;
+
+  @media (max-width: 767px) {
+    position: relative;
+    top: 0;
+    left: 1rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+  }
+}
+
+.horizontalScrollTrack {
+  display: flex;
+  padding: 0 15vw;
+  width: max-content;
+  align-items: center;
+  position: relative;
+}
+
+.verticalTrack {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  padding-left: 10px; // Space for the line
+}
+
+/* PROGRESS LINES */
+.lineLayer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.verticalLineLayer {
+  position: absolute;
+  left: 28px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  z-index: 1;
+  .lineSvg {
+    height: 100%;
+    width: 4px;
+  }
+}
+
+.lineSvg {
+  width: 100%;
+  height: 10px;
+  overflow: visible;
+}
+.baseLine {
+  stroke: rgba(1, 191, 113, 0.2);
+  stroke-width: 2;
+  stroke-dasharray: 4, 12;
+}
+.progressLine {
+  stroke: #01bf71;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 8px #01bf71);
+  stroke-linecap: round;
+}
+
+/* LAYOUT COLUMNS */
+.eventColumn {
+  position: relative;
+  width: 450px;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 2;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: auto;
+    flex-direction: row !important; // Icon left, Card right
+    align-items: center;
+    gap: 20px;
+    padding: 1.5rem 0;
+  }
+}
+
+.nodeContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  @media (max-width: 767px) {
+    left: 5rem;
+  }
+}
+
+.centerNode {
+  width: 60px;
+  height: 60px;
+  background: #000;
+  border: 3px solid #01bf71;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  @media (max-width: 767px) {
+    align-items: flex-start;
+  }
+}
+
+.contentCard {
+  background: #fff;
+  border: 3px solid #01bf71;
+  padding: 1.2rem;
+  border-radius: 16px;
+  width: 280px;
+  cursor: pointer;
+  text-align: center;
+  @media (max-width: 767px) {
+    text-align: left;
+    width: 150%;
+    min-width: 0;
+  }
+
+  h3 {
+    color: #000;
+    margin: 0;
+    font-size: 2.6rem;
+    @media (max-width: 767px) {
+      font-size: 1.8rem;
+    }
+  }
+  h4 {
+    color: #555;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    @media (max-width: 767px) {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  }
+}
+
+.cardYear {
+  font-size: 2.5rem;
+  color: #01bf71;
+  font-weight: bold;
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+}
+.connectorLine {
+  width: 5px;
+  height: 55px;
+  background: #01bf71;
+}
+.topSlot,
+.bottomSlot {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.topSlot {
+  justify-content: flex-end;
+}
+.bottomSlot {
+  justify-content: flex-start;
+}
+
+/* MODAL FIX */
+.fixedOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000; // Over Everything
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.expandedModal {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  border-radius: 24px;
+  color: #000;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.modalHero img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.modalBody {
+  padding: 1.5rem;
+  h2 {
+    font-size: 3rem;
+    color: #01bf71;
+    margin-bottom: 0.5rem;
+    margin-top: 0rem;
+    @media (max-width: 767px) {
+      margin-bottom: 0rem;
+      font-size: 2.2rem;
+    }
+  }
+  p {
+    font-size: 2rem;
+    color: #333;
+    line-height: 0.8;
+    @media (max-width: 767px) {
+      font-size: 1.7rem;
+    }
+  }
+  .p1 {
+    font-size: 1.8rem;
+    color: #555;
+    @media (max-width: 767px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+.closeBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
