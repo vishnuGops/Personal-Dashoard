@@ -41,7 +41,7 @@
   @media (max-width: 767px) {
     position: relative;
     top: 0;
-    left: 0;
+    left: 1rem;
     margin-bottom: 2rem;
     font-size: 2.5rem;
   }
@@ -132,6 +132,9 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  @media (max-width: 767px) {
+    left: 5rem;
+  }
 }
 
 .centerNode {
@@ -145,22 +148,6 @@
   justify-content: center;
   z-index: 10;
   cursor: pointer;
-}
-
-.tickMark {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #01bf71;
-  border-radius: 50%;
-  bottom: -28px;
-  box-shadow: 0 0 10px #01bf71;
-  @media (max-width: 767px) {
-    bottom: auto;
-    left: -24px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
 }
 
 .cardWrapper {
@@ -183,29 +170,40 @@
   text-align: center;
   @media (max-width: 767px) {
     text-align: left;
-    width: 100%;
+    width: 150%;
     min-width: 0;
   }
 
   h3 {
     color: #000;
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 2.6rem;
+    @media (max-width: 767px) {
+      font-size: 1.8rem;
+    }
   }
   h4 {
     color: #555;
-    margin-top: 4px;
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    @media (max-width: 767px) {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
   }
 }
 
 .cardYear {
-  font-size: 1.1rem;
+  font-size: 2.5rem;
   color: #01bf71;
   font-weight: bold;
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
 }
 .connectorLine {
-  width: 3px;
-  height: 35px;
+  width: 5px;
+  height: 55px;
   background: #01bf71;
 }
 .topSlot,

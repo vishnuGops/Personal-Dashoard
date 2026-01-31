@@ -125,7 +125,6 @@ const CareerTimeline = () => {
                     >
                       <event.icon size={22} color="#01bf71" />
                     </motion.div>
-                    <div className={styles.tickMark} />
                   </div>
 
                   {/* BOTTOM SLOT */}
