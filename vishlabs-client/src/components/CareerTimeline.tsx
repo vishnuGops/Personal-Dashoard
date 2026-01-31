@@ -99,8 +99,7 @@ const CareerTimeline = () => {
                   <div className={styles.topSlot}>
                     {(isEven || isMobile) && (
                       <div className={styles.cardWrapper}>
-                        <motion.button
-                          type="button"
+                        <motion.div
                           className={styles.contentCard}
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +109,7 @@ const CareerTimeline = () => {
                           <span className={styles.cardYear}>{event.year}</span>
                           <h3>{event.title}</h3>
                           <h4>{event.company}</h4>
-                        </motion.button>
+                        </motion.div>
                         {!isMobile && <div className={styles.connectorLine} />}
                       </div>
                     )}
@@ -118,14 +117,13 @@ const CareerTimeline = () => {
 
                   {/* CENTER NODE */}
                   <div className={styles.nodeContainer}>
-                    <motion.button
-                      type="button"
+                    <motion.div
                       className={styles.centerNode}
                       onClick={() => setSelectedId(event.id)}
                       whileHover={{ scale: 1.1 }}
                     >
                       <event.icon size={22} color="#01bf71" />
-                    </motion.button>
+                    </motion.div>
                   </div>
 
                   {/* BOTTOM SLOT */}
