@@ -23,7 +23,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Hello World",
     description: "The journey started. A lifelong curiosity for how things work began here.",
     icon: Globe,
-    imageUrl: "images/timeline/baby.jpg"
+    imageUrl: "/images/timeline/baby.jpg"
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "St. Paul's High School",
     description: "Began formal education, laying the foundation for future learning and growth.",
     icon: Heart,
-    imageUrl: "images/timeline/school.jpg"
+    imageUrl: "/images/timeline/school.jpg"
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "❤️",
     description: "Met Anusha, my partner in crime and the love of my life.",
     icon: Code,
-    imageUrl: "images/timeline/school2.png"
+    imageUrl: "/images/timeline/school2.png"
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Sammy the Lab",
     description: "His name is Sammy and he's a Labrador Retriever",
     icon: MapPin,
-    imageUrl: "images/timeline/sammy.jpg"
+    imageUrl: "/images/timeline/sammy.jpg"
   },
     {
     id: 5,
@@ -63,7 +63,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Completed high school",
     description: "Graduated from St. Paul's High School with honors, ready for the next chapter.",
     icon: MapPin,
-    imageUrl: "images/timeline/school1.jpg"
+    imageUrl: "/images/timeline/school1.jpg"
   },
     {
     id: 6,
@@ -73,7 +73,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "At Deeksha Center for Learning",
     description: "Completed my Pre University course with a focus on science and computer science.",
     icon: MapPin,
-    imageUrl: "images/timeline/deeksha.jpg"
+    imageUrl: "/images/timeline/deeksha.jpg"
   },
     {
     id: 7,
@@ -83,7 +83,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Bangalore Institute of Technology",
     description: "Graduated from Bangalore Institute of Technology with a degree in Computer Science.",
     icon: MapPin,
-    imageUrl: "images/timeline/BIT.jpg"
+    imageUrl: "/images/timeline/BIT.jpg"
   },
     {
     id: 8,
@@ -93,7 +93,7 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "To pursue Masters in CS at UTA",
     description: "Started my Master's degree in Computer Science at the University of Texas at Arlington.",
     icon: MapPin,
-    imageUrl: "images/timeline/UTA.jpg"
+    imageUrl: "/images/timeline/UTA.jpg"
   },
   {
     id: 9,
@@ -103,6 +103,6 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Got my MS in CS from UTA",
     description: "Completed my Master's degree in Computer Science, specializing in Software Engineering.",
     icon: Zap,
-    imageUrl: "images/timeline/UTAGrad.jpg"
+    imageUrl: "/images/timeline/UTAGrad.jpg"
   }
 ];
