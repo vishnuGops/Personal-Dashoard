@@ -24,9 +24,8 @@ const CareerTimeline = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
       if (scrollContentRef.current && !mobile) {
-        setScrollRange(
-          scrollContentRef.current.scrollWidth - window.innerWidth,
-        );
+        const range = +scrollContentRef.current.scrollWidth - window.innerWidth;
+        +setScrollRange(Math.max(0, range));
       }
     };
     onResize();
@@ -100,7 +99,8 @@ const CareerTimeline = () => {
                   <div className={styles.topSlot}>
                     {(isEven || isMobile) && (
                       <div className={styles.cardWrapper}>
-                        <motion.div
+                        <motion.button
+                          type="button"
                           className={styles.contentCard}
                           initial={{ opacity: 0, y: 10 }}
                           whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ const CareerTimeline = () => {
                           <span className={styles.cardYear}>{event.year}</span>
                           <h3>{event.title}</h3>
                           <h4>{event.company}</h4>
-                        </motion.div>
+                        </motion.button>
                         {!isMobile && <div className={styles.connectorLine} />}
                       </div>
                     )}
@@ -118,13 +118,14 @@ const CareerTimeline = () => {
 
                   {/* CENTER NODE */}
                   <div className={styles.nodeContainer}>
-                    <motion.div
+                    <motion.button
+                      type="button"
                       className={styles.centerNode}
                       onClick={() => setSelectedId(event.id)}
                       whileHover={{ scale: 1.1 }}
                     >
                       <event.icon size={22} color="#01bf71" />
-                    </motion.div>
+                    </motion.button>
                   </div>
 
                   {/* BOTTOM SLOT */}
@@ -170,6 +171,7 @@ const CareerTimeline = () => {
               className={styles.expandedModal}
             >
               <button
+                aria-label="Close timeline details"
                 className={styles.closeBtn}
                 onClick={() => setSelectedId(null)}
               >
