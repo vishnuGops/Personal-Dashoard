@@ -4,7 +4,6 @@ $scrollbar-color: rgb(33, 119, 109) transparent;
 $scrollbar-width: thin;
 
 html {
-  scroll-behavior: smooth;
   // Allows the page to grow naturally
   height: auto;
   min-height: 100%;
@@ -29,4 +28,25 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: rgba(100, 100, 100, 0.4) !important;
   border-radius: 10px !important;
+}
+
+/* Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

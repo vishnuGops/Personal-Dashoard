@@ -179,7 +179,7 @@ const CareerTimeline = () => {
                 <img src={selectedEvent.imageUrl} alt={selectedEvent.title} />
               </div>
               <div className={styles.modalBody}>
-                <span className={styles.modalMeta}>
+                <span className={styles.p1}>
                   {selectedEvent.month} {selectedEvent.year}
                 </span>
                 <h2>{selectedEvent.title}</h2>
