@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../styles/globals.scss";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 export const metadata: Metadata = {
   title: "Meet Vishnu!",
@@ -27,9 +28,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScrolling>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScrolling>
         <Analytics />
         <SpeedInsights />
       </body>

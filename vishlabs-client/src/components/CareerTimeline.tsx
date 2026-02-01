@@ -29,9 +29,8 @@ const CareerTimeline = () => {
       setIsMobile(mobile);
 
       if (scrollContentRef.current && !mobile) {
-        setScrollRange(
-          scrollContentRef.current.scrollWidth - window.innerWidth,
-        );
+        const range = +scrollContentRef.current.scrollWidth - window.innerWidth;
+        +setScrollRange(Math.max(0, range));
       }
     };
 
@@ -138,7 +137,6 @@ const CareerTimeline = () => {
                     >
                       <event.icon size={22} color="#01bf71" />
                     </motion.div>
-                    <div className={styles.tickMark} />
                   </div>
 
                   <div className={styles.bottomSlot}>
@@ -183,6 +181,7 @@ const CareerTimeline = () => {
               className={styles.expandedModal}
             >
               <button
+                aria-label="Close timeline details"
                 className={styles.closeBtn}
                 onClick={() => setSelectedId(null)}
               >
@@ -192,7 +191,7 @@ const CareerTimeline = () => {
                 <img src={selectedEvent.imageUrl} alt={selectedEvent.title} />
               </div>
               <div className={styles.modalBody}>
-                <span className={styles.modalMeta}>
+                <span className={styles.p1}>
                   {selectedEvent.month} {selectedEvent.year}
                 </span>
                 <h2>{selectedEvent.title}</h2>

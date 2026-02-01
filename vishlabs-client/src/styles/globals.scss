@@ -46,8 +46,14 @@ $font-size: 16px;
 }
 
 html {
+<<<<<<< HEAD
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+=======
+  // Allows the page to grow naturally
+  height: auto;
+  min-height: 100%;
+>>>>>>> 4faddfef20c50155ebeb20fa1d51af95da6b2e29
 }
 
 body {
@@ -103,4 +109,25 @@ main {
   html {
     font-size: 12px;
   }
+}
+
+/* Lenis Smooth Scroll */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

@@ -23,86 +23,86 @@ export const TIMELINE_EVENTS: TimelineEvent[] = [
     company: "Hello World",
     description: "The journey started. A lifelong curiosity for how things work began here.",
     icon: Globe,
-    imageUrl: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/baby.jpg"
   },
   {
     id: 2,
-    year: "2012",
-    month: "Sep",
-    title: "High School Sweethearts",
-    company: "The Start of Us",
-    description: "Met Anusha in high school. The beginning of a decade-long journey together.",
+    year: "2003",
+    month: "Jun",
+    title: "Started School",
+    company: "St. Paul's High School",
+    description: "Began formal education, laying the foundation for future learning and growth.",
     icon: Heart,
-    imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/school.jpg"
   },
   {
     id: 3,
-    year: "2018",
-    month: "Aug",
-    title: "Software Engineer",
-    company: "Career Launch",
-    description: "Started professionally as a software engineer, diving deep into technical analysis and full-stack development.",
+    year: "2010",
+    month: "Oct",
+    title: "Met the LOML",
+    company: "❤️",
+    description: "Met Anusha, my partner in crime and the love of my life.",
     icon: Code,
-    imageUrl: "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/school2.png"
   },
   {
     id: 4,
-    year: "2023",
-    month: "Dec",
-    title: "Bay Area Living",
-    company: "Sunnyvale & San Jose",
-    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    year: "2011",
+    month: "Mar",
+    title: "Got a puppy",
+    company: "Sammy the Lab",
+    description: "His name is Sammy and he's a Labrador Retriever",
     icon: MapPin,
-    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/sammy.jpg"
   },
     {
     id: 5,
-    year: "2023",
-    month: "Dec",
-    title: "Bay Area Living",
-    company: "Sunnyvale & San Jose",
-    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    year: "2013",
+    month: "May",
+    title: "High School Grad",
+    company: "Completed high school",
+    description: "Graduated from St. Paul's High School with honors, ready for the next chapter.",
     icon: MapPin,
-    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/school1.jpg"
   },
     {
     id: 6,
-    year: "2023",
-    month: "Dec",
-    title: "Bay Area Living",
-    company: "Sunnyvale & San Jose",
-    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    year: "2015",
+    month: "May",
+    title: "Completed Pre University",
+    company: "At Deeksha Center for Learning",
+    description: "Completed my Pre University course with a focus on science and computer science.",
     icon: MapPin,
-    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/deeksha.jpg"
   },
     {
     id: 7,
-    year: "2023",
+    year: "2019",
     month: "Dec",
-    title: "Bay Area Living",
-    company: "Sunnyvale & San Jose",
-    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    title: "Became an Engineering",
+    company: "Bangalore Institute of Technology",
+    description: "Graduated from Bangalore Institute of Technology with a degree in Computer Science.",
     icon: MapPin,
-    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/BIT.jpg"
   },
     {
     id: 8,
-    year: "2023",
-    month: "Dec",
-    title: "Bay Area Living",
-    company: "Sunnyvale & San Jose",
-    description: "Lived with close friends Ankith and Sindhu for two years in the heart of Silicon Valley.",
+    year: "2019",
+    month: "Aug",
+    title: "Moved to USA",
+    company: "To pursue Masters in CS at UTA",
+    description: "Started my Master's degree in Computer Science at the University of Texas at Arlington.",
     icon: MapPin,
-    imageUrl: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/UTA.jpg"
   },
   {
     id: 9,
-    year: "2025",
-    month: "Nov",
-    title: "The Wedding",
-    company: "Anusha weds Vishnu",
-    description: "Celebrated our union with Sangeet, Haldi, and Muhurtham ceremonies.",
+    year: "2021",
+    month: "May",
+    title: "Graduated with Masters",
+    company: "Got my MS in CS from UTA",
+    description: "Completed my Master's degree in Computer Science, specializing in Software Engineering.",
     icon: Zap,
-    imageUrl: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000"
+    imageUrl: "/images/timeline/UTAGrad.jpg"
   }
 ];
