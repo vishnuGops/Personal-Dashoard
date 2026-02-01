@@ -13,11 +13,12 @@ export default function Home() {
           top: 0,
           left: 0,
           height: "100%",
+          width: "100%",
           zIndex: -1,
         }}
       >
         <Beams
-          beamWidth={3}
+          beamWidth={2}
           beamHeight={30}
           beamNumber={20}
           lightColor="#ffffff"

@@ -186,13 +186,13 @@ const LandingPhotoWall: React.FC = () => {
             ))}
           </AnimatePresence>
         </div>
-
-        {/* Infinite Scroll Loader */}
+        {/* Causing issue with the UI on the right side of the screen */}
+        {/* Infinite Scroll Loader
         <div ref={observerTarget} className={styles.loader}>
           {visiblePhotos.length < allPhotos.length && (
             <Loader2 className="animate-spin" size={32} />
           )}
-        </div>
+        </div> */}
       </div>
 
       {/* Modal / Lightbox */}
