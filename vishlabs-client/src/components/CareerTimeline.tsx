@@ -20,17 +20,31 @@ const CareerTimeline = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
   useLayoutEffect(() => {
+    // 1. Define the media query matcher
+    const mql = window.matchMedia("(max-width: 767px)");
+
     const onResize = () => {
-      const mobile = window.innerWidth < 768;
+      // 2. Sync JS state directly with the CSS media query state
+      const mobile = mql.matches;
       setIsMobile(mobile);
+
       if (scrollContentRef.current && !mobile) {
         const range = +scrollContentRef.current.scrollWidth - window.innerWidth;
         +setScrollRange(Math.max(0, range));
       }
     };
+
+    // Initial check
     onResize();
+
+    // Listen for changes
+    mql.addEventListener("change", onResize);
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+
+    return () => {
+      mql.removeEventListener("change", onResize);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
 
   const { scrollYProgress } = useScroll({
@@ -42,6 +56,7 @@ const CareerTimeline = () => {
     stiffness: 100,
     damping: 30,
   });
+
   const x = useTransform(
     scrollSpring,
     [0, 1],
@@ -58,7 +73,7 @@ const CareerTimeline = () => {
       <div
         className={isMobile ? styles.mobileStickyReset : styles.stickyContainer}
       >
-        <h2 className={styles.sectionTitle}>Timeline</h2>
+        <h2 className={styles.sectionTitle}>My Journey Through Life...</h2>
 
         <div className={styles.horizontalScrollTrackWrapper}>
           <motion.div
@@ -68,7 +83,7 @@ const CareerTimeline = () => {
               isMobile ? styles.verticalTrack : styles.horizontalScrollTrack
             }
           >
-            {/* GLOWING LINE */}
+            {/* PROGRESS LINE LAYER */}
             <div
               className={isMobile ? styles.verticalLineLayer : styles.lineLayer}
             >
@@ -95,7 +110,6 @@ const CareerTimeline = () => {
               const isEven = index % 2 === 0;
               return (
                 <div key={event.id} className={styles.eventColumn}>
-                  {/* TOP / MOBILE SLOT */}
                   <div className={styles.topSlot}>
                     {(isEven || isMobile) && (
                       <div className={styles.cardWrapper}>
@@ -115,7 +129,6 @@ const CareerTimeline = () => {
                     )}
                   </div>
 
-                  {/* CENTER NODE */}
                   <div className={styles.nodeContainer}>
                     <motion.div
                       className={styles.centerNode}
@@ -126,7 +139,6 @@ const CareerTimeline = () => {
                     </motion.div>
                   </div>
 
-                  {/* BOTTOM SLOT */}
                   <div className={styles.bottomSlot}>
                     {!isEven && !isMobile && (
                       <div className={styles.cardWrapper}>
