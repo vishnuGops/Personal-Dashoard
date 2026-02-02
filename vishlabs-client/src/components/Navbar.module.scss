@@ -122,3 +122,87 @@
     }
   }
 }
+
+.auth-button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgb(226, 226, 226);
+  padding: 0.2rem 1rem;
+  border-radius: 6px;
+  font-family: "Jersey 10", serif;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-left: 2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+}
+
+.user-profile {
+  position: relative;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  
+  .avatar-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+  }
+  
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.3s;
+    object-fit: cover;
+    
+    &:hover {
+      border-color: #fff;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  button {
+    background: none;
+    border: none;
+    color: #e2e2e2;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    font-family: sans-serif; 
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+    
+    &:hover {
+      background: #333;
+      color: #fff;
+    }
+  }
+}
