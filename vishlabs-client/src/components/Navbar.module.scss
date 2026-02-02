@@ -1,3 +1,40 @@
+// Variables
+$font-primary: "Jersey 10", serif;
+$font-sans: sans-serif;
+
+$color-white: #ffffff;
+$color-text-primary: #e2e2e2;
+$color-text-secondary: rgb(
+  226,
+  226,
+  226
+); // Keeping exact rgb if intentional, otherwise could consolidate
+$color-text-muted: #aaa;
+$color-text-hover: #bbb;
+$color-bg-dark-solid: rgba(15, 18, 23, 0.98);
+$color-bg-dropdown: #1a1a1a;
+$color-border-light: rgba(255, 255, 255, 0.2);
+$color-border-hover: rgba(255, 255, 255, 0.5);
+$color-border-dark: #333;
+
+$transition-standard: all 0.3s ease;
+$transition-transform: transform 0.3s ease;
+$transition-color: color 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .custom-toolbar {
   position: fixed;
   top: 0;
@@ -10,12 +47,12 @@
     rgba(15, 18, 23, 0.3) 75%,
     transparent 100%
   );
-  color: #ffffff;
+  color: $color-white;
   height: auto;
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  font-family: "Jersey 10", serif;
+  font-family: $font-primary;
   z-index: 100;
   box-sizing: border-box;
 
@@ -33,7 +70,7 @@
       width: 3.3rem;
       padding: 0.1rem;
       margin-left: 6rem;
-      transition: transform 0.3s ease;
+      transition: $transition-transform;
 
       &:hover {
         transform: scale(1.05);
@@ -53,20 +90,20 @@
     flex-wrap: wrap;
 
     a {
-      color: rgb(226, 226, 226);
+      color: $color-text-secondary;
       text-decoration: none;
       margin-left: 3rem;
       font-size: 2.2rem;
       font-weight: 500;
-      font-family: "Jersey 10", serif;
+      font-family: $font-primary;
       transition:
-        color 0.3s ease,
+        $transition-color,
         border-bottom 0.3s ease;
       text-shadow: black 2px 2px;
       cursor: pointer;
 
       &:hover {
-        color: rgb(255, 255, 255);
+        color: $color-white;
         border-bottom: 2px solid rgb(201, 201, 201);
       }
     }
@@ -79,10 +116,7 @@
     justify-content: space-around;
     width: 2rem;
     height: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+    @include button-reset;
     z-index: 102; // Above everything
     margin-right: 1rem;
 
@@ -117,15 +151,14 @@
     right: 0;
     width: 70vw;
     height: 60vh;
-    background: rgba(15, 18, 23, 0.98); // Solid dark background
-    display: flex;
+    background: $color-bg-dark-solid;
+    @include flex-center;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     transform: translateY(-100%);
     transition: transform 0.3s ease-in-out;
     z-index: 99; // Below logo and hamburger
-    border-radius: 2rem;
+    border-radius: 0 0 0 2rem; // Adjusted radius for top-right menu style
+
     &.open {
       transform: translateY(0);
     }
@@ -140,11 +173,11 @@
         color: white;
         text-decoration: none;
         font-size: 2.5rem;
-        font-family: "Jersey 10", serif;
-        transition: color 0.3s ease;
+        font-family: $font-primary;
+        transition: $transition-color;
 
         &:hover {
-          color: #bbb;
+          color: $color-text-hover;
         }
       }
 
@@ -163,9 +196,9 @@
             margin-top: 1rem;
             button {
               font-size: 1.5rem;
-              color: #aaa;
+              color: $color-text-muted;
               &:hover {
-                color: #fff;
+                color: $color-white;
                 background: transparent;
               }
             }
@@ -182,23 +215,23 @@
 
   .auth-button {
     background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgb(226, 226, 226);
+    border: 1px solid $color-border-light;
+    color: $color-text-secondary;
     padding: 0.2rem 1rem;
     border-radius: 6px;
-    font-family: "Jersey 10", serif;
+    font-family: $font-primary;
     font-size: 1.8rem;
     cursor: pointer;
     margin-left: 2rem;
-    transition: all 0.3s ease;
+    transition: $transition-standard;
     display: flex;
     align-items: center;
     height: fit-content;
 
     &:hover {
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.5);
-      color: #fff;
+      border-color: $color-border-hover;
+      color: $color-white;
     }
   }
 
@@ -243,6 +276,7 @@
     .mobileNav {
       width: 100vw;
       height: 100vh;
+      border-radius: 0;
     }
   }
 }
@@ -254,10 +288,7 @@
   align-items: center;
 
   .avatar-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+    @include button-reset;
     display: flex;
   }
 
@@ -265,12 +296,12 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid $color-border-light;
     transition: border-color 0.3s;
     object-fit: cover;
 
     &:hover {
-      border-color: #fff;
+      border-color: $color-white;
     }
   }
 }
@@ -279,8 +310,8 @@
   position: absolute;
   top: 120%;
   right: 0;
-  background: #1a1a1a;
-  border: 1px solid #333;
+  background: $color-bg-dropdown;
+  border: 1px solid $color-border-dark;
   border-radius: 8px;
   padding: 0.5rem;
   min-width: 150px;
@@ -291,20 +322,18 @@
   z-index: 100;
 
   button {
-    background: none;
-    border: none;
-    color: #e2e2e2;
-    padding: 0.5rem 1rem;
+    @include button-reset;
     text-align: left;
-    font-family: sans-serif;
+    color: $color-text-primary;
+    padding: 0.5rem 1rem;
+    font-family: $font-sans;
     font-size: 1rem;
-    cursor: pointer;
     border-radius: 4px;
     transition: background 0.2s;
 
     &:hover {
       background: #333;
-      color: #fff;
+      color: $color-white;
     }
   }
 }
