@@ -14,14 +14,15 @@
   height: auto;
   padding: 0.5rem;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   font-family: "Jersey 10", serif;
-  z-index: 10;
+  z-index: 100;
   box-sizing: border-box;
 
   .navbar-logo {
     display: flex;
     align-items: center;
+    z-index: 101; /* Above mobile menu */
 
     a {
       display: inline-flex;
@@ -44,7 +45,8 @@
     flex: 1 1 auto;
   }
 
-  nav {
+  /* Desktop Navigation */
+  .desktopNav {
     display: flex;
     align-items: center;
     margin-right: 3rem;
@@ -70,78 +72,178 @@
     }
   }
 
+  /* Hamburger Button */
+  .hamburger {
+    display: none; // Hidden on desktop
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 102; // Above everything
+    margin-right: 1rem;
+
+    span {
+      width: 2rem;
+      height: 0.25rem;
+      background: white;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+
+    &.open {
+      span:first-child {
+        transform: rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  /* Mobile Navigation Overlay */
+  .mobileNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    height: 60vh;
+    background: rgba(15, 18, 23, 0.98); // Solid dark background
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99; // Below logo and hamburger
+    border-radius: 2rem;
+    &.open {
+      transform: translateY(0);
+    }
+
+    .mobileNavContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 2.5rem;
+        font-family: "Jersey 10", serif;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #bbb;
+        }
+      }
+
+      .mobileAuth {
+        margin-top: 1rem;
+        // Reset layout for auth section in mobile
+        .user-profile {
+          margin-left: 0;
+          flex-direction: column;
+          .dropdown {
+            position: static;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            align-items: center;
+            margin-top: 1rem;
+            button {
+              font-size: 1.5rem;
+              color: #aaa;
+              &:hover {
+                color: #fff;
+                background: transparent;
+              }
+            }
+          }
+        }
+        .auth-button {
+          margin-left: 0;
+          font-size: 2.5rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+
+  .auth-button {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgb(226, 226, 226);
+    padding: 0.2rem 1rem;
+    border-radius: 6px;
+    font-family: "Jersey 10", serif;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.5);
+      color: #fff;
+    }
+  }
+
   // Media queries
-  @media (max-width: 768px) {
-    padding: 0.5rem;
+  @media (max-width: 1000px) {
+    .desktopNav {
+      margin-right: 2rem;
+
+      a {
+        margin-left: 2rem;
+        font-size: 1.5rem;
+      }
+    }
+    .auth-button {
+      padding: 0.2rem 0.5rem;
+      font-size: 1.5rem;
+      margin-left: 2rem;
+    }
 
     .navbar-logo {
       .logo {
-        height: 2.5rem;
-        width: 2.5rem;
+        margin-left: 1.5rem;
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    .desktopNav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+    .navbar-logo {
+      .logo {
         margin-left: 1rem;
       }
     }
-
-    nav {
-      margin-right: 1rem;
-
-      a {
-        font-size: 1.8rem;
-        margin-left: 16px;
-      }
-    }
   }
 
-  @media (max-width: 480px) {
-    flex-direction: column;
-    padding: 0.5rem;
-    height: auto;
-
-    .navbar-logo {
-      width: 100%;
-      justify-content: center;
-      margin-bottom: 0.5rem;
-
-      .logo {
-        height: 2rem;
-        width: 2rem;
-        margin-left: 0;
-      }
+  @media (max-width: 420px) {
+    .mobileNav {
+      width: 100vw;
+      height: 100vh;
     }
-
-    nav {
-      width: 100%;
-      justify-content: center;
-      margin: 0;
-      padding: 0.5rem 0;
-
-      a {
-        font-size: 1.5rem;
-        margin: 0 12px;
-      }
-    }
-  }
-}
-
-.auth-button {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgb(226, 226, 226);
-  padding: 0.2rem 1rem;
-  border-radius: 6px;
-  font-family: "Jersey 10", serif;
-  font-size: 1.8rem;
-  cursor: pointer;
-  margin-left: 2rem;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  height: fit-content;
-  
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff;
   }
 }
 
@@ -150,7 +252,7 @@
   margin-left: 2rem;
   display: flex;
   align-items: center;
-  
+
   .avatar-btn {
     background: none;
     border: none;
@@ -158,7 +260,7 @@
     cursor: pointer;
     display: flex;
   }
-  
+
   img {
     width: 40px;
     height: 40px;
@@ -166,7 +268,7 @@
     border: 2px solid rgba(255, 255, 255, 0.2);
     transition: border-color 0.3s;
     object-fit: cover;
-    
+
     &:hover {
       border-color: #fff;
     }
@@ -194,12 +296,12 @@
     color: #e2e2e2;
     padding: 0.5rem 1rem;
     text-align: left;
-    font-family: sans-serif; 
+    font-family: sans-serif;
     font-size: 1rem;
     cursor: pointer;
     border-radius: 4px;
     transition: background 0.2s;
-    
+
     &:hover {
       background: #333;
       color: #fff;
