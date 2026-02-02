@@ -6,8 +6,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
-import AuthProvider from "@/components/AuthProvider";
-
 export const metadata: Metadata = {
   title: "Meet Vishnu!",
   description: "Welcome to my world! I am Vishnu Gopal.",
@@ -30,15 +28,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <AuthProvider>
-          <SmoothScrolling>
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </SmoothScrolling>
-          <Analytics />
-          <SpeedInsights />
-        </AuthProvider>
+        <SmoothScrolling>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScrolling>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

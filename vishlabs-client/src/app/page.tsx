@@ -3,12 +3,8 @@ import LandingInfo from "@/components/LandingInfo";
 import LandingPhotoWall from "@/components/LandingPhotoWall";
 import CareerTimeline from "@/components/CareerTimeline";
 import Beams from "@/components/Beams";
-import { auth } from "@/auth";
-import LoginPlaceholder from "@/components/LoginPlaceholder";
 
-export default async function Home() {
-  const session = await auth();
-
+export default function Home() {
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <div
@@ -35,14 +31,8 @@ export default async function Home() {
       <div style={{ position: "relative", zIndex: 1 }}>
         <LandingHero />
         <LandingInfo />
-        {session ? (
-          <>
-            <LandingPhotoWall />
-            <CareerTimeline />
-          </>
-        ) : (
-          <LoginPlaceholder />
-        )}
+        <LandingPhotoWall />
+        <CareerTimeline />
       </div>
     </div>
   );
