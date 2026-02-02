@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from "next-auth/react";
 import { useState } from 'react';
@@ -49,9 +50,13 @@ export default function Navbar() {
               className={styles['avatar-btn']}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             >
-              <img 
+              <Image 
                 src={session.user?.image || "https://github.com/shadcn.png"} 
                 alt={session.user?.name || "User"} 
+                width={40}
+                height={40}
+                className={styles.avatar} // Ensure this class exists or inherits style
+                style={{ borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255, 255, 255, 0.2)' }}
               />
             </button>
             

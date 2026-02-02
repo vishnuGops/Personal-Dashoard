@@ -1,12 +1,12 @@
 import NextAuth from "next-auth"
-import GitHub from "next-auth/providers/github"
+import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    GitHub({
-        clientId: process.env.GITHUB_ID ?? "dummy-id",
-        clientSecret: process.env.GITHUB_SECRET ?? "dummy-secret"
+    Google({
+        clientId: process.env.GOOGLE_CLIENT_ID ?? "dummy-id",
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "dummy-secret"
     }),
     Credentials({
       name: "Demo User",
