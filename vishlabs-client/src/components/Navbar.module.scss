@@ -1,8 +1,45 @@
+// Variables
+$font-primary: "Jersey 10", serif;
+$font-sans: sans-serif;
+
+$color-white: #ffffff;
+$color-text-primary: #e2e2e2;
+$color-text-secondary: rgb(
+  226,
+  226,
+  226
+); // Keeping exact rgb if intentional, otherwise could consolidate
+$color-text-muted: #aaa;
+$color-text-hover: #bbb;
+$color-bg-dark-solid: rgba(15, 18, 23, 0.98);
+$color-bg-dropdown: #1a1a1a;
+$color-border-light: rgba(255, 255, 255, 0.2);
+$color-border-hover: rgba(255, 255, 255, 0.5);
+$color-border-dark: #333;
+
+$transition-standard: all 0.3s ease;
+$transition-transform: transform 0.3s ease;
+$transition-color: color 0.3s ease;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
 .custom-toolbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(
     to bottom,
     rgba(15, 18, 23, 1) 00%,
@@ -10,18 +47,19 @@
     rgba(15, 18, 23, 0.3) 75%,
     transparent 100%
   );
-  color: #ffffff;
+  color: $color-white;
   height: auto;
   padding: 0.5rem;
   display: flex;
-  flex-wrap: wrap;
-  font-family: "Jersey 10", serif;
-  z-index: 10;
+  align-items: center;
+  font-family: $font-primary;
+  z-index: 100;
   box-sizing: border-box;
 
   .navbar-logo {
     display: flex;
     align-items: center;
+    z-index: 101; /* Above mobile menu */
 
     a {
       display: inline-flex;
@@ -32,7 +70,7 @@
       width: 3.3rem;
       padding: 0.1rem;
       margin-left: 6rem;
-      transition: transform 0.3s ease;
+      transition: $transition-transform;
 
       &:hover {
         transform: scale(1.05);
@@ -44,81 +82,259 @@
     flex: 1 1 auto;
   }
 
-  nav {
+  /* Desktop Navigation */
+  .desktopNav {
     display: flex;
     align-items: center;
     margin-right: 3rem;
     flex-wrap: wrap;
 
     a {
-      color: rgb(226, 226, 226);
+      color: $color-text-secondary;
       text-decoration: none;
       margin-left: 3rem;
       font-size: 2.2rem;
       font-weight: 500;
-      font-family: "Jersey 10", serif;
+      font-family: $font-primary;
       transition:
-        color 0.3s ease,
+        $transition-color,
         border-bottom 0.3s ease;
       text-shadow: black 2px 2px;
       cursor: pointer;
 
       &:hover {
-        color: rgb(255, 255, 255);
+        color: $color-white;
         border-bottom: 2px solid rgb(201, 201, 201);
       }
     }
   }
 
-  // Media queries
-  @media (max-width: 768px) {
-    padding: 0.5rem;
+  /* Hamburger Button */
+  .hamburger {
+    display: none; // Hidden on desktop
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2rem;
+    height: 2rem;
+    @include button-reset;
+    z-index: 102; // Above everything
+    margin-right: 1rem;
 
-    .navbar-logo {
-      .logo {
-        height: 2.5rem;
-        width: 2.5rem;
-        margin-left: 1rem;
-      }
+    span {
+      width: 2rem;
+      height: 0.25rem;
+      background: white;
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
     }
 
-    nav {
-      margin-right: 1rem;
-
-      a {
-        font-size: 1.8rem;
-        margin-left: 16px;
+    &.open {
+      span:first-child {
+        transform: rotate(45deg);
+      }
+      span:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      span:nth-child(3) {
+        transform: rotate(-45deg);
       }
     }
   }
 
-  @media (max-width: 480px) {
+  /* Mobile Navigation Overlay */
+  .mobileNav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70vw;
+    height: 60vh;
+    background: $color-bg-dark-solid;
+    @include flex-center;
     flex-direction: column;
-    padding: 0.5rem;
-    height: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 99; // Below logo and hamburger
+    border-radius: 0 0 0 2rem; // Adjusted radius for top-right menu style
 
-    .navbar-logo {
-      width: 100%;
-      justify-content: center;
-      margin-bottom: 0.5rem;
-
-      .logo {
-        height: 2rem;
-        width: 2rem;
-        margin-left: 0;
-      }
+    &.open {
+      transform: translateX(0);
     }
 
-    nav {
-      width: 100%;
-      justify-content: center;
-      margin: 0;
-      padding: 0.5rem 0;
+    .mobileNavContent {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
 
       a {
-        font-size: 1.5rem;
-        margin: 0 12px;
+        color: white;
+        text-decoration: none;
+        font-size: 2.5rem;
+        font-family: $font-primary;
+        transition: $transition-color;
+
+        &:hover {
+          color: $color-text-hover;
+        }
       }
+
+      .mobileAuth {
+        margin-top: 1rem;
+        // Reset layout for auth section in mobile
+        .user-profile {
+          margin-left: 0;
+          flex-direction: column;
+          .dropdown {
+            position: static;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            align-items: center;
+            margin-top: 1rem;
+            button {
+              font-size: 1.5rem;
+              color: $color-text-muted;
+              &:hover {
+                color: $color-white;
+                background: transparent;
+              }
+            }
+          }
+        }
+        .auth-button {
+          margin-left: 0;
+          font-size: 2.5rem;
+          padding: 0.5rem 1rem;
+        }
+      }
+    }
+  }
+
+  .auth-button {
+    background: #01bf71;
+    border: 1px solid $color-border-light;
+    color: $color-text-secondary;
+    padding: 0.2rem 1rem;
+    border-radius: 6px;
+    font-family: $font-primary;
+    font-size: 1.8rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    margin-left: 2rem;
+    transition: $transition-standard;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: $color-border-hover;
+      color: $color-white;
+    }
+  }
+
+  // Media queries
+  @media (max-width: 1000px) {
+    .desktopNav {
+      margin-right: 2rem;
+
+      a {
+        margin-left: 2rem;
+        font-size: 1.5rem;
+      }
+    }
+    .auth-button {
+      padding: 0.2rem 0.5rem;
+      font-size: 1.5rem;
+      margin-left: 2rem;
+    }
+
+    .navbar-logo {
+      .logo {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    .desktopNav {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+    .navbar-logo {
+      .logo {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 420px) {
+    .mobileNav {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+    }
+  }
+}
+
+.user-profile {
+  position: relative;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+
+  .avatar-btn {
+    @include button-reset;
+    display: flex;
+  }
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid $color-border-light;
+    transition: border-color 0.3s;
+    object-fit: cover;
+
+    &:hover {
+      border-color: $color-white;
+    }
+  }
+}
+
+.dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: $color-bg-dropdown;
+  border: 1px solid $color-border-dark;
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+
+  button {
+    @include button-reset;
+    text-align: left;
+    color: $color-text-primary;
+    padding: 0.5rem 1rem;
+    font-family: $font-sans;
+    font-size: 1rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: #333;
+      color: $color-white;
     }
   }
 }

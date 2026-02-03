@@ -6,9 +6,15 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
+import AuthProvider from "@/components/AuthProvider";
+
 export const metadata: Metadata = {
   title: "Meet Vishnu!",
   description: "Welcome to my world! I am Vishnu Gopal.",
+  icons: {
+    icon: "/images/VG_logo.png", // Path to your favicon file in the public directory
+    apple: "/images/VG_logo.png", // For Apple devices
+  },
 };
 
 export default function RootLayout({
@@ -27,14 +33,16 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body>
-        <SmoothScrolling>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScrolling>
-        <Analytics />
-        <SpeedInsights />
+      <body suppressHydrationWarning={true}>
+        <AuthProvider>
+          <SmoothScrolling>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+          </SmoothScrolling>
+          <Analytics />
+          <SpeedInsights />
+        </AuthProvider>
       </body>
     </html>
   );

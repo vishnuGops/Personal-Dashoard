@@ -5,6 +5,7 @@ import {
   useEffect,
   useRef,
   useMemo,
+  useState,
   FC,
   ReactNode,
 } from "react";
@@ -210,6 +211,22 @@ const Beams: FC<BeamsProps> = ({
     THREE.Mesh<THREE.BufferGeometry, THREE.ShaderMaterial>
   >(null!);
 
+  const [currentBeamWidth, setCurrentBeamWidth] = useState(beamWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCurrentBeamWidth(beamWidth * 0.5);
+      } else {
+        setCurrentBeamWidth(beamWidth);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [beamWidth]);
+
   const beamMaterial = useMemo(
     () =>
       extendMaterial(THREE.MeshStandardMaterial, {
@@ -275,7 +292,7 @@ const Beams: FC<BeamsProps> = ({
           ref={meshRef}
           material={beamMaterial}
           count={beamNumber}
-          width={beamWidth}
+          width={currentBeamWidth}
           height={beamHeight}
         />
         <DirLight color={lightColor} position={[0, 3, 10]} />

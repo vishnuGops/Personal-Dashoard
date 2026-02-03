@@ -3,8 +3,12 @@ import LandingInfo from "@/components/LandingInfo";
 import LandingPhotoWall from "@/components/LandingPhotoWall";
 import CareerTimeline from "@/components/CareerTimeline";
 import Beams from "@/components/Beams";
+import { auth } from "@/auth";
+import LoginPlaceholder from "@/components/LoginPlaceholder";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <div
@@ -12,13 +16,13 @@ export default function Home() {
           position: "fixed",
           top: 0,
           left: 0,
-          height: "100%",
           width: "100%",
+          height: "100%",
           zIndex: -1,
         }}
       >
         <Beams
-          beamWidth={2}
+          beamWidth={3}
           beamHeight={30}
           beamNumber={20}
           lightColor="#ffffff"
@@ -31,8 +35,17 @@ export default function Home() {
       <div style={{ position: "relative", zIndex: 1 }}>
         <LandingHero />
         <LandingInfo />
-        <LandingPhotoWall />
-        <CareerTimeline />
+        {session ? (
+          <>
+            <LandingPhotoWall />
+            <CareerTimeline />
+          </>
+        ) : (
+          <LoginPlaceholder
+            title="Access Restricted"
+            message="Please sign in to view the Career Timeline and Photo Gallery."
+          />
+        )}
       </div>
     </div>
   );
