@@ -214,13 +214,14 @@ $transition-color: color 0.3s ease;
   }
 
   .auth-button {
-    background: transparent;
+    background: #01bf71;
     border: 1px solid $color-border-light;
     color: $color-text-secondary;
     padding: 0.2rem 1rem;
     border-radius: 6px;
     font-family: $font-primary;
     font-size: 1.8rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
     cursor: pointer;
     margin-left: 2rem;
     transition: $transition-standard;

@@ -12,6 +12,7 @@ interface AuthModalProps {
 
 export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const [isLoading, setIsLoading] = useState(false);
+  const enableDemoAuth = process.env.DEMO_AUTH_ENABLED === "true";
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -70,13 +71,23 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
         </button>
 
         <div className={styles.header}>
-          <h2 id="modal-title">Welcome Back</h2>
-          <p>Sign in to access exclusive projects and content.</p>
+          <h2 style={{ fontSize: "2rem" }} id="modal-title">
+            Hello Friend!
+          </h2>
+          <p style={{ fontSize: "1.5rem" }}>
+            Sign in to access more features and content.
+          </p>
         </div>
 
         <div className={styles.authButtons}>
           <button
-            className={`${styles.button} ${styles.primary}`}
+            className={`${styles.button}`}
+            style={{
+              backgroundColor: "#01bf71",
+              color: "#fff",
+              textShadow: "0 1px 3px rgba(0, 0, 0, 0.6)",
+              fontFamily: "inherit",
+            }}
             onClick={() => handleSignIn("google")}
             disabled={isLoading}
           >
@@ -84,17 +95,19 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
               className="fa-brands fa-google"
               style={{ fontSize: "1.2rem" }}
             ></i>
-            <span>Continue with Google</span>
+            <span style={{ fontSize: "1.5rem" }}>Continue with Google</span>
           </button>
 
-          <button
-            className={styles.button}
-            onClick={() => handleSignIn("credentials")}
-            disabled={isLoading}
-          >
-            <User size={20} />
-            <span>Demo User Login</span>
-          </button>
+          {enableDemoAuth && (
+            <button
+              className={styles.button}
+              onClick={() => handleSignIn("credentials")}
+              disabled={isLoading}
+            >
+              <User size={20} />
+              <span>Demo User Login</span>
+            </button>
+          )}
         </div>
       </div>
     </div>

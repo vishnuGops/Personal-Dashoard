@@ -42,14 +42,16 @@ export default function LoginPlaceholder({
         type="button"
         onClick={openModal}
         style={{
-          background: "#fff",
-          color: "#000",
+          fontFamily: "inherit",
+          background: "#01bf71",
+          color: "#fff",
+          textShadow: "0 1px 3px rgba(0, 0, 0, 0.6)",
           border: "none",
           padding: "0.75rem 1rem",
           borderRadius: "6px",
           fontWeight: 600,
           cursor: "pointer",
-          fontSize: "1.2rem",
+          fontSize: "1.6rem",
         }}
       >
         Sign In to View
