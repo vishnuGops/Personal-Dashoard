@@ -1,5 +1,5 @@
 "use client";
-
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -9,6 +9,7 @@ import styles from "./Navbar.module.scss";
 import { useAuthModal } from "./AuthProvider";
 
 export default function Navbar() {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const { data: session } = useSession();
   const { openModal } = useAuthModal();
@@ -35,6 +36,23 @@ export default function Navbar() {
     }
   };
 
+  //TODO: Fix dropdown close on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isDropdownOpen]);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
@@ -44,7 +62,7 @@ export default function Navbar() {
 
   const AuthSection = () =>
     session ? (
-      <div className={styles["user-profile"]}>
+      <div className={styles["user-profile"]} ref={dropdownRef}>
         <button
           className={styles["avatar-btn"]}
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -65,7 +83,9 @@ export default function Navbar() {
 
         {isDropdownOpen && (
           <div className={styles.dropdown}>
-            <button onClick={() => signOut()}>Logout</button>
+            <button onClick={() => signOut({ callbackUrl: "/" })}>
+              Logout
+            </button>
           </div>
         )}
       </div>

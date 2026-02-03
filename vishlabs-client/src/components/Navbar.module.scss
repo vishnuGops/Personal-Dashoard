@@ -160,7 +160,7 @@ $transition-color: color 0.3s ease;
     border-radius: 0 0 0 2rem; // Adjusted radius for top-right menu style
 
     &.open {
-      transform: translateY(0);
+      transform: translateX(0);
     }
 
     .mobileNavContent {

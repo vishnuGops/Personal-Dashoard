@@ -36,13 +36,11 @@ export default async function AboutEducation() {
       </div>
       <h1>Resume</h1>
       {session ? (
-        <>
-          <div className={styles["resume-download"]}>
-            <ContactResumeDownload
-              className={`${styles["button-element"]} ${styles.big} ${styles.fontBig}`}
-            />
-          </div>
-        </>
+        <div className={styles["resume-download"]}>
+          <ContactResumeDownload
+            className={`${styles["button-element"]} ${styles.big} ${styles.fontBig}`}
+          />
+        </div>
       ) : (
         <LoginPlaceholder
           title="Access Restricted"

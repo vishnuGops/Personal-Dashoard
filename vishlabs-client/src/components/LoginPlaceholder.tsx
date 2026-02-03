@@ -39,6 +39,7 @@ export default function LoginPlaceholder({
         {message}
       </p>
       <button
+        type="button"
         onClick={openModal}
         style={{
           background: "#fff",

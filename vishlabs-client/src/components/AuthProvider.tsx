@@ -9,14 +9,23 @@ interface AuthModalContextType {
   closeModal: () => void;
 }
 
-const AuthModalContext = createContext<AuthModalContextType>({
-  openModal: () => {},
-  closeModal: () => {},
-});
+const AuthModalContext = createContext<AuthModalContextType | undefined>(
+  undefined,
+);
 
-export const useAuthModal = () => useContext(AuthModalContext);
+export const useAuthModal = () => {
+  const ctx = useContext(AuthModalContext);
+  if (!ctx) {
+    throw new Error("useAuthModal must be used within AuthProvider");
+  }
+  return ctx;
+};
 
-export default function AuthProvider({ children }: { children: React.ReactNode }) {
+export default function AuthProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = () => setIsOpen(true);
