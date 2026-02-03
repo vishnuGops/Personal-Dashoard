@@ -37,21 +37,21 @@ export default function Navbar() {
   };
 
   //TODO: Fix dropdown close on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (
+  //       dropdownRef.current &&
+  //       !dropdownRef.current.contains(event.target as Node)
+  //     ) {
+  //       setIsDropdownOpen(false);
+  //     }
+  //   };
 
-    if (isDropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isDropdownOpen]);
+  //   if (isDropdownOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //   }
+  //   return () => document.removeEventListener("mousedown", handleClickOutside);
+  // }, [isDropdownOpen]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -83,9 +83,7 @@ export default function Navbar() {
 
         {isDropdownOpen && (
           <div className={styles.dropdown}>
-            <button onClick={() => signOut({ callbackUrl: "/" })}>
-              Logout
-            </button>
+            <button onClick={() => signOut()}>Logout</button>
           </div>
         )}
       </div>
