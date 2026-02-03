@@ -17,7 +17,9 @@ export default function ContactResumeDownload({
     const link = document.createElement("a");
     link.href = resumeUrl;
     link.download = "Vishnu_Resume.pdf";
+    document.body.appendChild(link);
     link.click();
+    link.remove();
   };
 
   return (

@@ -15,10 +15,10 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) onClose();
+      if (e.key === "Escape" && isOpen) onClose();
     };
-    window.addEventListener('keydown', handleEscape);
-    return () => window.removeEventListener('keydown', handleEscape);
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
@@ -26,16 +26,20 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   const handleSignIn = async (provider: string) => {
     try {
       setIsLoading(true);
-      if (provider === 'credentials') {
+      if (provider === "credentials") {
         // Demo login
-        await signIn('credentials', { 
-          username: 'demo', 
-          password: 'demo',
-          redirect: false 
+        const res = await signIn("credentials", {
+          username: "demo",
+          password: "demo",
+          redirect: false,
         });
+        if (!res?.ok) {
+          console.error("Demo login failed", res?.error);
+          return;
+        }
         onClose();
         // Force reload to update session state if needed, though useSession handles it
-        window.location.reload(); 
+        window.location.reload();
       } else {
         await signIn(provider);
       }
@@ -47,8 +51,8 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   };
 
   return (
-    <div 
-      className={styles.overlay} 
+    <div
+      className={styles.overlay}
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -57,8 +61,8 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
       aria-labelledby="modal-title"
     >
       <div className={styles.modal}>
-        <button 
-          onClick={onClose} 
+        <button
+          onClick={onClose}
           className={styles.closeButton}
           aria-label="Close modal"
         >
@@ -71,18 +75,21 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
         </div>
 
         <div className={styles.authButtons}>
-          <button 
+          <button
             className={`${styles.button} ${styles.primary}`}
-            onClick={() => handleSignIn('google')}
+            onClick={() => handleSignIn("google")}
             disabled={isLoading}
           >
-            <i className="fa-brands fa-google" style={{ fontSize: '1.2rem' }}></i>
+            <i
+              className="fa-brands fa-google"
+              style={{ fontSize: "1.2rem" }}
+            ></i>
             <span>Continue with Google</span>
           </button>
 
-          <button 
+          <button
             className={styles.button}
-            onClick={() => handleSignIn('credentials')}
+            onClick={() => handleSignIn("credentials")}
             disabled={isLoading}
           >
             <User size={20} />
