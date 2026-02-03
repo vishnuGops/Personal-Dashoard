@@ -41,7 +41,10 @@ export default async function Home() {
             <CareerTimeline />
           </>
         ) : (
-          <LoginPlaceholder />
+          <LoginPlaceholder
+            title="Access Restricted"
+            message="Please sign in to view the Career Timeline and Photo Gallery."
+          />
         )}
       </div>
     </div>

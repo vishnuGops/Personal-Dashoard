@@ -1,26 +1,23 @@
-'use client';
-import styles from './AboutEducation.module.scss';
-import { educationData } from '../data/education';
+import styles from "./AboutEducation.module.scss";
+import { educationData } from "../data/education";
+import LoginPlaceholder from "./LoginPlaceholder";
+import { auth } from "@/auth";
+import ContactResumeDownload from "./ContactResumeDownload";
 
-export default function AboutEducation() {
-  const downloadResume = () => {
-    const link = document.createElement('a');
-    link.href = '/pdf/Vishnu_Resume.pdf';
-    link.download = 'Vishnu_Resume.pdf';
-    link.click();
-  };
+export default async function AboutEducation() {
+  const session = await auth();
 
   return (
-    <div className={styles['info-container']}>
+    <div className={styles["info-container"]}>
       <h1>Education</h1>
-      <div className={styles['experience-row']}>
+      <div className={styles["experience-row"]}>
         {educationData.map((edu, index) => (
-          <div key={index} className={styles['experience-content']}>
-            <div className={styles['navbar-logo']}>
+          <div key={index} className={styles["experience-content"]}>
+            <div className={styles["navbar-logo"]}>
               <a href={edu.url} target="_blank" rel="noopener noreferrer">
                 <img
                   src={edu.logo}
-                  alt={edu.institution + ' Logo'}
+                  alt={edu.institution + " Logo"}
                   className={styles.logo}
                 />
               </a>
@@ -37,14 +34,21 @@ export default function AboutEducation() {
           </div>
         ))}
       </div>
-      <div className={styles['resume-download']}>
-        <button
-          className={`${styles['button-element']} ${styles.big} ${styles.fontBig}`}
-          onClick={downloadResume}
-        >
-          Download My Resume
-        </button>
-      </div>
+      <h1>Resume</h1>
+      {session ? (
+        <>
+          <div className={styles["resume-download"]}>
+            <ContactResumeDownload
+              className={`${styles["button-element"]} ${styles.big} ${styles.fontBig}`}
+            />
+          </div>
+        </>
+      ) : (
+        <LoginPlaceholder
+          title="Access Restricted"
+          message="Please sign in to view or download my resume."
+        />
+      )}
     </div>
   );
 }
