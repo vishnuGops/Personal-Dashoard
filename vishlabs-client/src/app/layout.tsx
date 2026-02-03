@@ -29,7 +29,7 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body>
+      <body suppressHydrationWarning={true}>
         <AuthProvider>
           <SmoothScrolling>
             <Navbar />

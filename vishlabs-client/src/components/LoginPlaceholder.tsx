@@ -17,6 +17,7 @@ export default function LoginPlaceholder({
   return (
     <div
       style={{
+        width: "80%",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -26,7 +27,6 @@ export default function LoginPlaceholder({
         backdropFilter: "blur(10px)",
         borderRadius: "12px",
         margin: "4rem auto",
-        minWidth: "80%",
         textAlign: "center",
         border: "1px solid rgba(255, 255, 255, 0.1)",
       }}
