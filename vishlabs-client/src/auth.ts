@@ -8,19 +8,40 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         clientId: process.env.GOOGLE_CLIENT_ID ?? "dummy-id",
         clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "dummy-secret"
     }),
-    Credentials({
-      name: "Demo User",
-      credentials: {
-        username: { label: "Username", type: "text", placeholder: "demo" },
-        password: { label: "Password", type: "password" }
-      },
-      async authorize(credentials) {
-        // Mock user for demo purposes
-        if (credentials?.username === "demo" && credentials?.password === "demo") {
-          return { id: "1", name: "Demo User", email: "demo@example.com", image: "https://github.com/shadcn.png" }
-        }
-        return null
-      }
+const enableDemoAuth = process.env.DEMO_AUTH_ENABLED === "true";
+
+export const { handlers, signIn, signOut, auth } = NextAuth({
+  providers: [
+    Google({
+      clientId: process.env.GOOGLE_CLIENT_ID ?? "dummy-id",
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "dummy-secret"
+    }),
+    ...(enableDemoAuth
+      ? [
+          Credentials({
+            name: "Demo User",
+            credentials: {
+              username: { label: "Username", type: "text", placeholder: "demo" },
+              password: { label: "Password", type: "password" },
+            },
+            async authorize(credentials) {
+              if (
+                credentials?.username === "demo" &&
+                credentials?.password === "demo"
+              ) {
+                return {
+                  id: "1",
+                  name: "Demo User",
+                  email: "demo@example.com",
+                  image: "https://github.com/shadcn.png",
+                };
+              }
+              return null;
+            },
+          }),
+        ]
+      : []),
+  ],
     })
   ],
   pages: {
