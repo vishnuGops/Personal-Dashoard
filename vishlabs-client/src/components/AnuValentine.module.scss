@@ -1,0 +1,133 @@
+.main-container {
+  background: #000;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.grainient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.content-overlay {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  width: 100%;
+  //   max-width: 800px;
+  padding: 2rem;
+}
+
+.valentine-text {
+  font-size: 6rem;
+  font-weight: 600;
+  margin-bottom: 4rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100px; // Reserve space for buttons
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.btn-yes {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+  font-family: inherit;
+  &:hover {
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+  }
+}
+
+.btn-no {
+  background: #333;
+  color: #ccc;
+  font-family: inherit;
+  // position: absolute; // Removed to keep in flow initially
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  color: #333;
+  padding: 3rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 90%;
+  width: 500px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.modal-title {
+  font-size: 4.5rem;
+  margin-bottom: 1rem;
+  color: #ff1493;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.modal-text {
+  font-size: 2rem;
+  line-height: 1.6;
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+}
