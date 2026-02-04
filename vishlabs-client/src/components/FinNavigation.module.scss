@@ -7,16 +7,13 @@ $text-color: #e2e2e2;
 $font-primary: "Jersey 10", serif;
 
 .navigationContainer {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1.5rem 2rem;
-  position: relative; // Can be fixed if needed
+  position: relative;
   z-index: 100;
-  @media (max-width: 768px) {
-    justify-content: flex-end;
-    padding: 1rem 1.5rem;
-  }
 }
 
 .desktopNav {
@@ -43,7 +40,8 @@ $font-primary: "Jersey 10", serif;
   font-size: 1.6rem;
   letter-spacing: 1px;
   border-radius: 16px;
-
+  cursor: pointer; // Ensure it looks clickable
+  
   // Liquid Glass Style
   background: $green-glass;
   backdrop-filter: blur(12px);
@@ -51,13 +49,13 @@ $font-primary: "Jersey 10", serif;
   border: 1px solid $glass-border;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
+  
   // Shine effect hint
   position: relative;
   overflow: hidden;
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: -100%;
@@ -87,6 +85,15 @@ $font-primary: "Jersey 10", serif;
 
   &:active {
     transform: translateY(-1px);
+  }
+
+  // Active State
+  &.active {
+    background: rgba(1, 191, 113, 0.3); // Stronger green
+    border-color: $green-primary;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(1, 191, 113, 0.3);
+    text-shadow: 0 0 8px rgba(1, 191, 113, 0.8);
   }
 }
 
@@ -160,10 +167,30 @@ $font-primary: "Jersey 10", serif;
   font-family: $font-primary;
   transition: all 0.3s ease;
   position: relative;
-
+  background: none;
+  border: none;
+  cursor: pointer;
+  
   &:hover {
     color: $green-primary;
     transform: scale(1.1);
     text-shadow: 0 0 10px rgba(1, 191, 113, 0.4);
   }
+
+  &.active {
+     color: $green-primary;
+     text-shadow: 0 0 15px rgba(1, 191, 113, 0.6);
+     font-weight: bold;
+  }
+}
+
+.contentArea {
+  width: 100%;
+  min-height: 50vh; // Ensure it takes up some space
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
