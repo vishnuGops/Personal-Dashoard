@@ -270,6 +270,7 @@ const Grainient: React.FC<GrainientProps> = ({
     <div
       ref={containerRef}
       className={`relative h-full w-full overflow-hidden ${className}`.trim()}
+      style={{ width: "100%", height: "100%" }}
     />
   );
 };
