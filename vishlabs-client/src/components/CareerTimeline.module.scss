@@ -49,7 +49,7 @@
 
 .horizontalScrollTrack {
   display: flex;
-  padding: 0 15vw;
+  padding: 0 20vw;
   width: max-content;
   align-items: center;
   position: relative;
@@ -107,7 +107,7 @@
 /* LAYOUT COLUMNS */
 .eventColumn {
   position: relative;
-  width: 450px;
+  width: 350px;
   height: 70vh;
   display: flex;
   flex-direction: column;
