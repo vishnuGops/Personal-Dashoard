@@ -1,11 +1,8 @@
-import React from 'react';
+import React from "react";
+import styles from "./News.module.scss";
 
 const News = () => {
-  return (
-    <div style={{ width: '100%', height: '80vh', backgroundColor: '#7c2d12', display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '2rem' }}>
-      News Component
-    </div>
-  );
+  return <div className={styles.container}>News Component</div>;
 };
 
 export default News;

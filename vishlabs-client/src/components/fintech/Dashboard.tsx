@@ -1,22 +1,8 @@
 import React from "react";
+import styles from "./Dashboard.module.scss";
 
 const Dashboard = () => {
-  return (
-    <div
-      style={{
-        width: "100%",
-        height: "80vh",
-        backgroundColor: "#1e293b",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "white",
-        fontSize: "2rem",
-      }}
-    >
-      Dashboard Component
-    </div>
-  );
+  return <div className={styles.container}>Dashboard Component</div>;
 };
 
 export default Dashboard;

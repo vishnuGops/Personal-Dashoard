@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import styles from "./FinNavigation.module.scss";
 import Dashboard from "./fintech/Dashboard";
-import Market from "./fintech/Market";
+import Charts from "./fintech/Charts";
 import Portfolio from "./fintech/Portfolio";
 import News from "./fintech/News";
 
@@ -12,7 +12,7 @@ const FinNavigation = () => {
 
   const navLinks = [
     { name: "Dashboard", component: <Dashboard /> },
-    { name: "Market", component: <Market /> },
+    { name: "Charts", component: <Charts /> },
     { name: "Portfolio", component: <Portfolio /> },
     { name: "News", component: <News /> },
   ];

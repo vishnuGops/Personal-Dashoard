@@ -7,7 +7,6 @@ $text-color: #e2e2e2;
 $font-primary: "Jersey 10", serif;
 
 .navigationContainer {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,7 +40,7 @@ $font-primary: "Jersey 10", serif;
   letter-spacing: 1px;
   border-radius: 16px;
   cursor: pointer; // Ensure it looks clickable
-  
+
   // Liquid Glass Style
   background: $green-glass;
   backdrop-filter: blur(12px);
@@ -49,13 +48,13 @@ $font-primary: "Jersey 10", serif;
   border: 1px solid $glass-border;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   // Shine effect hint
   position: relative;
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -170,7 +169,7 @@ $font-primary: "Jersey 10", serif;
   background: none;
   border: none;
   cursor: pointer;
-  
+
   &:hover {
     color: $green-primary;
     transform: scale(1.1);
@@ -178,9 +177,9 @@ $font-primary: "Jersey 10", serif;
   }
 
   &.active {
-     color: $green-primary;
-     text-shadow: 0 0 15px rgba(1, 191, 113, 0.6);
-     font-weight: bold;
+    color: $green-primary;
+    text-shadow: 0 0 15px rgba(1, 191, 113, 0.6);
+    font-weight: bold;
   }
 }
 
@@ -191,6 +190,12 @@ $font-primary: "Jersey 10", serif;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
