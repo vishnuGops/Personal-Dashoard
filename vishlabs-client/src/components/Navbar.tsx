@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -83,6 +83,15 @@ export default function Navbar() {
 
         {isDropdownOpen && (
           <div className={styles.dropdown}>
+            {session.user?.role === "ADMIN" && (
+              <Link
+                href="/admin"
+                className={styles.dropdownLink}
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                Dashboard
+              </Link>
+            )}
             <button onClick={() => signOut()}>Logout</button>
           </div>
         )}
