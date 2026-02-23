@@ -1,13 +1,14 @@
-import { redirect } from "next/navigation"
-import { auth } from "@/auth"
-import { prisma } from "@/lib/prisma"
-import styles from "./page.module.scss"
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
+import { prisma } from "@/lib/prisma";
+import styles from "./page.module.scss";
+import Beams from "@/components/Beams";
 
 export default async function AdminPage() {
-  const session = await auth()
+  const session = await auth();
 
   if (!session || session.user.role !== "ADMIN") {
-    redirect("/")
+    redirect("/");
   }
 
   const users = await prisma.user.findMany({
@@ -21,7 +22,7 @@ export default async function AdminPage() {
       createdAt: true,
       _count: { select: { authLogs: true } },
     },
-  })
+  });
 
   const recentLogs = await prisma.authLog.findMany({
     orderBy: { createdAt: "desc" },
@@ -29,10 +30,31 @@ export default async function AdminPage() {
     include: {
       user: { select: { name: true, email: true } },
     },
-  })
+  });
 
   return (
     <div className={styles.container}>
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          zIndex: -1,
+        }}
+      >
+        <Beams
+          beamWidth={3}
+          beamHeight={30}
+          beamNumber={20}
+          lightColor="#ffffff"
+          speed={2}
+          noiseIntensity={1.75}
+          scale={0.2}
+          rotation={30}
+        />
+      </div>
       <h1 className={styles.heading}>Admin Dashboard</h1>
 
       <section className={styles.section}>
@@ -51,23 +73,33 @@ export default async function AdminPage() {
             <tbody>
               {users.map((user) => (
                 <tr key={user.id}>
-                  <td>
+                  <td data-label="Name">
                     <div className={styles.userCell}>
                       {user.image && (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img src={user.image} alt="" className={styles.avatar} />
+                        <img
+                          src={user.image}
+                          alt=""
+                          className={styles.avatar}
+                        />
                       )}
                       <span>{user.name ?? "—"}</span>
                     </div>
                   </td>
-                  <td>{user.email}</td>
-                  <td>
-                    <span className={user.role === "ADMIN" ? styles.badgeAdmin : styles.badgeUser}>
+                  <td data-label="Email">{user.email}</td>
+                  <td data-label="Role">
+                    <span
+                      className={
+                        user.role === "ADMIN"
+                          ? styles.badgeAdmin
+                          : styles.badgeUser
+                      }
+                    >
                       {user.role}
                     </span>
                   </td>
-                  <td>{user._count.authLogs}</td>
-                  <td>{new Date(user.createdAt).toLocaleDateString()}</td>
+                  <td data-label="Logins">{user._count.authLogs}</td>
+                  <td data-label="Joined">{new Date(user.createdAt).toLocaleDateString()}</td>
                 </tr>
               ))}
             </tbody>
@@ -89,24 +121,26 @@ export default async function AdminPage() {
             </thead>
             <tbody>
               {recentLogs.map((log) => {
-                let metadata: { provider?: string; email?: string } = {}
+                let metadata: { provider?: string; email?: string } = {};
                 try {
-                  metadata = log.metadata ? JSON.parse(log.metadata) : {}
+                  metadata = log.metadata ? JSON.parse(log.metadata) : {};
                 } catch {
                   // ignore malformed metadata
                 }
                 return (
                   <tr key={log.id}>
-                    <td>{log.user?.name ?? log.user?.email ?? "Unknown"}</td>
-                    <td>{log.action}</td>
-                    <td>{metadata.provider ?? "—"}</td>
-                    <td>{new Date(log.createdAt).toLocaleString()}</td>
+                    <td data-label="User">{log.user?.name ?? log.user?.email ?? "Unknown"}</td>
+                    <td data-label="Action">{log.action}</td>
+                    <td data-label="Provider">{metadata.provider ?? "—"}</td>
+                    <td data-label="Time">{new Date(log.createdAt).toLocaleString()}</td>
                   </tr>
-                )
+                );
               })}
               {recentLogs.length === 0 && (
                 <tr>
-                  <td colSpan={4} className={styles.empty}>No login events yet.</td>
+                  <td colSpan={4} className={styles.empty}>
+                    No login events yet.
+                  </td>
                 </tr>
               )}
             </tbody>
@@ -114,5 +148,5 @@ export default async function AdminPage() {
         </div>
       </section>
     </div>
-  )
+  );
 }
