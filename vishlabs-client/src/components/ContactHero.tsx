@@ -10,7 +10,7 @@ export default function ContactHero() {
           loop
           playsInline
           className={styles['background-video']}
-          preload="auto"
+          preload="metadata"
           poster="/images/contact-poster.jpg"
         >
           <source src="/videos/ContactLandingVideo.mp4" type="video/mp4" />

@@ -112,7 +112,7 @@ export default function Navbar() {
     <div className={styles["custom-toolbar"]}>
       <div className={styles["navbar-logo"]}>
         <Link href="/" onClick={(e) => handleScroll(e, "/")}>
-          <img src="/images/VG_logo.png" alt="Logo" className={styles.logo} />
+          <Image src="/images/VG_logo.png" alt="Logo" width={50} height={50} className={styles.logo} />
         </Link>
       </div>
       <span className={styles.spacer}></span>

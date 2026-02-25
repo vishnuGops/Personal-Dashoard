@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
-
 $scrollbar-color: rgb(33, 119, 109) transparent;
 $scrollbar-width: thin;
 
@@ -12,7 +10,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Jersey 10", serif;
+  font-family: var(--font-jersey10), serif;
   background-color: black;
   color: white;
   overflow-x: hidden; // Keeps the site from wiggling sideways

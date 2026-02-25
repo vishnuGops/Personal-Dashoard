@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./AboutEducation.module.scss";
 import { educationData } from "../data/education";
 import LoginPlaceholder from "./LoginPlaceholder";
@@ -15,9 +16,11 @@ export default async function AboutEducation() {
           <div key={index} className={styles["experience-content"]}>
             <div className={styles["navbar-logo"]}>
               <a href={edu.url} target="_blank" rel="noopener noreferrer">
-                <img
+                <Image
                   src={edu.logo}
                   alt={edu.institution + " Logo"}
+                  width={200}
+                  height={128}
                   className={styles.logo}
                 />
               </a>

@@ -10,7 +10,7 @@ export default function ProjectsHero() {
           loop
           playsInline
           className={styles['background-video']}
-          preload="auto"
+          preload="metadata"
           poster="/images/about-poster.jpg"
         >
           <source src="/videos/AboutLandingVideo.mp4" type="video/mp4" />

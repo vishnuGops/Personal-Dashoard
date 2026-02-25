@@ -11,7 +11,7 @@ export default function LandingHero() {
           loop
           playsInline
           className={styles['background-video']}
-          preload="auto"
+          preload="metadata"
           poster="/images/video-poster.jpg"
         >
           <source src="/videos/LandingVideo.mp4" type="video/mp4" />

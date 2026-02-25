@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useLayoutEffect } from "react";
+import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -176,7 +177,13 @@ const CareerTimeline = () => {
                 <X size={24} />
               </button>
               <div className={styles.modalHero}>
-                <img src={selectedEvent.imageUrl} alt={selectedEvent.title} />
+                <Image
+                  src={selectedEvent.imageUrl}
+                  alt={selectedEvent.title}
+                  fill
+                  sizes="500px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
               <div className={styles.modalBody}>
                 <span className={styles.p1}>
