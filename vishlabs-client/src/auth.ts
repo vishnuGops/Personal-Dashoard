@@ -4,6 +4,7 @@ import Credentials from "next-auth/providers/credentials"
 import { PrismaAdapter } from "@auth/prisma-adapter"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
+import { authConfig } from "./auth.config"
 
 const googleClientId = process.env.GOOGLE_CLIENT_ID;
 const googleClientSecret = process.env.GOOGLE_CLIENT_SECRET;
@@ -17,6 +18,7 @@ if (!authSecret) {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  ...authConfig,
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   providers: [
@@ -63,11 +65,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
     }),
   ],
-  pages: {
-    signIn: "/", // Using the home page since we have a modal
-  },
   secret: authSecret,
   callbacks: {
+    ...authConfig.callbacks,
     async signIn({ user, account }) {
       try {
         await prisma.authLog.create({
@@ -96,13 +96,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.role = dbUser?.role ?? "USER"
       }
       return token
-    },
-    async session({ session, token }) {
-      if (token) {
-        session.user.id = token.id as string
-        session.user.role = token.role as string
-      }
-      return session
     },
   },
 })
