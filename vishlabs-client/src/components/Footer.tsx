@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Footer.module.scss";
 
 export default function Footer() {
@@ -6,7 +7,7 @@ export default function Footer() {
     <footer className={styles["custom-footer"]}>
       <div className={styles["footer-logo"]}>
         <Link href="/">
-          <img src="/images/VG_logo.png" alt="Logo" className={styles.logo} />
+          <Image src="/images/VG_logo.png" alt="Logo" width={50} height={50} className={styles.logo} />
         </Link>
       </div>
       <div className={styles["footer-text"]}>

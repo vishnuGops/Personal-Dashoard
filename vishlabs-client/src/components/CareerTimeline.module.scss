@@ -49,7 +49,7 @@
 
 .horizontalScrollTrack {
   display: flex;
-  padding: 0 15vw;
+  padding: 0 20vw;
   width: max-content;
   align-items: center;
   position: relative;
@@ -107,7 +107,7 @@
 /* LAYOUT COLUMNS */
 .eventColumn {
   position: relative;
-  width: 450px;
+  width: 350px;
   height: 70vh;
   display: flex;
   flex-direction: column;
@@ -249,10 +249,12 @@
   overflow-y: auto;
 }
 
-.modalHero img {
+.modalHero {
+  position: relative;
   width: 100%;
   height: 220px;
-  object-fit: cover;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
 }
 .modalBody {
   padding: 1.5rem;

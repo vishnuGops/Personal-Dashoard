@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './AboutExperience.module.scss';
 import { experienceData } from '../data/experience';
 
@@ -17,9 +18,11 @@ export default function AboutExperience() {
             <div key={index} className={styles['experience-content']}>
               <div className={styles['navbar-logo']}>
                 <a href={exp.url} target="_blank" rel="noopener noreferrer">
-                  <img
+                  <Image
                     src={exp.logo}
                     alt={exp.company + ' Logo'}
+                    width={200}
+                    height={128}
                     className={styles.logo}
                   />
                 </a>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './ProjectsInfo.module.scss';
 import { projectsData } from '../data/projects';
 
@@ -20,9 +21,11 @@ export default function ProjectsInfo() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.name + ' Logo'}
+                    width={300}
+                    height={240}
                     className={styles.logo}
                   />
                 </a>

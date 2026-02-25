@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Jersey_10, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../styles/globals.scss";
@@ -7,6 +8,20 @@ import Footer from "@/components/Footer";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
 import AuthProvider from "@/components/AuthProvider";
+
+const jersey10 = Jersey_10({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jersey10",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-ibm-plex-mono",
+});
 
 export const metadata: Metadata = {
   title: "Meet Vishnu!",
@@ -23,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${jersey10.variable} ${ibmPlexMono.variable}`}>
       <head>
         <link
           rel="stylesheet"

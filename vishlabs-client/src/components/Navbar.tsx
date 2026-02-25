@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -83,6 +83,15 @@ export default function Navbar() {
 
         {isDropdownOpen && (
           <div className={styles.dropdown}>
+            {session.user?.role === "ADMIN" && (
+              <Link
+                href="/admin"
+                className={styles.dropdownLink}
+                onClick={() => setIsDropdownOpen(false)}
+              >
+                Dashboard
+              </Link>
+            )}
             <button onClick={() => signOut()}>Logout</button>
           </div>
         )}
@@ -103,7 +112,7 @@ export default function Navbar() {
     <div className={styles["custom-toolbar"]}>
       <div className={styles["navbar-logo"]}>
         <Link href="/" onClick={(e) => handleScroll(e, "/")}>
-          <img src="/images/VG_logo.png" alt="Logo" className={styles.logo} />
+          <Image src="/images/VG_logo.png" alt="Logo" width={50} height={50} className={styles.logo} />
         </Link>
       </div>
       <span className={styles.spacer}></span>

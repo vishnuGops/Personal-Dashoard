@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styles from './LandingInfo.module.scss';
 
 export default function LandingInfo() {
@@ -38,7 +39,7 @@ export default function LandingInfo() {
         </ul>
       </div>
       <div className={styles['image-column']}>
-        <img src="/images/landing-info.svg" alt="Information Image" />
+        <Image src="/images/landing-info.svg" alt="Information Image" width={400} height={400} />
       </div>
     </div>
   );
