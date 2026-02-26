@@ -2,7 +2,7 @@ import LandingHero from "@/components/LandingHero";
 import LandingInfo from "@/components/LandingInfo";
 import LandingPhotoWall from "@/components/LandingPhotoWall";
 import CareerTimeline from "@/components/CareerTimeline";
-import Beams from "@/components/Beams";
+import Beams from "@/components/ui/Beams";
 import { auth } from "@/auth";
 import LoginPlaceholder from "@/components/LoginPlaceholder";
 

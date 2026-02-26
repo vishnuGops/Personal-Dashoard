@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import styles from "./page.module.scss";
-import Beams from "@/components/Beams";
+import Beams from "@/components/ui/Beams";
 
 export default async function AdminPage() {
   const session = await auth();
