@@ -7,6 +7,7 @@ import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 import styles from "./Navbar.module.scss";
 import { useAuthModal } from "./AuthProvider";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Navbar() {
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -15,6 +16,12 @@ export default function Navbar() {
   const { openModal } = useAuthModal();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 20);
+  });
 
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -109,38 +116,46 @@ export default function Navbar() {
     );
 
   return (
-    <div className={styles["custom-toolbar"]}>
-      <div className={styles["navbar-logo"]}>
-        <Link href="/" onClick={(e) => handleScroll(e, "/")}>
-          <Image src="/images/VG_logo.png" alt="Logo" width={50} height={50} className={styles.logo} />
-        </Link>
-      </div>
-      <span className={styles.spacer}></span>
+    <>
+      <div className={styles["navbar-wrapper"]}>
+        <motion.nav
+          className={`${styles["custom-toolbar"]} ${isScrolled ? styles.scrolled : styles.transparent}`}
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <div className={styles["navbar-logo"]}>
+            <Link href="/" onClick={(e) => handleScroll(e, "/")}>
+              <Image src="/images/VG_logo.png" alt="Logo" width={50} height={50} className={styles.logo} />
+            </Link>
+          </div>
 
-      {/* Desktop Navigation */}
-      <nav className={styles.desktopNav}>
-        {navLinks.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-            onClick={(e) => handleScroll(e, link.href)}
+          {/* Desktop Navigation */}
+          <div className={styles.desktopNav}>
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <AuthSection />
+          </div>
+
+          {/* Hamburger Button */}
+          <button
+            className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ""}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
           >
-            {link.name}
-          </Link>
-        ))}
-        <AuthSection />
-      </nav>
-
-      {/* Hamburger Button */}
-      <button
-        className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ""}`}
-        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </motion.nav>
+      </div>
 
       {/* Mobile Navigation Overlay */}
       <div
@@ -161,6 +176,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
