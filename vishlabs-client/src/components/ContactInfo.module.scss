@@ -4,12 +4,11 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 4rem;
-  background: linear-gradient(to bottom, #001825, #000000);
+  background: transparent;
   height: 100vh;
   h1 {
     font-size: 5rem;
     color: #009557;
-    margin-bottom: 1rem;
 
     @media (max-width: 768px) {
       margin-top: 0rem;
