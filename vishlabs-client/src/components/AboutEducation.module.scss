@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  background: linear-gradient(to bottom, #333333, #000000);
+  background: transparent;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
   text-align: left;
@@ -34,15 +34,14 @@
   justify-content: center;
   padding: 2rem;
   border-radius: 2rem;
-  width: 95%;
   margin: 2rem 2rem;
   text-align: left;
 
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
-    padding: 1rem;
-    width: 95vw;
+    padding: 0rem;
+    margin: 0;
   }
 }
 

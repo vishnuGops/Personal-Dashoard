@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "../styles/globals.scss";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SmoothScrolling from "@/components/SmoothScrolling";
+import SmoothScrolling from "@/components/ui/SmoothScrolling";
 
 import AuthProvider from "@/components/AuthProvider";
 

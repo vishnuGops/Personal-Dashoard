@@ -35,26 +35,49 @@ $transition-color: color 0.3s ease;
   padding: 0;
 }
 
-.custom-toolbar {
+.navbar-wrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(15, 18, 23, 1) 00%,
-    rgba(15, 18, 23, 0.7) 40%,
-    rgba(15, 18, 23, 0.3) 75%,
-    transparent 100%
-  );
-  color: $color-white;
-  height: auto;
-  padding: 0.5rem;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  pointer-events: none;
+}
+
+.custom-toolbar {
+  pointer-events: auto;
   display: flex;
   align-items: center;
-  font-family: $font-primary;
-  z-index: 100;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  width: min(90%, 1000px);
+  transition: all 0.3s ease;
   box-sizing: border-box;
+  font-family: $font-primary;
+  color: $color-white;
+
+  &.scrolled {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(24px);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px 10px rgba(100, 150, 255, 0.4);
+  }
+
+  &.transparent {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+    border-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    padding: 0.75rem 2rem;
+  }
 
   .navbar-logo {
     display: flex;
@@ -66,10 +89,9 @@ $transition-color: color 0.3s ease;
     }
 
     .logo {
-      height: 3.3rem;
-      width: 3.3rem;
+      height: 2.5rem;
+      width: 2.5rem;
       padding: 0.1rem;
-      margin-left: 6rem;
       transition: $transition-transform;
 
       &:hover {
@@ -78,33 +100,25 @@ $transition-color: color 0.3s ease;
     }
   }
 
-  .spacer {
-    flex: 1 1 auto;
-  }
-
   /* Desktop Navigation */
   .desktopNav {
     display: flex;
     align-items: center;
-    margin-right: 3rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 
     > a {
-      color: $color-text-secondary;
+      color: rgba(226, 226, 226, 0.9);
       text-decoration: none;
-      margin-left: 3rem;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 500;
-      font-family: $font-primary;
-      transition:
-        $transition-color,
-        border-bottom 0.3s ease;
-      text-shadow: black 2px 2px;
+      font-family: inherit;
+      transition: all 0.2s ease;
       cursor: pointer;
 
       &:hover {
         color: $color-white;
-        border-bottom: 2px solid rgb(201, 201, 201);
+        transform: scale(1.05);
       }
     }
   }
@@ -118,7 +132,6 @@ $transition-color: color 0.3s ease;
     height: 2rem;
     @include button-reset;
     z-index: 102; // Above everything
-    margin-right: 1rem;
 
     span {
       width: 2rem;
@@ -143,155 +156,185 @@ $transition-color: color 0.3s ease;
       }
     }
   }
+}
 
-  /* Mobile Navigation Overlay */
-  .mobileNav {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 70vw;
-    height: 60vh;
-    background: $color-bg-dark-solid;
-    @include flex-center;
+/* Mobile Navigation Overlay */
+.mobileNav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 75vw;
+  max-width: 380px;
+  height: 100vh;
+  // Deep dark glass effect
+  background: rgba(10, 12, 16, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+  @include flex-center;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 99; // Below logo and hamburger
+  border-radius: 30px 0 0 30px;
+  pointer-events: auto;
+
+  &.open {
+    transform: translateX(0);
+  }
+
+  .mobileNavContent {
+    display: flex;
     flex-direction: column;
-    transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 99; // Below logo and hamburger
-    border-radius: 0 0 0 2rem; // Adjusted radius for top-right menu style
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    width: 100%;
+    padding: 2rem;
 
-    &.open {
-      transform: translateX(0);
+    a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 2rem;
+      font-family: inherit;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: $color-white;
+        transform: scale(1.1);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      }
     }
 
-    .mobileNavContent {
+    .mobileAuth {
+      margin-top: 2rem;
+      width: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2rem;
+      justify-content: center;
 
-      a {
-        color: white;
-        text-decoration: none;
-        font-size: 2.5rem;
-        font-family: $font-primary;
-        transition: $transition-color;
+      .user-profile {
+        margin-left: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
 
-        &:hover {
-          color: $color-text-hover;
+        img {
+          width: 70px;
+          height: 70px;
+          border-width: 3px;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+          margin-bottom: 1rem;
         }
-      }
 
-      .mobileAuth {
-        margin-top: 1rem;
-        // Reset layout for auth section in mobile
-        .user-profile {
-          margin-left: 0;
-          flex-direction: column;
-          .dropdown {
-            position: static;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            align-items: flex-start;
-            margin-top: 1rem;
-            button {
-              font-size: 1.5rem;
-              color: $color-text-muted;
-              &:hover {
-                color: $color-white;
-                background: transparent;
-              }
-            }
-          }
-          .dropdownLink {
-            font-size: 1.5rem;
-            color: $color-text-muted;
+        .dropdown {
+          position: static;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.2);
+          align-items: center;
+          width: 100%;
+          border-radius: 16px;
+          opacity: 1;
+          transform: none;
+          animation: none;
+          padding: 1rem;
+
+          button, .dropdownLink {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 10px;
+            transition: all 0.2s ease;
+
             &:hover {
               color: $color-white;
-              background: transparent;
+              background: rgba(255, 255, 255, 0.1);
+              transform: scale(1.05);
             }
           }
         }
-        .auth-button {
-          margin-left: 0;
-          font-size: 2.5rem;
-          padding: 0.5rem 1rem;
+      }
+      .auth-button {
+        margin-left: 0;
+        font-size: 1.5rem;
+        padding: 0.8rem 2rem;
+        border-radius: 999px;
+        box-shadow: 0 0 20px rgba(1, 191, 113, 0.2);
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 0 30px rgba(1, 191, 113, 0.4);
         }
       }
     }
   }
+}
 
-  .auth-button {
-    background: #01bf71;
-    border: 1px solid $color-border-light;
-    color: $color-text-secondary;
-    padding: 0.2rem 1rem;
-    border-radius: 6px;
-    font-family: $font-primary;
-    font-size: 1.8rem;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
-    cursor: pointer;
-    margin-left: 2rem;
-    transition: $transition-standard;
-    display: flex;
-    align-items: center;
-    height: fit-content;
+.auth-button {
+  background: #01bf71;
+  border: 1px solid $color-border-light;
+  color: $color-text-secondary;
+  padding: 0.3rem 1rem;
+  border-radius: 6px;
+  font-family: $font-primary;
+  font-size: 1.5rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: $transition-standard;
+  display: flex;
+  align-items: center;
+  height: fit-content;
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: $color-border-hover;
-      color: $color-white;
-    }
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: $color-border-hover;
+    color: $color-white;
   }
+}
 
-  // Media queries
-  @media (max-width: 1000px) {
+// Media queries
+@media (max-width: 1000px) {
+  .custom-toolbar {
     .desktopNav {
-      margin-right: 2rem;
-
+      gap: 1rem;
       > a {
-        margin-left: 2rem;
-        font-size: 1.5rem;
-      }
-    }
-    .auth-button {
-      padding: 0.2rem 0.5rem;
-      font-size: 1.5rem;
-      margin-left: 2rem;
-    }
-
-    .navbar-logo {
-      .logo {
-        margin-left: 1.5rem;
+        font-size: 1.2rem;
       }
     }
   }
-  @media (max-width: 700px) {
+  .auth-button {
+    padding: 0.2rem 0.6rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .custom-toolbar {
     .desktopNav {
       display: none;
     }
-
     .hamburger {
       display: flex;
     }
-    .navbar-logo {
-      .logo {
-        margin-left: 1rem;
-      }
-    }
   }
+}
 
-  @media (max-width: 420px) {
-    .mobileNav {
-      height: 100vh;
-      border-radius: 0;
-    }
+@media (max-width: 420px) {
+  .mobileNav {
+    height: 100vh;
+    border-radius: 0;
   }
 }
 
 .user-profile {
   position: relative;
-  margin-left: 2rem;
   display: flex;
   align-items: center;
 
@@ -301,8 +344,8 @@ $transition-color: color 0.3s ease;
   }
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     border: 2px solid $color-border-light;
     transition: border-color 0.3s;
@@ -316,49 +359,72 @@ $transition-color: color 0.3s ease;
 
 .dropdown {
   position: absolute;
-  top: 120%;
+  top: 140%;
   right: 0;
-  background: $color-bg-dropdown;
-  border: 1px solid $color-border-dark;
-  border-radius: 8px;
+  // Deep dark glass effect
+  background: rgba(10, 12, 16, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  // Soft glowing border
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   padding: 0.5rem;
-  min-width: 150px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  // Nice shadow
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(100, 150, 255, 0.15);
   z-index: 100;
 
-  button {
+  // Entrance animation
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+  transform-origin: top right;
+  animation: dropdownFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  // Inner highlight
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+
+  button, .dropdownLink {
     @include button-reset;
     text-align: left;
-    color: $color-text-primary;
-    padding: 0.5rem 1rem;
-    font-family: "Jersey 10", serif;
-    font-size: 1.5rem;
-    border-radius: 4px;
-    transition: background 0.2s;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.8rem 1rem;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
 
     &:hover {
-      background: #333;
+      background: rgba(255, 255, 255, 0.1);
       color: $color-white;
+      transform: translateX(4px);
     }
   }
 }
 
 .dropdownLink {
-  display: block;
-  width: 100%;
   box-sizing: border-box;
   text-decoration: none;
-  color: $color-text-primary;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
-  border-radius: 4px;
-  transition: background 0.2s;
+  width: 100%;
+}
 
-  &:hover {
-    background: #333;
-    color: $color-white;
+@keyframes dropdownFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }

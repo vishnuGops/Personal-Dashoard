@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import styles from "./AnuValentine.module.scss";
-import Grainient from "./Grainient";
+import Grainient from "./ui/Grainient";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 

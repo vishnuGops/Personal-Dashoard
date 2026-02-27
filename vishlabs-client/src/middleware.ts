@@ -15,10 +15,10 @@ export default auth((req) => {
     }
   }
 
-  // Auth-required routes: /projects
-  if (pathname.startsWith("/projects") && !req.auth) {
-    return Response.redirect(new URL("/", req.nextUrl.origin));
-  }
+  // // Auth-required routes: /projects
+  // if (pathname.startsWith("/projects") && !req.auth) {
+  //   return Response.redirect(new URL("/", req.nextUrl.origin));
+  // }
 });
 
 export const config = {
