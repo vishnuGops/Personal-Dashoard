@@ -4,21 +4,6 @@ import styles from './AboutHero.module.scss';
 export default function AboutHero() {
   return (
     <div className={styles['hero-container']}>
-      <div className={styles['hero-bg']}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className={styles['background-video']}
-          preload="metadata"
-          poster="/images/about-poster.jpg"
-        >
-          <source src="/videos/AboutLandingVideo.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-
       <div className={styles['hero-content']}>
         <h1>About me</h1>
         <p>I am Vishnu</p>
